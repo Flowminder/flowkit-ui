@@ -1,0 +1,80 @@
+.YourDetails .form-control {
+    border-radius: 5px !important;
+    //background-image: none!important;
+    background-color: #e3fbf9 !important;
+    border: none !important;
+}
+.YourDetails .form-control:focus-visible {
+    border-radius: 5px !important;
+    background-color: var(--white) !important;
+    outline: 1px solid var(--tertiary) !important;
+}
+
+.YourDetails .form-check-input {
+    border-radius: 5px;
+    padding: 2px;
+    margin: 0 10px 0 0;
+    min-width: 16px;
+}
+
+.YourDetails div.form-check {
+    display: flex;
+    gap: 5px;
+}
+
+.YourDetails label.form-check-label {
+    height: 20px !important;
+    line-height: 20px !important;
+    margin: 5px 0;
+    color: var(--dark) !important;
+    flex-grow: 1;
+    display: ruby;
+}
+
+.YourDetails .form-check .invalid-feedback {
+    flex-grow: 0;
+    height: 25px !important;
+    line-height: 25px !important;
+}
+
+.YourDetails .form-control,
+.YourDetails .form-control:hover {
+    transition: none !important;
+}
+
+.YourDetails .form-control::placeholder {
+    font-style: italic !important;
+}
+
+.YourDetails textarea.form-control {
+    padding: 15px !important;
+}
+
+.YourDetails .was-validated .has-validation .form-control {
+    background-color: var(--white) !important;
+    outline: 1px solid var(--tertiary) !important;
+}
+
+.YourDetails .was-validated .has-validation .form-control:hover {
+    border-color: var(--tertiary) !important;
+    box-shadow: 0 0 3px var(--tertiary);
+}
+
+.YourDetails .was-validated .has-validation .form-control:invalid {
+    outline: 2px solid var(--primary) !important;
+}
+
+.YourDetails .was-validated .has-validation .form-control:invalid:hover {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 3px var(--primary);
+}
+
+.YourDetails .invalid-feedback {
+    font-size: 12px !important;
+    font-family: var(--font-control);
+    color: var(--primary) !important;
+}
+
+.YourDetails .container {
+    padding: 0 !important;
+}

@@ -1,0 +1,21 @@
+// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+// If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+.Registration .nav-pills {
+    margin: 0 0 20px;
+}
+
+.Registration .nav-pills .nav-link.active,
+.Registration .nav-pills .show > .nav-link {
+    background-color: var(--primary) !important;
+}
+
+.Registration .nav-item {
+    margin: 0 10px 0 0;
+}
+
+.Registration .nav-link {
+    color: var(--primary);
+    background: var(--white) !important;
+    border: 1px solid var(--primary) !important;
+}

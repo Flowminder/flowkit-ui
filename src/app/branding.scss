@@ -1,0 +1,97 @@
+// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+// If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+:root {
+    --black: #000;
+    --dark: #333;
+    --medium: #c9c9c9;
+    --light: #e0e0e0;
+    --white: #fff;
+    --primary: #be251a;
+    --secondary: #edd01e;
+    --tertiary: #0dc7bd;
+    --quaternary: #263785;
+
+    /* Foreground (i.e. text) are just colours */
+    --fg: var(--dark);
+
+    /* Background can be colours and/or images*/
+    --bg: var(--white);
+    --bg-primary: #cc4031 url("../app/img/bg_red.png") 25px 0 repeat;
+    --bg-secondary: #eacf39 url("../app/img/bg_yellow.png") 25px 0 repeat;
+    --bg-tertiary: #88c9cb url("../app/img/bg_turquoise.png") 25px 0 repeat;
+    --bg-quaternary: #243b80 url("../app/img/bg_blue.png") 25px 0 repeat;
+
+    /* Accents can be used for links or other highlights */
+    --accent: var(--tertiary);
+
+    /* Controls are buttons, tabs etc. */
+    --control-fg: var(--primary);
+    --control-bg: var(--secondary);
+    --control-hover-fg: var(--primary);
+    --control-hover-bg: var(--secondary);
+
+    --control-alt-fg: var(--secondary);
+    --control-alt-bg: var(--primary);
+    --control-alt-hover-fg: var(--secondary);
+    --control-alt-hover-bg: var(--primary);
+
+    /* Borders */
+    --border: var(--medium);
+    --border-light: var(--light);
+    --border-dark: var(--dark);
+
+    /* Shadow colour if any */
+    --shadow: #0008;
+
+    /* Rounded/pointy corners */
+    --border-radius: 10px;
+
+    /* Fonts */
+    --font-main: "Roboto Light", "Roboto Thin", "Roboto Regular", sans-serif;
+    --font-control: "Roboto Regular", sans-serif;
+    --font-heading: "Frank Ruhl Libre Medium", serif;
+    --font-code: "Ubuntu Mono", "Courier New", monospace;
+}
+
+// Bootstrap variables ===================================================================
+
+$white: #fff;
+$gray-100: #fafafa;
+$gray-200: #e0e0e0;
+$gray-300: #ededed;
+$gray-400: #c9c9c9;
+$gray-500: #adb5bd;
+$gray-600: #868e96;
+$gray-700: #444;
+$gray-800: #343a40;
+$gray-900: #2d2d2d;
+$black: #000;
+$blue: #263785;
+$indigo: #6610f2;
+$purple: #593196;
+$pink: #701f53;
+$red: #d2372c;
+$orange: #fd7e14;
+$yellow: #edd01e;
+$green: #13b955;
+$teal: #6ce8dd;
+$cyan: #009cdc;
+$primary: $blue;
+$secondary: $yellow;
+$info: $blue;
+$warning: $yellow;
+$danger: $red;
+$light: $gray-200;
+$dark: $gray-900;
+$body-color: $gray-700;
+$dropdown-link-color: $gray-700;
+$dropdown-link-hover-color: $white;
+$dropdown-link-hover-bg: $primary;
+$navbar-dark-hover-color: rgba($white, 0.9);
+$enable-rounded: false;
+$success: $teal;
+
+@import "~bootswatch/dist/pulse/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/pulse/bootswatch";

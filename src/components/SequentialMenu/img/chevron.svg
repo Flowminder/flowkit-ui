@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="svg10654"
+   height="512"
+   viewBox="0 0 6.3499999 6.3500002"
+   width="512"
+   version="1.1"
+   sodipodi:docname="right.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     id="namedview5"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="1.4042969"
+     inkscape:cx="255.64395"
+     inkscape:cy="255.64395"
+     inkscape:window-width="1866"
+     inkscape:window-height="989"
+     inkscape:window-x="3894"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg10654" />
+  <g
+     id="layer1"
+     transform="translate(0 -290.65)"
+     style="stroke-width:1.00000098;stroke-miterlimit:4;stroke-dasharray:none;fill:#095798;fill-opacity:1">
+    <path
+       id="path9429"
+       d="m2.2580394 291.96502a.26460982.26460982 0 0 0 -.1741496.46871l1.6190225 1.38699-1.6190225 1.38648a.26460982.26460982 0 1 0 .3436483.40049l1.8536335-1.58595a.26460982.26460982 0 0 0 0-.40256l-1.8536335-1.5875a.26460982.26460982 0 0 0 -.1694987-.0667z"
+       font-variant-ligatures="normal"
+       font-variant-position="normal"
+       font-variant-caps="normal"
+       font-variant-numeric="normal"
+       font-variant-alternates="normal"
+       font-feature-settings="normal"
+       text-indent="0"
+       text-align="start"
+       text-decoration-line="none"
+       text-decoration-style="solid"
+       text-decoration-color="rgb(0,0,0)"
+       text-transform="none"
+       text-orientation="mixed"
+       white-space="normal"
+       shape-padding="0"
+       isolation="auto"
+       mix-blend-mode="normal"
+       solid-color="rgb(0,0,0)"
+       solid-opacity="1"
+       vector-effect="none"
+       style="stroke-width:1.00000098;stroke-miterlimit:4;stroke-dasharray:none;fill:#095798;fill-opacity:1" />
+  </g>
+</svg>

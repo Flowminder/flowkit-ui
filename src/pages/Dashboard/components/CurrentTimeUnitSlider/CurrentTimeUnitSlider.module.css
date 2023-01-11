@@ -1,0 +1,19 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.CurrentTimeUnitSlider {
+    width: calc(100% - 50px);
+    height: 40px;
+    padding: 5px 25px 0;
+    border-radius: 10px;
+    border: 1px solid var(--quaternary);
+    z-index: 500 !important;
+}
+
+.CurrentTimeUnitSlider span.Info {
+    margin: 8px 0 0;
+    display: block;
+    font-size: 13px;
+}

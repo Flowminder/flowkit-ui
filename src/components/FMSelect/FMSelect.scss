@@ -1,0 +1,55 @@
+// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+// If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+.FMSelect.react-select__control {
+    display: block;
+    min-width: 200px;
+}
+
+.FMSelect .react-select__control,
+.FMSelect .react-select__value-container {
+    height: 36px;
+    line-height: 30px;
+}
+
+.FMSelect div.react-select__input-container {
+    height: 28px;
+}
+
+.FMSelect div.react-select__input-container input {
+    height: 24px;
+}
+
+.FMSelect div.react-select__menu {
+    margin-top: 1px;
+}
+
+.FMSelect div.react-select__menu * {
+    line-height: 20px;
+}
+
+.FMSelect div.react-select__indicator {
+    padding: 0 5px !important;
+}
+
+.FMSelect div.react-select__menu {
+    margin: 1px 0 0 1px;
+    width: calc(100% - 2px);
+}
+
+.FMSelect div.react-select__menu-list {
+    padding: 0;
+    border-top: none;
+    width: 100%;
+}
+
+.FMSelect div.react-select__option {
+    width: calc(100% - 20px);
+    padding: 5px 10px;
+}
+
+.FMSelect div.react-select__placeholder,
+.FMSelect div.react-select__single-value,
+.FMSelect div.react-select__option {
+    font-size: 13px;
+}

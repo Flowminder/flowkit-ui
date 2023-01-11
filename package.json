@@ -1,0 +1,154 @@
+{
+    "name": "flowkit-ui",
+    "version": "0.1.1",
+    "homepage": "./",
+    "private": true,
+    "scripts": {
+        "start": "PUBLIC_URL=. REACT_APP_GIT_BRANCH=`git rev-parse --abbrev-ref HEAD` REACT_APP_GIT_SHA=`git rev-parse HEAD` react-scripts start",
+        "format": "./node_modules/.bin/prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\" ./public/locales/**/*.json",
+        "build": "PUBLIC_URL=. REACT_APP_GIT_BRANCH=`git rev-parse --abbrev-ref HEAD` REACT_APP_GIT_SHA=`git rev-parse HEAD` react-scripts build",
+        "test": "NODE_OPTIONS=--experimental-vm-modules PUBLIC_URL=. react-scripts test --watchAll=false --verbose --coverage --testPathIgnorePatterns src/test/",
+        "test1": "NODE_OPTIONS=--experimental-vm-modules PUBLIC_URL=. react-scripts test --watchAll=false --verbose --coverage --testPathIgnorePatterns src/test/ -i ",
+        "badges": "generateBadges ./coverage/coverage-summary.json; mv -f ./badges/* ./coverage; rm -rf ./badges",
+        "cypress:open": "cypress open",
+        "predeploy": "yarn run test; yarn run badges; yarn run build; rm -rf ./deployment; cp -r ./deploy ./deployment; cp -r ./coverage ./build; cp -r ./coverage ./deployment; BRANCH=`git rev-parse --abbrev-ref HEAD`; cp -r ./build \"./deployment/$BRANCH\"; NOW=`date`; echo \"Latest deployed branch: $BRANCH\" at $NOW > \"./deployment/branch.txt\"",
+        "deploy": "PUBLIC_URL=. BRANCH=`git rev-parse --abbrev-ref HEAD` gh-pages -b gh-pages -v \"./deployment/$BRANCH\" -d deployment -m 'auto commit [ci skip]'",
+        "eject": "react-scripts eject",
+        "prepare": "husky install"
+    },
+    "dependencies": {
+        "@auth0/auth0-react": "1.10.2",
+        "@deck.gl/core": "8.8.9",
+        "@deck.gl/layers": "8.8.9",
+        "@deck.gl/react": "8.8.9",
+        "@redux-devtools/extension": "3.2.3",
+        "@reduxjs/toolkit": "1.8.5",
+        "axios": "0.27.2",
+        "bootstrap": "5.1.3",
+        "bootswatch": "5.1.3",
+        "deck.gl": "8.8.9",
+        "dotenv": "16.0.1",
+        "fast-text-encoding": "1.0.4",
+        "fork-victorvhn-react-loading-overlay": "1.2.0",
+        "i18n": "0.15.0",
+        "i18next": "21.9.1",
+        "i18next-browser-languagedetector": "6.1.5",
+        "i18next-http-backend": "1.4.1",
+        "mapbox-gl": "2.10.0",
+        "react": "18.2.0",
+        "react-bootstrap": "2.5.0",
+        "react-bootstrap-table-next": "4.0.3",
+        "react-datepicker": "4.8.0",
+        "react-dom": "18.2.0",
+        "react-i18next": "11.18.4",
+        "react-map-gl": "6.1.19",
+        "react-markdown": "8.0.3",
+        "react-pro-sidebar": "0.7.1",
+        "react-range": "1.8.14",
+        "react-redux": "8.0.2",
+        "react-router-dom": "6.3.0",
+        "react-scripts": "4.0.3",
+        "react-select": "5.4.0",
+        "recharts": "2.1.13",
+        "rehype-raw": "6.1.1",
+        "topojson-client": "3.1.0",
+        "uuid": "8.3.2",
+        "worker-loader": "3.0.8"
+    },
+    "devDependencies": {
+        "@testing-library/jest-dom": "5.16.5",
+        "@testing-library/react": "13.3.0",
+        "@testing-library/user-event": "14.4.3",
+        "babel-plugin-transform-remove-console": "6.9.4",
+        "cypress": "^10.11.0",
+        "eslint-plugin-cypress": "^2.12.1",
+        "gh-pages": "4.0.0",
+        "husky": "8.0.1",
+        "jest-coverage-badges-ts": "0.1.6",
+        "lint-staged": "13.0.3",
+        "node-jest-badges": "^1.3.3",
+        "precise-commits": "1.0.2",
+        "prettier": "2.7.1",
+        "react-test-renderer": "18.2.0",
+        "redux-mock-store": "1.5.4",
+        "sass": "1.54.5"
+    },
+    "resolutions": {
+        "react-error-overlay": "6.0.9",
+        "react-dev-utils": "11.0.3"
+    },
+    "browserslist": [
+        "defaults",
+        "not ie 11"
+    ],
+    "babel": {
+        "env": {
+            "production": {
+                "plugins": [
+                    [
+                        "transform-remove-console",
+                        {
+                            "exclude": [
+                                "error",
+                                "warn"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        }
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ],
+        "rules": {
+            "react-hooks/exhaustive-deps": "off"
+        }
+    },
+    "prettier": {
+        "printWidth": 120,
+        "tabWidth": 4,
+        "semi": false,
+        "trailingComma": "none",
+        "jsxBracketSameLine": true,
+        "arrowParens": "avoid"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "jest": {
+        "transform": {},
+        "clearMocks": true,
+        "resetMocks": true,
+        "collectCoverageFrom": [
+            "**/util.js",
+            "**/*Slice.js",
+            "**/*Slice.selectors.js"
+        ],
+        "coveragePathIgnorePatterns": [
+            "/node_modules/",
+            "index.js",
+            "/src/test/*"
+        ],
+        "coverageReporters": [
+            "json-summary",
+            "text",
+            "lcov"
+        ],
+        "testMatch": [
+            "**/*Slice.test.js",
+            "**/*Slice.selectors.test.js",
+            "**/util.test.js"
+        ]
+    }
+}

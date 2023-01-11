@@ -1,0 +1,29 @@
+.AccountSetup .highlighted {
+    background-color: var(--secondary);
+}
+
+.AccountSetup .VerificationBox {
+    background: #e3fcf9;
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+
+.AccountSetup .VerificationBox div h1 {
+    background: none;
+    font-size: 14px !important;
+    margin: 0 0 14px;
+    padding: 0;
+}
+
+.AccountSetup .VerificationBox div * {
+    font-size: 13px !important;
+}
+
+.AccountSetup .VerificationBox div p {
+    margin: 0 0 10px !important;
+}
+
+.AccountSetup .VerificationBox div strong {
+    font-family: var(--font-control) !important;
+    color: var(--black);
+}

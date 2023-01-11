@@ -1,0 +1,203 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.Dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 677px;
+    background: var(--bg-tertiary);
+    flex: 1;
+    padding: 20px 20px 0;
+    margin: -50px;
+}
+
+.Dashboard h1:first-of-type {
+    margin: 0;
+    padding: 0 20px 20px;
+    font-size: 22px;
+    background: none;
+}
+
+.Dashboard .Wrapper {
+    width: calc(100% - 20px);
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    background: var(--white);
+    padding: 10px;
+}
+
+.Dashboard .MapInfo {
+    border-radius: 10px;
+    border: 1px solid var(--quaternary);
+}
+
+.Dashboard h3 {
+    font-size: 14px;
+}
+
+.Dashboard .Content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Dashboard .MapInfo {
+    border-color: var(--tertiary);
+    display: flex;
+    flex-direction: row;
+    padding: 0 10px 0 0;
+}
+
+.Dashboard .MapInfo .Description {
+    height: calc(100% - 20px);
+    background: var(--tertiary);
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.Dashboard .MapInfo .Description h2 {
+    padding: 0;
+    margin: 0 0 3px;
+    font-size: 16px;
+}
+
+.Dashboard .MapInfo .Description p {
+    margin: 0;
+    font-size: 13px;
+}
+
+.Dashboard .MapInfo .Space {
+    flex: 1;
+}
+
+.Dashboard .MapInfo .Buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.Dashboard .MapInfo .Buttons button {
+    margin: 14px 0;
+    color: var(--primary);
+}
+
+.Dashboard .MapInfo .Buttons button:hover {
+    margin: 14px 0;
+    color: var(--secondary);
+    background: var(--primary);
+    border-color: var(--secondary);
+    filter: none;
+}
+
+.Dashboard .MapInfo .Buttons .Download.hidden {
+    display: none;
+}
+
+.Dashboard .MapInfo .Buttons .Download {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 90px;
+    right: 120px;
+    z-index: 998;
+    background: var(--white);
+    border: 2px solid var(--secondary);
+    height: fit-content;
+}
+
+/*.Dashboard .MapInfo .Buttons .Download:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 0 8px 10px;
+    border-color: var(--white) transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    margin-left: -8px;
+    top: -10px;
+    left: 80%;
+}*/
+
+.Dashboard .MapInfo .Buttons .Download:before {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 0 9px 11px;
+    border-color: var(--secondary) transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+    margin-left: -9px;
+    top: -13px;
+    left: 80%;
+}
+
+.Dashboard .MapInfo .Buttons .Download span {
+    font-size: 11px;
+    text-align: center;
+    display: block;
+    padding: 5px 20px;
+    color: var(--primary);
+    font-weight: bold;
+    z-index: 999;
+}
+
+.Dashboard .MapInfo .Buttons .Download span:hover {
+    cursor: pointer;
+    background: var(--secondary);
+}
+
+.Dashboard .MapInfo .Buttons .MapToggle {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+    cursor: pointer;
+    width: 70px;
+    text-align: center;
+    z-index: 100;
+}
+
+.Dashboard .MapInfo .Buttons .MapToggle img {
+    height: 35px;
+    width: 35px;
+    margin: 0 auto;
+}
+
+.Dashboard .MapInfo .Buttons .MapToggle span {
+    font-size: 12px;
+    font-family: var(--font-heading);
+}
+
+.Dashboard .MapInfo .Buttons .MapToggle img:hover {
+    filter: brightness(120%);
+}
+
+.bottomBar {
+    height: "30px";
+}
+
+.BackendConnection {
+    font-size: 12px;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    color: var(--fg);
+}
+
+.BackendConnection img {
+    width: 20px;
+    margin-right: 5px;
+}
+
+.GitSHA {
+    font-size: 12px;
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    color: var(--bg);
+}

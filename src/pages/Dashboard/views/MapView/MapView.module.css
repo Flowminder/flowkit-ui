@@ -1,0 +1,50 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.MapView {
+    flex: 1;
+}
+
+.MapView .Map {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    z-index: 0;
+    flex: 1;
+}
+
+.MapView .Info:hover {
+    cursor: default;
+}
+
+.MapView .Info {
+    position: absolute;
+    float: left;
+    padding: 15px;
+    background: var(--white);
+    z-index: 600;
+    margin: 5px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--medium);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.MapView .Info h2 {
+    font-size: 14px;
+    margin: 0;
+}
+
+.MapView .Info h3 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.MapView .Info p {
+    margin: 0;
+    font-size: 13px;
+}

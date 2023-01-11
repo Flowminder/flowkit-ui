@@ -1,0 +1,32 @@
+// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+// If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+.MapView div#deckgl-wrapper {
+    position: relative !important;
+    flex: 1 !important;
+    z-index: 500 !important;
+}
+
+.MapView button.mapboxgl-ctrl-icon {
+    margin: 0 !important;
+    border: none !important;
+}
+
+.MapView button.mapboxgl-ctrl-icon:focus {
+    border: none !important;
+}
+
+.MapView button.mapboxgl-ctrl-icon span {
+    padding: 0 !important;
+}
+
+.MapView div.deck-tooltip {
+    background: var(--white) !important;
+    color: var(--dark) !important;
+    padding: 5px 10px !important;
+    font-size: 12px !important;
+    font-family: var(--font-control) !important;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    z-index: 9999 !important;
+}

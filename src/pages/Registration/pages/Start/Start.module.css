@@ -1,0 +1,21 @@
+.Start h1 {
+    background: none;
+    padding: 80px 50px 30px;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.Start h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.Start p {
+    font-size: 16px;
+}
+
+.Start em {
+    color: var(--tertiary);
+    font-style: normal;
+    font-weight: bold;
+}

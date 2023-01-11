@@ -1,0 +1,145 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.SessionArea {
+    display: flex;
+    flex: 0 fit-content;
+    gap: 50px;
+    min-width: 250px;
+}
+
+.SessionArea img {
+    filter: none;
+}
+
+.SessionArea button.login {
+    color: var(--white);
+    background: var(--dark);
+    border: none;
+    font-size: 16px !important;
+    font-family: var(--font-control) !important;
+    font-weight: 400 !important;
+    width: max-content;
+    padding: 0 !important;
+}
+.SessionArea button.login:hover {
+    color: var(--secondary);
+    filter: none;
+}
+
+.SessionArea button.auth0 {
+    border: none;
+    background: var(--control-bg);
+    color: var(--dark);
+    min-width: 80px;
+    height: 30px !important;
+    line-height: 30px !important;
+    margin-right: 30px;
+}
+
+.SessionArea button.auth0:hover {
+    cursor: pointer;
+    background: var(--control-hover-bg);
+    color: var(--control-hover-fg);
+    filter: brightness(90%);
+}
+
+.SessionArea .Account {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.SessionArea .User {
+    border-radius: 10px 0 0 10px;
+    float: right;
+    height: 30px;
+    margin: 0;
+    padding: 10px;
+    font-weight: normal;
+    display: flex;
+    background-color: var(--control-bg);
+    z-index: 1000;
+}
+
+.SessionArea .User:hover a div span:last-child {
+    color: var(--primary);
+}
+
+.SessionArea:hover .User {
+    border-radius: 10px 0 0 0;
+}
+
+.SessionArea .User img {
+    height: 20px;
+    margin: 0 10px 0 0;
+    background: var(--dark);
+    border-radius: 20px;
+    padding: 5px;
+}
+
+.SessionArea .User span {
+    color: var(--dark);
+    height: 15px;
+    font-size: 13px;
+    line-height: 15px;
+    margin: 0;
+    clear: both;
+}
+
+.SessionArea .User span:first-child {
+    font-family: var(--font-main);
+    font-size: 11px;
+}
+
+.SessionArea .Menu {
+    text-align: left;
+    background-color: var(--control-bg);
+    padding: 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 0 0 0 10px;
+    display: none;
+    z-index: 999;
+    box-shadow: 0 0 10px #000a;
+}
+
+.SessionArea:hover .Menu {
+    display: flex;
+    height: 200px;
+}
+
+.SessionArea .Menu a,
+.SessionArea .Menu span {
+    height: 40px;
+    display: block;
+    color: var(--dark);
+}
+
+.SessionArea .Menu a {
+    padding: 0;
+    text-decoration: none;
+}
+
+.SessionArea .Menu span {
+    font-size: 14px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.SessionArea .Menu span:hover {
+    background-color: var(--control-hover-bg);
+    color: var(--control-hover-fg);
+}
+
+.SessionArea .Menu span img {
+    filter: brightness(0%) brightness(0%);
+    margin: 0 10px 0 0;
+}
+
+.SessionArea .Menu span:hover img {
+    filter: brightness(0%) brightness(0%);
+}

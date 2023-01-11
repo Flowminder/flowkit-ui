@@ -1,0 +1,83 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.FMButton {
+    margin: 0 10px;
+    border-radius: 7.5px !important;
+}
+
+.FMButton a,
+.FMButton button,
+.FMButton button:focus {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    height: 35.5px !important;
+    width: 150px !important;
+    min-width: 150px !important;
+    padding: 0;
+    border: none;
+    margin: 0 !important;
+    display: inline-block;
+}
+
+.FMButton.outline {
+    border: 1px solid var(--primary) !important;
+}
+
+.FMButton a:hover,
+.FMButton button:hover {
+    filter: brightness(95%) !important;
+}
+
+.FMButton.primary a,
+.FMButton.primary button {
+    color: var(--secondary) !important;
+    background: var(--primary) !important;
+}
+
+.FMButton.secondary a,
+.FMButton.secondary button {
+    color: var(--primary) !important;
+    background: var(--secondary) !important;
+}
+
+.FMButton.primary.outline a,
+.FMButton.primary.outline button {
+    border-color: var(--secondary) !important;
+}
+
+.FMButton.secondary.outline a,
+.FMButton.secondary.outline button {
+    border-color: var(--primary) !important;
+}
+
+.FMButton.primary.inverted a,
+.FMButton.primary.inverted button {
+    color: var(--primary) !important;
+    background: var(--white) !important;
+    border: 1px solid var(--primary) !important;
+}
+
+.FMButton.secondary.inverted a,
+.FMButton.secondary.inverted button {
+    color: var(--secondary) !important;
+    background: var(--white) !important;
+    border: 1px solid var(--secondary) !important;
+}
+
+.FMButton.inactive a,
+.FMButton.secondary.inverted.inactive a,
+.FMButton.inactive button,
+.FMButton.secondary.inverted.inactive button {
+    cursor: default;
+    color: var(--white) !important;
+    background-color: var(--light) !important;
+    border: 1px solid var(--light) !important;
+}
+
+.FMButton.inactive button:hover {
+    color: var(--white);
+    filter: none !important;
+}

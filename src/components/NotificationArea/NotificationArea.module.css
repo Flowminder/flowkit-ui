@@ -1,0 +1,32 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.NotificationArea {
+    margin: -10px 45px;
+    position: fixed;
+    padding: 0 20px;
+    width: calc(100% - 130px);
+    z-index: 9999;
+}
+
+.NotificationArea div {
+    box-shadow: 0 3px 5px var(--shadow);
+    padding: 5px;
+}
+
+.NotificationArea button {
+    padding: 10px !important;
+}
+
+.NotificationArea img {
+    display: inline-block;
+    height: 20px;
+    margin: 0px 10px;
+    vertical-align: middle;
+}
+
+.NotificationArea * {
+    font-size: 14px;
+}

@@ -1,0 +1,51 @@
+.AccountSetup .accordion-item {
+    background: none !important;
+}
+
+.AccountSetup h2.accordion-header {
+    width: 96% !important;
+}
+
+.AccountSetup .accordion-header button.accordion-button {
+    background: none !important;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    height: auto;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+.AccountSetup .accordion-header button.accordion-button::after {
+    filter: brightness(300%) grayscale(100%) !important;
+    position: relative;
+    top: -35px;
+    right: -15px;
+}
+
+.AccountSetup .accordion-header button.accordion-button.collapsed::after {
+    filter: brightness(200%) !important;
+}
+
+.AccountSetup .accordion-header button.accordion-button div {
+    padding: 0;
+}
+
+.AccountSetup .accordion-header button.accordion-button div h1 {
+    color: var(--black) !important;
+}
+
+.AccountSetup .accordion-header button.accordion-button div p {
+    padding: 0;
+    color: var(--black) !important;
+    font-family: var(--font-main) !important;
+}
+
+.AccountSetup .accordion-header button.accordion-button div p strong {
+    padding: 0;
+}
+
+.AccountSetup div.accordion-body {
+    padding: 0 !important;
+}

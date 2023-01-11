@@ -1,0 +1,159 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.Banner {
+    height: 50px;
+    background: var(--fg);
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 999;
+    padding: 10px 0 10px 50px;
+    display: flex;
+}
+
+.Banner > div {
+    flex: auto;
+    display: flex;
+}
+
+.BannerLeft {
+    flex-direction: row;
+    gap: 20px;
+}
+
+.BannerLeft a * {
+    margin: 0 20px 0 0;
+}
+
+.BannerRight {
+    flex-direction: row-reverse;
+    gap: 50px;
+}
+
+.Banner > div * {
+    height: 100%;
+    line-height: 50px;
+}
+
+.Banner .PortalName {
+    float: right;
+}
+
+.Banner a {
+    color: var(--white) !important;
+}
+
+.Banner .PortalName a:hover {
+    color: var(--secondary);
+}
+
+.Banner .PortalName,
+.Banner .PortalName * {
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Banner img {
+    height: 20px;
+    /* make sure the logos are white */
+    filter: grayscale(100%) brightness(999%) brightness(999%);
+}
+
+.Banner span {
+    color: var(--white);
+    font-family: var(--font-heading);
+    margin: 2px 0 0;
+    display: block;
+    float: left;
+}
+
+.Banner .DataProviderLogo,
+.Banner .FlowminderLogo {
+    height: 18px;
+    display: inline-block;
+    /* make sure the logos are white */
+    filter: brightness(999%) brightness(999%);
+}
+
+.BannerLink {
+    flex: 0;
+    height: 100%;
+    line-height: 60px;
+    color: var(--white);
+    text-decoration: none;
+    font-family: var(--font-control) !important;
+    font-weight: 400 !important;
+}
+
+.BannerLink:hover {
+    color: var(--secondary) !important;
+}
+
+.Banner .LanguageButtons {
+    flex: 0;
+    display: flex;
+    gap: 20px;
+    float: right;
+    margin: 0 -20px 0 0 !important;
+    height: 100%;
+}
+
+.Banner .LanguageButtons button {
+    border: 0;
+    background: none;
+    padding: 0 !important;
+}
+
+.Banner .LanguageButtons button:hover {
+    cursor: pointer;
+    filter: brightness(130%) drop-shadow(0 0 3px var(--shadow));
+}
+
+.Banner .LanguageButtons button img {
+    height: 14px;
+    filter: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 0 !important;
+}
+
+.Banner .BannerLink {
+    flex: 0 fit-content;
+}
+
+.Banner .BannerLink img.Arrow {
+    transform: rotate(90deg);
+    float: left;
+    position: absolute;
+    top: 25px;
+    filter: none;
+    margin: 0 0 0 5px;
+}
+
+.Banner .BannerLink ul.Dropdown {
+    display: none;
+}
+
+.Banner .BannerLink:hover ul.Dropdown {
+    display: block;
+    margin: 0 0 0 -20px;
+    padding: 0;
+    position: absolute;
+    list-style: none;
+    background: var(--dark);
+    height: auto;
+}
+
+.Banner .BannerLink:hover ul.Dropdown li {
+    height: auto;
+    padding: 0 20px;
+}
+
+.Banner .BannerLink:hover ul.Dropdown li a:hover {
+    color: var(--secondary) !important;
+}

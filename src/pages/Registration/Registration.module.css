@@ -1,0 +1,34 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.Registration .Content {
+    padding: 20px 60px 50px;
+}
+
+.Registration .Content hr {
+    border-top: 1px solid var(--light);
+}
+
+.Registration .Content p,
+.Registration .Content span,
+.Registration .Content label {
+    font-size: 14px;
+}
+
+.Registration .Buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.Registration .Buttons button {
+    flex-basis: 10%;
+}
+
+.Registration strong {
+    color: var(--tertiary);
+    font-family: var(--font-heading);
+    font-size: 18px;
+}

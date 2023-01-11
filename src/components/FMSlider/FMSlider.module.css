@@ -1,0 +1,122 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.FMSlider {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 25px 25px;
+}
+
+.FMSlider .Slider {
+    margin: 20px 10px;
+}
+
+.FMSlider .SliderTrack {
+    height: 5px;
+    background: var(--tertiary);
+    display: flex;
+    width: 100%;
+    border-left: 1px solid var(--tertiary);
+    border-right: 1px solid var(--tertiary);
+    transform: scale(1);
+    cursor: inherit;
+}
+
+.FMSlider .SliderLabel {
+    font-size: 11px;
+    text-align: center;
+    margin: 10px 0;
+    width: 100px;
+    position: relative;
+    left: -50px !important;
+}
+
+.FMSlider.outerLabelsOnly .SliderLabel {
+    display: none;
+}
+
+.FMSlider .SliderHandle {
+    height: 12px;
+    width: 12px;
+    background-color: var(--quaternary);
+    border: none;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 4px var(--shadow);
+    margin: 0;
+}
+
+.FMSlider .SliderHandle.dragged {
+    background-color: var(--secondary);
+    border-color: var(--dark);
+}
+
+.FMSlider .SliderHandle .SliderTooltip {
+    display: none;
+}
+
+.FMSlider .SliderHandle.dragged .SliderTooltip,
+.FMSlider .SliderHandle:hover .SliderTooltip {
+    background: var(--secondary);
+    padding: 2px 6px;
+    border: 1px solid var(--dark);
+    border-radius: 8px;
+    position: relative;
+    bottom: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.FMSlider .SliderTooltip * {
+    flex: 1;
+    color: var(--dark);
+    font-size: 11px !important;
+    width: max-content;
+}
+
+.FMSlider .SliderTick {
+    background: var(--tertiary);
+    height: 8px !important;
+    width: 2px;
+    margin: 0 !important;
+}
+
+.FMSlider .SliderTick:first-child .SliderLabel,
+.FMSlider .SliderTick:nth-last-child(2) .SliderLabel,
+.FMSlider.Range .SliderTick:nth-last-child(3) .SliderLabel {
+    display: inline-block;
+}
+
+.FMSlider .selected {
+    background: var(--quaternary);
+    height: 5px;
+    align-self: center;
+    cursor: inherit;
+}
+
+.FMSlider .selectedInvisible {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    background: var(--tertiary);
+}
+
+.FMSlider .selectedVisible {
+    flex: 1;
+    position: relative;
+    background: var(--secondary);
+}
+
+.FMSlider .Output {
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+.FMSlider .Clear {
+    height: 20px;
+}

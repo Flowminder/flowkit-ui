@@ -1,0 +1,253 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.MainContent {
+    padding: 50px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.MainContent *::after,
+.MainContent *::before {
+    box-sizing: inherit !important;
+}
+
+.MainContent.sidebarOpen {
+    left: calc(25% + 40px);
+    width: calc(75% - 40px);
+    transition: left 0.3s, width 0.15s ease-in-out;
+}
+
+.MainContent .hidden {
+    display: none;
+}
+
+.MainContent .fullWidth {
+    margin: 0 -50px;
+    width: calc(100% + 100px);
+    max-width: calc(100% + 100px);
+}
+
+.MainContent .noPadding {
+    padding: 0;
+}
+
+.MainContent .firstItem {
+    margin-top: -60px;
+}
+
+/* Backgrounds */
+.MainContent .primary *:first-child {
+    margin-top: 50px;
+}
+.MainContent .primary *:last-child {
+    margin-bottom: 50px;
+}
+.MainContent .primary > *,
+.MainContent .secondary > *,
+.MainContent .tertiary > *,
+.MainContent .quaternary > * {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.MainContent .primary *,
+.MainContent .quaternary * {
+    color: var(--white);
+}
+.MainContent .secondary *,
+.MainContent .tertiary * {
+    color: var(--dark);
+}
+
+.MainContent .opaque {
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 40px;
+    background-image: none !important;
+}
+.MainContent .opaque *:first-child {
+    margin-top: inherit;
+}
+.MainContent .opaque *:last-child {
+    margin-bottom: inherit;
+}
+
+.MainContent .primary {
+    background: var(--bg-primary);
+}
+.MainContent .primary .opaque {
+    background: var(--primary);
+}
+.MainContent .secondary {
+    background: var(--bg-secondary);
+}
+.MainContent .secondary .opaque {
+    background: var(--secondary);
+}
+.MainContent .tertiary {
+    background: var(--bg-tertiary);
+}
+.MainContent .tertiary .opaque {
+    background: var(--tertiary);
+}
+.MainContent .quaternary {
+    background: var(--bg-quaternary);
+}
+.MainContent .quaternary .opaque {
+    background: var(--quaternary);
+}
+
+.MainContent img {
+    margin: 0;
+    vertical-align: middle;
+}
+
+.MainContent button {
+    margin: 10px 0;
+}
+
+.MainContent .button {
+    border: none;
+    float: right;
+    background: none;
+    margin: 13px 5px;
+    padding: 0;
+}
+
+.MainContent .button img {
+    height: 20px;
+    width: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.MainContent .button:hover {
+    cursor: pointer;
+    filter: brightness(120%) drop-shadow(0 0 2px var(--shadow));
+}
+
+/* Headings */
+.MainContent h1 {
+    font-size: 43px;
+    padding: 100px 60px 100px;
+    margin: -50px -50px 35px;
+    background: var(--bg-tertiary);
+}
+
+.MainContent h1.withSubheading {
+    padding: 70px 60px 132px;
+}
+
+.MainContent h2 {
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.MainContent h3 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.MainContent .Subheading {
+    font-size: 32px;
+    height: 32px;
+    line-height: 36px;
+    position: relative;
+    top: -170px;
+    left: 15px;
+    margin-bottom: -24px;
+    font-family: var(--font-heading);
+}
+
+/* Input fields */
+.MainContent textarea,
+.MainContent input[type="text"],
+.MainContent input[type="email"],
+.MainContent input[type="number"] {
+    border: 1px solid var(--border-light);
+    padding: 7px 3px 7px 12px;
+    font-size: 14px;
+}
+
+.MainContent textarea:hover,
+.MainContent input[type="text"]:hover,
+.MainContent input[type="email"]:hover,
+.MainContent input[type="number"]:hover {
+    border-color: var(--border);
+}
+
+.MainContent textarea:focus-visible,
+.MainContent input[type="text"]:focus-visible,
+.MainContent input[type="email"]:focus-visible,
+.MainContent input[type="number"]:focus-visible {
+    outline: 1px solid var(--control-bg);
+}
+
+.MainContent .textInput {
+    min-width: 350px;
+    height: 21px;
+}
+
+/* Radio buttons */
+.MainContent div.radio {
+    height: 20px;
+    line-height: 20px;
+    margin: 20px 0;
+}
+
+.MainContent input[type="radio"] {
+    margin: 0 10px 0 30px;
+    vertical-align: text-bottom;
+}
+
+/* Buttons */
+.MainContent button {
+    line-height: 20px;
+    vertical-align: middle;
+    background: var(--control-bg);
+    color: var(--bg);
+    border: 1px solid var(--white);
+    height: 20px;
+}
+
+.MainContent button:hover {
+    cursor: pointer;
+    color: var(--control-hover-fg);
+    background: var(--control-hover-bg);
+}
+
+.MainContent button:focus,
+.MainContent button:focus-visible {
+    outline: 1px solid var(--dark);
+    border: 1px solid var(--white);
+    color: var(--control-hover-fg);
+}
+
+.MainContent button img {
+    width: 16px;
+    height: 27px;
+    vertical-align: middle;
+    margin: 0 0 0 10px;
+    float: right;
+}
+
+.MainContent .Quote {
+    font-size: 18px;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: normal;
+}
+
+.MainContent .Quote::before {
+    content: "“ ";
+    font-size: 32px;
+}
+
+.MainContent .Quote::after {
+    content: " ”";
+    font-size: 32px;
+}

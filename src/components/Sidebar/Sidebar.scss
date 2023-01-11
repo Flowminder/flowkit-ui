@@ -1,0 +1,71 @@
+// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+// If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+@import "../../app/branding.scss";
+
+// Your variable overrides
+$sidebar-bg-color: transparent;
+$sidebar-color: var(--light);
+$sidebar-width: 270px !default;
+$sidebar-collapsed-width: 80px !default;
+$highlight-color: var(--white);
+$submenu-bg-color: transparent;
+$submenu-bg-color-collapsed: transparent;
+$icon-bg-color: transparent;
+$icon-size: 35px !default;
+$submenu-indent: 24px !default;
+$breakpoint-xs: 480px !default;
+$breakpoint-sm: 576px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 992px !default;
+$breakpoint-xl: 1200px !default;
+$breakpoint-xxl: 1600px !default;
+
+@import "~react-pro-sidebar/dist/scss/styles.scss";
+
+.Sidebar .pro-sidebar > .pro-sidebar-inner {
+    box-shadow: 0 0 10px -1px var(--shadow) inset;
+}
+
+.Sidebar .pro-sidebar-header input {
+    display: none;
+}
+
+.Sidebar .pro-sidebar-header label {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+.Sidebar .collapsed .pro-sidebar-content {
+    width: 1000px;
+    transition: all 0.3s;
+}
+.Sidebar .pro-sidebar-content {
+    width: 210px;
+    transition: width 0.3s;
+    padding: 20px;
+}
+
+.Sidebar .pro-sidebar-content * {
+    color: var(--white);
+    font-size: 13px;
+}
+
+.Sidebar .pro-sidebar-content h1 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.Sidebar .pro-sidebar label.btn {
+    margin: 0;
+    padding: 0;
+    background: none !important;
+    border: none;
+    box-shadow: none !important;
+}
+
+.Sidebar .pro-sidebar-footer {
+    text-align: center;
+    font-size: x-small;
+}

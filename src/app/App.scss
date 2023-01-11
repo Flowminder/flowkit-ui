@@ -1,0 +1,331 @@
+// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+// If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+@import "./branding";
+
+html {
+    width: 100%;
+    min-width: 1280px;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+}
+
+body,
+#root {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.App {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+._loading_overlay_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: -10px;
+    width: 100%;
+    flex: 1;
+}
+
+#mainContainer {
+    flex: 1;
+    display: flex;
+    min-width: 860px;
+}
+
+#Sticker {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+* {
+    font-family: var(--font-main);
+    font-weight: 100;
+    color: var(--fg);
+    scrollbar-color: var(--tertiary) var(--dark);
+}
+
+*,
+::after,
+::before {
+    box-sizing: inherit !important;
+}
+
+hr {
+    border: none;
+}
+
+pre,
+code {
+    font-family: var(--font-code);
+}
+
+b,
+strong {
+    font-weight: bold !important;
+}
+
+a,
+.link {
+    color: var(--accent) !important;
+    text-decoration: none !important;
+    cursor: pointer;
+    font-weight: normal;
+    font-family: var(--font-control);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: normal;
+    color: var(--fg);
+}
+
+p {
+    margin-bottom: 0.3rem !important;
+}
+
+button,
+button * {
+    font-family: var(--font-control) !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: var(--control-fg);
+    padding: 2px 10px;
+    border-radius: 7px !important;
+}
+
+button:hover {
+    filter: brightness(90%);
+}
+
+.accordion-header {
+    margin: 0 !important;
+}
+
+.accordion-header:focus {
+    box-shadow: none !important;
+}
+
+dialog {
+    border: 1px solid var(--light);
+    border-radius: var(--border-radius);
+    padding: 30px 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+// Pulse 4.3.1
+// Bootswatch
+
+// Buttons =====================================================================
+
+.btn {
+    border-radius: 7px !important;
+    transition: none !important;
+    box-shadow: none !important;
+}
+
+::selection {
+    color: var(--white);
+    background: var(--quaternary);
+}
+
+.btn-group-vertical {
+    gap: 5px;
+}
+
+label.btn:hover {
+    color: var(--control-hover-fg);
+    background: var(--control-hover-bg);
+}
+
+.btn {
+    &:focus,
+    &:active,
+    &:active:focus,
+    &.active:focus {
+        outline: none;
+    }
+
+    &-primary {
+        background-color: var(--quaternary) !important;
+    }
+
+    &-secondary {
+        background-color: $white;
+        border-color: #ccc;
+        color: $gray-900;
+
+        &:hover {
+            background-color: $gray-300;
+            border-color: $gray-500;
+            color: $gray-900;
+        }
+
+        &.disabled {
+            background-color: $white;
+            border-color: lighten(#ccc, 5%);
+            color: lighten($gray-900, 5%);
+        }
+    }
+
+    &-warning {
+        color: $white;
+    }
+
+    &-primary:focus {
+        box-shadow: 0 0 5px lighten($primary, 10%);
+    }
+
+    &-secondary:focus {
+        box-shadow: 0 0 5px $gray-400;
+    }
+
+    &-success:focus {
+        box-shadow: 0 0 5px lighten($success, 10%);
+    }
+
+    &-info:focus {
+        box-shadow: 0 0 5px lighten($info, 10%);
+    }
+
+    &-warning:focus {
+        box-shadow: 0 0 5px lighten($warning, 10%);
+    }
+
+    &-danger:focus {
+        box-shadow: 0 0 5px lighten($danger, 10%);
+    }
+
+    &.disabled:focus {
+        box-shadow: none;
+    }
+}
+
+// Modals ======================================================================
+
+.modal-content {
+    border-radius: var(--border-radius) !important;
+    background: var(--bg-tertiary);
+}
+.modal-content a {
+    font-weight: bold;
+    color: var(--quaternary) !important;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    border: none !important;
+    text-align: center;
+}
+
+.modal-title {
+    flex: 1;
+}
+
+.modal-body {
+    font-size: 14px;
+}
+
+.modal-body strong,
+.modal-body li::marker {
+    font-weight: bold !important;
+}
+
+// Tables ======================================================================
+
+.table .thead-dark th {
+    background-color: $secondary;
+    border-color: $table-border-color;
+}
+
+// Forms =======================================================================
+
+.form-control:focus {
+    box-shadow: 0 0 5px rgba(100, 65, 164, 0.4);
+}
+
+// Navs ========================================================================
+
+.nav-tabs {
+    .nav-link,
+    .nav-link.active {
+        border-width: 0 0 1px 0;
+    }
+
+    .nav-link:hover,
+    .nav-link.active,
+    .nav-link.active:hover,
+    .nav-link.active:focus {
+        border-bottom: 1px solid $primary;
+    }
+
+    .nav-item + .nav-item {
+        margin-left: 0;
+    }
+}
+
+.breadcrumb {
+    &-item.active {
+        color: $gray-700;
+    }
+}
+
+// Indicators ==================================================================
+
+.badge {
+    padding-bottom: 0.4em;
+
+    &-secondary,
+    &-warning {
+        color: $white;
+    }
+}
+
+// Progress bars ===============================================================
+
+.progress {
+    height: 8px;
+}
+
+// Containers ==================================================================
+
+.list-group {
+    &-item {
+        color: rgba(255, 255, 255, 0.8);
+
+        &.active,
+        &:hover,
+        &:focus {
+            color: #fff;
+        }
+
+        &.active {
+            font-weight: 400;
+
+            &:hover {
+                background-color: $list-group-hover-bg;
+            }
+        }
+
+        &.disabled:hover {
+            color: $list-group-disabled-color;
+        }
+    }
+}

@@ -1,0 +1,115 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.Menu {
+    border-radius: 10px;
+    border: 1px solid var(--quaternary);
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px 15px;
+    user-select: none;
+    border-bottom-width: 15px;
+}
+
+.Menu .colourScale {
+    height: 20px;
+    border: 1px solid var(--border);
+}
+
+.Menu .EndNote {
+    flex: 1;
+    display: flex;
+}
+
+.Menu .EndNote p {
+    align-self: flex-end;
+    font-size: 11px;
+    font-style: italic;
+}
+
+.Menu .FMSelect {
+    margin-top: 20px;
+}
+
+.MenuItem div.fullWidth {
+    width: 100%;
+}
+
+.Menu h2 {
+    margin: 10px 0 20px;
+}
+
+.Menu h3 {
+    margin: 5px 0;
+}
+
+.Menu .DataParameters h3 {
+    margin: 10px 0 5px;
+}
+
+.Menu label {
+    background: var(--quaternary) !important;
+    border: none;
+    font-family: var(--font-heading) !important;
+    font-size: 16px !important;
+}
+
+.Menu label:hover {
+    color: var(--white);
+    background: var(--tertiary) !important;
+}
+
+.Menu p,
+.Menu span {
+    margin: 0;
+    font-size: 13px;
+}
+
+.Menu input,
+.Menu label {
+    margin: 0 !important;
+    padding: 5px 0;
+    width: 100%;
+}
+
+.Menu label:hover {
+    background: #47dbd1 !important;
+}
+
+.Menu .selected {
+    background: var(--tertiary) !important;
+}
+
+.Menu .selected:hover {
+    background: #6ce8dd !important;
+}
+
+.datePicker {
+    background: var(--quaternary);
+    width: calc(100% - 20px);
+}
+
+.datePicker:hover {
+    background: var(--tertiary);
+    color: var(--white);
+}
+
+.datePicker:focus {
+    color: var(--white);
+}
+
+.TimeToggle {
+    width: 100%;
+    display: flex;
+    gap: 5px;
+}
+
+.TimeToggle label {
+    line-height: 30px;
+    font-size: 14px;
+    border: none !important;
+}

@@ -1,0 +1,123 @@
+// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+// If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+.Dashboard h2.accordion-header {
+    width: calc(100% - 40px) !important;
+}
+
+.Dashboard .accordion-item {
+    border: none !important;
+}
+
+.Dashboard .accordion-body {
+    padding: 10px !important;
+}
+
+.Dashboard button.accordion-button {
+    background: var(--primary) !important;
+    color: var(--secondary) !important;
+    width: 100% !important;
+    padding: 10px 20px !important;
+    font-family: var(--font-heading) !important;
+    font-size: 16px !important;
+}
+
+.Dashboard button.accordion-button::after {
+    filter: brightness(999%) brightness(999%) !important;
+}
+
+.Dashboard button.accordion-button.collapsed {
+    background: var(--secondary) !important;
+    color: var(--primary) !important;
+}
+
+.Dashboard .react-datepicker-popper[data-placement^="top"] {
+    padding-bottom: 0;
+}
+
+.Dashboard .react-datepicker button {
+    background: var(--quaternary);
+    border: transparent;
+}
+
+.Dashboard .react-datepicker button:focus {
+    outline: none;
+}
+
+.Dashboard .react-datepicker button:hover {
+    background: var(--tertiary);
+}
+
+.Dashboard .react-datepicker button:hover span::before {
+    border-color: var(--white);
+}
+
+.Dashboard .react-datepicker button span::before {
+    height: 6px;
+    width: 6px;
+    margin: 2px 13px;
+    border-color: var(--white);
+}
+
+.Dashboard .react-datepicker__navigation--previous--disabled,
+.Dashboard .react-datepicker__navigation--next--disabled {
+    background: var(--medium) !important;
+}
+
+.Dashboard .react-datepicker__navigation--previous--disabled:hover,
+.Dashboard .react-datepicker__navigation--next--disabled:hover {
+    cursor: default !important;
+    filter: none;
+}
+
+.Dashboard .react-datepicker__day--keyboard-selected,
+.Dashboard .react-datepicker__month-text--keyboard-selected,
+.Dashboard .react-datepicker__quarter-text--keyboard-selected,
+.Dashboard .react-datepicker__year-text--keyboard-selected,
+.Dashboard .react-datepicker__day--selected:hover,
+.Dashboard .react-datepicker__day--in-selecting-range:hover,
+.Dashboard .react-datepicker__day--in-range:hover,
+.Dashboard .react-datepicker__month-text--selected:hover,
+.Dashboard .react-datepicker__month-text--in-selecting-range:hover,
+.Dashboard .react-datepicker__month-text--in-range:hover,
+.Dashboard .react-datepicker__quarter-text--selected:hover,
+.Dashboard .react-datepicker__quarter-text--in-selecting-range:hover,
+.Dashboard .react-datepicker__quarter-text--in-range:hover,
+.Dashboard .react-datepicker__year-text--selected:hover,
+.Dashboard .react-datepicker__year-text--in-selecting-range:hover,
+.Dashboard .react-datepicker__year-text--in-range:hover,
+.Dashboard .react-datepicker__day--selected,
+.Dashboard .react-datepicker__day--in-selecting-range,
+.Dashboard .react-datepicker__day--in-range,
+.Dashboard .react-datepicker__month-text--selected,
+.Dashboard .react-datepicker__month-text--in-selecting-range,
+.Dashboard .react-datepicker__month-text--in-range,
+.Dashboard .react-datepicker__quarter-text--selected,
+.Dashboard .react-datepicker__quarter-text--in-selecting-range,
+.Dashboard .react-datepicker__quarter-text--in-range,
+.Dashboard .react-datepicker__year-text--selected,
+.Dashboard .react-datepicker__year-text--in-selecting-range,
+.Dashboard .react-datepicker__year-text--in-range {
+    background-color: var(--tertiary) !important;
+    color: var(--dark) !important;
+}
+
+.Dashboard .react-datepicker__day--selecting-range-start {
+    background: var(--secondary) !important;
+}
+
+.Dashboard div.btn-group {
+    display: flex;
+    gap: 5px;
+}
+
+.Dashboard div.btn-group label.btn {
+    color: var(--white);
+    font-size: 13px !important;
+    font-family: var(--font-control) !important;
+    flex: 1;
+}
+
+.Dashboard .btn-group .btn.active {
+    background: var(--tertiary) !important;
+}

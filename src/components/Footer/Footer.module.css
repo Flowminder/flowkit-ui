@@ -1,0 +1,83 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.Footer {
+    display: flex;
+    height: 150px;
+    padding: 25px;
+    background: var(--bg-quaternary);
+    justify-content: space-between;
+    border-top: 10px solid var(--primary);
+}
+
+.Footer * {
+    font-size: 12px;
+    line-height: 12px;
+    color: var(--bg);
+}
+
+.Footer .Logos {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.Footer .Logos img {
+    height: 20px;
+    display: inline-block;
+    /* make sure the logos are white */
+    filter: grayscale(100%) brightness(999%) brightness(999%);
+}
+
+.Footer .Logos img:hover {
+    filter: drop-shadow(0 0 2px var(--white));
+}
+
+.Footer .Logos * {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+.Footer img.DonorLogo {
+    height: 35px;
+}
+
+.Footer .Logos a {
+    margin: 0 20px 0 0;
+}
+
+.Footer .Logos a:last-of-type img.DonorLogo {
+    margin: 0;
+}
+
+.Footer .Links {
+    margin: 25px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Footer .Links a {
+    color: var(--white) !important;
+    cursor: pointer;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+.Footer .Links a:hover {
+    color: var(--control-hover-bg);
+}
+
+.Footer .Text {
+    width: 350px;
+}
+
+.Footer .Text p,
+.Footer .Text a {
+    font-size: 11px;
+    line-height: 14px;
+    color: var(--color-light) !important;
+}

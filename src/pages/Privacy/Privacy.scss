@@ -1,0 +1,33 @@
+// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+// If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+.Privacy .nav-tabs {
+    border: none !important;
+}
+
+.Privacy .nav-item button {
+    border: none !important;
+    border-radius: 5px 5px 0 0 !important;
+    width: 100px;
+}
+
+.Privacy .nav-link.active {
+    outline: 2px solid var(--medium) !important;
+}
+
+.Privacy .nav-item button#privacy-tab-simple {
+    background: var(--secondary) !important;
+    color: var(--white);
+}
+
+.Privacy .nav-item button#privacy-tab-legal {
+    background: var(--tertiary) !important;
+    color: var(--white);
+}
+
+.Privacy .tab-content {
+    padding: 20px;
+    border: 1px solid var(--tertiary) !important;
+    border-bottom: 10px solid var(--tertiary) !important;
+    border-radius: 0 var(--border-radius) var(--border-radius) var(--border-radius) !important;
+}

@@ -1,0 +1,4 @@
+.env merge=ours
+.env.production merge=ours
+.env.dev merge=ours
+.env.testing merge=ours

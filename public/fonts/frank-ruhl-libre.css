@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "Frank Ruhl Libre Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Frank Ruhl Libre Regular"), url("FrankRuhlLibre-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Frank Ruhl Libre Light";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Frank Ruhl Libre Light"), url("FrankRuhlLibre-Light.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Frank Ruhl Libre Medium";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Frank Ruhl Libre Medium"), url("FrankRuhlLibre-Medium.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Frank Ruhl Libre Bold";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Frank Ruhl Libre Bold"), url("FrankRuhlLibre-Bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Frank Ruhl Libre Black";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Frank Ruhl Libre Black"), url("FrankRuhlLibre-Black.woff") format("woff");
+}

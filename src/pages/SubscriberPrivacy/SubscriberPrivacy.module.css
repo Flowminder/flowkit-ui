@@ -1,0 +1,30 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.SubscriberPrivacy .Accordion {
+    margin: 30px 0;
+}
+
+.SubscriberPrivacy .Accordion * {
+    margin: 0;
+}
+
+.SubscriberPrivacy .Accordion button {
+    padding: 0 10px;
+    width: calc(100% - 20px);
+}
+
+.SubscriberPrivacy .Accordion button::after {
+    filter: brightness(999%) brightness(999%) !important;
+}
+
+.SubscriberPrivacy .Accordion button:hover::after {
+    filter: none;
+}
+
+.SubscriberPrivacy img.Hint {
+    height: 15px;
+    margin: -2px 0 0 5px;
+}

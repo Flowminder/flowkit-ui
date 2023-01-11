@@ -1,0 +1,47 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+    If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+.About .box {
+    width: 300px;
+    margin: 0 auto;
+    padding: 0;
+    padding-bottom: 10px;
+    text-align: center;
+    background-image: none;
+}
+
+.About .box a {
+    margin: 0;
+}
+
+.About .box img {
+    margin: 0 auto 10px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.About .box span {
+    color: var(--white);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.About .partnerBox {
+    height: 300px;
+    width: 300px;
+    margin: 0 auto;
+    border: 1px solid var(--light);
+    font-family: var(--font-heading);
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    background-image: none;
+}
+
+.About .DataProviderLogo {
+    width: 70%;
+    height: 170px;
+    display: block;
+    margin: 0 auto;
+}

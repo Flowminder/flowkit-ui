@@ -1,0 +1,89 @@
+# This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
+# If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+version: 2.1
+
+defaults:
+  - &autodeploy
+    filters:
+      branches:
+        only:
+          - main
+      tags:
+        only: /^v.*/
+
+jobs:
+  build:
+    build:
+    machine:
+      image: ubuntu-2004:202201-02
+      docker_layer_caching: true
+    working_directory: /tmp/flowkit-ui
+    steps:
+      - checkout
+      - run:
+          name: Get information about ALL branches
+          command: |
+            git fetch -a
+      - add_ssh_keys:
+          fingerprints:
+            - "33:4f:f7:aa:d1:d1:42:42:43:ab:8c:65:c0:fd:33:40"
+      - run:
+          name: Build docker image
+          command: |
+            docker build -t flowminder/flowkit-ui:${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}} -t flowminder/flowkit-ui:latest .
+      - run:
+          name: Push image(s) to dockerhub
+          command: |
+            echo "$DOCKER_ACCESS_TOKEN" | docker login -u "$DOCKER_USER" --password-stdin
+            docker push -a flowminder/flowkit-ui
+
+  update-mob-dashtag:
+    docker:
+      - image: cimg/base:2021.04
+    working_directory: /tmp/mbdash
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "d9:69:66:8a:97:f4:e7:3c:49:d7:61:ad:88:5d:ae:62"
+      - run:
+          name: Create known hosts file
+          command: |
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - run:
+          name: Clone Mobility Dashboard repository
+          command: |
+            git clone git@github.com:Flowminder/flowminder-gcp-mobility-dashboard.git /tmp/mbdash
+      - run:
+          name: Replace dev mob-dashboard frontend tfvars file
+          command: |
+            git checkout dev
+            echo "frontend_image_tag = \"${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}}\"" > frontend-tag.auto.tfvars
+      - run:
+          name: Add and commit the change to mob-dashboard
+          command: |
+            git add frontend-tag.auto.tfvars
+            git config user.email "flowkitui-ci@flowminder.org"
+            git config user.name "flowkitui-ci"
+            git commit -m "maint: bump flowkit-ui to version ${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}}"
+      - run:
+          name: Push changes to git
+          command: |
+            git push
+
+workflows:
+  test_build_deploy:
+    jobs:
+      - build:
+        <<: *autodeploy
+      - update-mob-dashtag:
+          context:
+            - flowminder-gcp-mobility-dashboard-gcr-context
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - main
+            tags:
+              only: /^v.*/
