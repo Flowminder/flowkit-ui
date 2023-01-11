@@ -1,5 +1,5 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)&nbsp;
-[![CircleCI](https://circleci.com/gh/Flowminder/flowkit-ui/tree/dev.svg?style=shield&circle-token=0e0c0d3e5eb40097a1dceb746e4afacd929ccda4)](https://circleci.com/gh/Flowminder/flowkit-ui/tree/dev)&nbsp;
+[![CircleCI](https://circleci.com/gh/Flowminder/flowkit-ui/tree/main.svg?style=shield&circle-token=a319701d765a44c98b33420b81ee902c415f6acf)](https://circleci.com/gh/Flowminder/flowkit-ui/tree/main)&nbsp;
 [![Statement coverage status](https://github.com/Flowminder/flowkit-ui/blob/gh-pages/dev/coverage/coverage-jest%20coverage.svg)](https://flowminder.github.io/flowkit-ui/dev/coverage/lcov-report/)&nbsp;
 [![Branch coverage status](https://github.com/Flowminder/flowkit-ui/blob/gh-pages/dev/coverage/coverage-branches.svg)](https://flowminder.github.io/flowkit-ui/dev/coverage/lcov-report/)&nbsp;
 
