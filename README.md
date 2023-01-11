@@ -1,15 +1,14 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)&nbsp;
-[![CircleCI](https://circleci.com/gh/Flowminder/FlowKit-UI/tree/dev.svg?style=shield&circle-token=0e0c0d3e5eb40097a1dceb746e4afacd929ccda4)](https://circleci.com/gh/Flowminder/FlowKit-UI/tree/dev)&nbsp;
-[![Statement coverage status](https://github.com/Flowminder/flowkit-ui/blob/gh-pages/dev/coverage/coverage-jest%20coverage.svg)](https://flowminder.github.io/FlowKit-UI/dev/coverage/lcov-report/)&nbsp;
-[![Branch coverage status](https://github.com/Flowminder/flowkit-ui/blob/gh-pages/dev/coverage/coverage-branches.svg)](https://flowminder.github.io/FlowKit-UI/dev/coverage/lcov-report/)&nbsp;
+[![CircleCI](https://circleci.com/gh/Flowminder/flowkit-ui/tree/dev.svg?style=shield&circle-token=0e0c0d3e5eb40097a1dceb746e4afacd929ccda4)](https://circleci.com/gh/Flowminder/flowkit-ui/tree/dev)&nbsp;
+[![Statement coverage status](https://github.com/Flowminder/flowkit-ui/blob/gh-pages/dev/coverage/coverage-jest%20coverage.svg)](https://flowminder.github.io/flowkit-ui/dev/coverage/lcov-report/)&nbsp;
+[![Branch coverage status](https://github.com/Flowminder/flowkit-ui/blob/gh-pages/dev/coverage/coverage-branches.svg)](https://flowminder.github.io/flowkit-ui/dev/coverage/lcov-report/)&nbsp;
 
 # Flowkit UI
 
 This is a generic web application that allows a non-expert user to make queries to FlowAPI and have the results presented to them visually.
 
-Find the live version deployed at [https://flowminder.github.io/FlowKit-UI](https://flowminder.github.io/FlowKit-UI).
-Also check out the [coverage reports](https://flowminder.github.io/FlowKit-UI/dev/coverage/lcov-report/).
-
+Find the live version deployed at [https://flowminder.github.io/flowkit-ui](https://flowminder.github.io/flowkit-ui).
+Also check out the [coverage reports](https://flowminder.github.io/flowkit-ui/dev/coverage/lcov-report/).
 
 ## Branches
 
@@ -42,13 +41,12 @@ This is the production branch, containing stable, versioned releases.
 It should not be pushed to and only merged to from `staging`.
 Merges require code reviews.
 
-
 ### Project-specific branches
 
 Projects may have individual branches with project-specific features or omitting features from the main branches.
 Currently, the project-specific branches are:
 
-* `opal`: A bespoke UI for the [OPAL](https://opalproject.org/) project
+-   `opal`: A bespoke UI for the [OPAL](https://opalproject.org/) project
 
 ## Environment variables
 
@@ -56,9 +54,9 @@ The main `.env` file specifies various variables, styles, branding etc. that are
 
 There are several other `.env.*` files that can be used to override these variables:
 
-* `.env.development` is only used when running the application locally using yarn start
-* `.env.test` is only used when testing the application using yarn test
-* `.env.production` is used when the application is bundled
+-   `.env.development` is only used when running the application locally using yarn start
+-   `.env.test` is only used when testing the application using yarn test
+-   `.env.production` is used when the application is bundled
 
 Environment variable changes are currently the only exception in which commits can be pushed directly to a protected branch.
 
@@ -138,14 +136,14 @@ yarn predeploy
 This target runs automatically before the `deploy` target. However, it can also be run independently as a "dry run", i.e. without actually publishing the files to the server.
 The steps for this target are:
 
-* run all tests
-* only if the tests pass create badges and build the project
-* create a fresh copy of the `./deploy` directory, which contains static content to be deployed. This copy, `./deployment`, is generated for each new deployment. The static content consists of
-  - a HTML page that forwards to the latest version of the stable branch
-* copy the coverage report into the build directory so they stay together for later deployment
-* make a separate copy of the coverage report into the `./deployment` directory to allow the Github README to always show the latest coverage reports
-* copy the built project in a subdirectory named after the branch from which it was built, (e.g. `./deployment/dev`)
-* create a text file containing the name of the deployed branch and the current date. This file will be copied to the server, thus providing information about the latest deployment.
+-   run all tests
+-   only if the tests pass create badges and build the project
+-   create a fresh copy of the `./deploy` directory, which contains static content to be deployed. This copy, `./deployment`, is generated for each new deployment. The static content consists of
+    -   a HTML page that forwards to the latest version of the stable branch
+-   copy the coverage report into the build directory so they stay together for later deployment
+-   make a separate copy of the coverage report into the `./deployment` directory to allow the Github README to always show the latest coverage reports
+-   copy the built project in a subdirectory named after the branch from which it was built, (e.g. `./deployment/dev`)
+-   create a text file containing the name of the deployed branch and the current date. This file will be copied to the server, thus providing information about the latest deployment.
 
 The finished `./deployment` can then be used by the `deploy` target to be copied onto the server, see below.
 
@@ -159,8 +157,9 @@ Before deployment, this will delete the previous deployment of the current branc
 It will then copy the `./deployment` directory onto the server, updating any existing (static) files where required and installing the latest version of the current branch.
 
 This is run either
-* by the CI upon pushing to a set of predefined branches (currently: `release` and `dev`) or
-* from within a branch that is to be deployed manually - **IMPORTANT: Please remember all manually deployed branches will have to be deleted manually when they are no longer required.**
+
+-   by the CI upon pushing to a set of predefined branches (currently: `release` and `dev`) or
+-   from within a branch that is to be deployed manually - **IMPORTANT: Please remember all manually deployed branches will have to be deleted manually when they are no longer required.**
 
 ## React components
 
@@ -168,30 +167,37 @@ All components are stored inside their own directory inside `./src/components`. 
 
 Each component can have a number of files:
 
-* `MyComponent.js` (required):
+-   `MyComponent.js` (required):
 
-  The main component file. This should contain the HTML/JSX for the component and act as the controller.
-* `MyComponent.test.js` (required):
+    The main component file. This should contain the HTML/JSX for the component and act as the controller.
 
-  Unit tests associated with the component. Use this to test functionality defined in the main component file, e.g. clicking controls, making selections etc, but *not* operations on data.
-* `MyComponent.module.css` (optional):
+-   `MyComponent.test.js` (required):
 
-  A react CSS file, which is loaded through React. This means all class names will be scrambled up and unique every time webpack runs. Definitions should only be for parts of the component - not general styles or branding. CSS variables from `./src/app/branding.css` can be used.
-* `MyComponent.scss` (optional):
+    Unit tests associated with the component. Use this to test functionality defined in the main component file, e.g. clicking controls, making selections etc, but _not_ operations on data.
 
-  A SASS file, allowing you to use features such as mixins, nesting or operators. CSS variables from `./src/app/branding.css` can be used.
-* `myComponentSlice.js` (optional):
+-   `MyComponent.module.css` (optional):
 
-  A slice of the Redux store, in which state can be stored for the component. It needs to be plugged into `./src/app/store.js` and can then be used from within any component to get the state for this component. The slice should define the initial state for the component's state, a set of reducers to alter state ("setters") and export them.
-* `myComponentSlice.test.js` (required if the slice exists):
+    A react CSS file, which is loaded through React. This means all class names will be scrambled up and unique every time webpack runs. Definitions should only be for parts of the component - not general styles or branding. CSS variables from `./src/app/branding.css` can be used.
 
-  Unit tests for the reducers. It should check that they work as intended, i.e. feed in some data and check if the output is correct.
-* `myComponentSlice.selectors.js` (required if the slice exists):
+-   `MyComponent.scss` (optional):
 
-  This contains selectors ("getters") for the slice. It should make use of other selectors where possible to avoid code duplication.
-* `myComponentSlice.selectors.test.js` (required if the slice exists):
+    A SASS file, allowing you to use features such as mixins, nesting or operators. CSS variables from `./src/app/branding.css` can be used.
 
-  Unit tests for the selectors. Here we test with a mocked store whether the selector retrieves the correct state.
+-   `myComponentSlice.js` (optional):
+
+    A slice of the Redux store, in which state can be stored for the component. It needs to be plugged into `./src/app/store.js` and can then be used from within any component to get the state for this component. The slice should define the initial state for the component's state, a set of reducers to alter state ("setters") and export them.
+
+-   `myComponentSlice.test.js` (required if the slice exists):
+
+    Unit tests for the reducers. It should check that they work as intended, i.e. feed in some data and check if the output is correct.
+
+-   `myComponentSlice.selectors.js` (required if the slice exists):
+
+    This contains selectors ("getters") for the slice. It should make use of other selectors where possible to avoid code duplication.
+
+-   `myComponentSlice.selectors.test.js` (required if the slice exists):
+
+    Unit tests for the selectors. Here we test with a mocked store whether the selector retrieves the correct state.
 
 ## Credits
 
