@@ -3,6 +3,24 @@
 
 version: 2.1
 
+commands:
+  upload_codecov:
+    parameters:
+      test:
+        type: string
+    steps:
+      - run:
+          name: Upload codecov
+          command: |
+            curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import # One-time step
+            curl -Os https://uploader.codecov.io/latest/linux/codecov
+            curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
+            curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig
+            gpgv codecov.SHA256SUM.sig codecov.SHA256SUM
+            shasum -a 256 -c codecov.SHA256SUM
+            chmod +x codecov
+            ./codecov <<parameters.test>>
+
 defaults:
   - &autodeploy
     filters:
@@ -37,6 +55,8 @@ jobs:
           command: |
             echo "$DOCKER_ACCESS_TOKEN" | docker login -u "$DOCKER_USER" --password-stdin
             docker push -a flowminder/flowkit-ui
+      - upload_codecov:
+          test: coverage
 
   update-mob-dashtag:
     docker:
