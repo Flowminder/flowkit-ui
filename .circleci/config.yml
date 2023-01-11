@@ -47,6 +47,11 @@ jobs:
           fingerprints:
             - "33:4f:f7:aa:d1:d1:42:42:43:ab:8c:65:c0:fd:33:40"
       - run:
+          name: Run unit tests
+          command: |
+            yarn
+            yarn test
+      - run:
           name: Build docker image
           command: |
             docker build -t flowminder/flowkit-ui:${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}} -t flowminder/flowkit-ui:latest .

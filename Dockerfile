@@ -13,7 +13,6 @@ RUN apk add git
 
 RUN yarn install \
     && yarn upgrade \
-    && yarn test \
     && yarn build
 
 FROM nginx:alpine
