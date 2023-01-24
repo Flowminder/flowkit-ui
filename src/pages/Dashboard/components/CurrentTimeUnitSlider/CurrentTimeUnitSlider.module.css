@@ -9,7 +9,8 @@
     padding: 5px 25px 0;
     border-radius: 10px;
     border: 1px solid var(--quaternary);
-    z-index: 500 !important;
+    /* slider is "behind" the map to allow map tooltip, which inherits map z-index, to be displayed on top of the slider. */
+    z-index: 400 !important;
     margin: 10px 0 0;
 }
 
