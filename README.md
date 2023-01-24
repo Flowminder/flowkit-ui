@@ -4,10 +4,7 @@
 
 # Flowkit UI
 
-This is a generic web application that allows a non-expert user to make queries to FlowAPI and have the results presented to them visually.
-
-Find the live version deployed at [https://flowminder.github.io/flowkit-ui](https://flowminder.github.io/flowkit-ui).
-Also check out the [coverage reports](https://flowminder.github.io/flowkit-ui/dev/coverage/lcov-report/).
+This is a generic web application that allows a non-expert user to make queries to [FlowAPI](https://github.com/Flowminder/FlowKit) and have the results presented to them visually.
 
 ## Branches
 
