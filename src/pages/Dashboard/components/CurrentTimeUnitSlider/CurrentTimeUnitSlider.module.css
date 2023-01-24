@@ -10,6 +10,7 @@
     border-radius: 10px;
     border: 1px solid var(--quaternary);
     z-index: 500 !important;
+    margin: 10px 0 0;
 }
 
 .CurrentTimeUnitSlider span.Info {
