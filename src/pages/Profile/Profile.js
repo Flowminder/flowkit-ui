@@ -65,6 +65,20 @@ const Profile = () => {
         doIt(extendedUser, metadata)
     }
 
+    const resetPassword = event => {
+        const doIt = async extendedUser => {
+            dispatch(setLoadingMessage(t("profile.saving")))
+            const result = await api.resetPassword(user.sub, auth0AccessToken)
+            dispatch(setLoadingMessage())
+            if (result) {
+                dispatch(setMessage(["ok", t("profile.reset_password_success")]))
+            } else {
+                dispatch(setMessage(["error", t("profile.reset_password_error")]))
+            }
+        }
+        doIt(extendedUser)
+    }
+
     const deleteAccount = event => {
         const deleteUser = async () => {
             if (user?.sub !== undefined) {
@@ -100,6 +114,12 @@ const Profile = () => {
                                 ✔
                             </span>
                         )}
+                    </div>
+                    <div className={styles.userProperty}>
+                        <span className={styles.userPropertyKey}>{t("profile.password")}</span>
+                        <span className={`${styles.userPropertyValue} ${styles.link}`} onClick={() => resetPassword()}>
+                            {t("profile.reset_password")}
+                        </span>
                     </div>
                     <div className={styles.userProperty}>
                         <span className={styles.userPropertyKey}>{t("profile.signed_up")}</span>

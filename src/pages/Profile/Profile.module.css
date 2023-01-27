@@ -52,3 +52,12 @@
     color: var(--accent);
     cursor: default;
 }
+
+.Profile .link {
+    color: var(--tertiary);
+}
+
+.Profile .link:hover {
+    color: var(--quaternary);
+    cursor: pointer;
+}

@@ -81,6 +81,21 @@ const api = {
                 return false
             })
     },
+    resetPassword: async (uid, access_token) => {
+        return await axios(`${url}/reset_password/${encodeURIComponent(uid)}`, {
+            method: "GET",
+            headers: {
+                authorization: `BEARER ${access_token}`
+            }
+        })
+            .then(response => {
+                return true
+            })
+            .catch(error => {
+                console.error(error)
+                return false
+            })
+    },
     availableCategories: async access_token => {
         return await axios(`${url}/categories`, {
             method: "GET",
