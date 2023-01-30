@@ -21,6 +21,7 @@ import { useAuth0 } from "@auth0/auth0-react"
 import { BrowserRouter } from "react-router-dom"
 import api from "./api"
 import img_sticker from "./img/sticker.png"
+import jwt_decode from "jwt-decode"
 
 // workaround for error message, see https://github.com/derrickpelletier/react-loading-overlay/pull/57#issuecomment-1054194254
 LoadingOverlay.propTypes = undefined
@@ -73,8 +74,15 @@ function App() {
                         // no need to narrow scopes - just go with what we can get as defined in the Auth0Provider
                         // and limited by the user's permissions and roles
                         //scope: "read:current_user update:current_user_metadata delete:current_user read:free_data read:premium_data",
-                        ignoreCache: true
+                        ignoreCache: true,
+                        cacheMode: "off"
                     })
+                    // decode access token and log out user if token has expired
+                    let decoded = jwt_decode(accessToken)
+                    console.log(decoded)
+                    if (decoded.exp <= Math.round(Date.now() / 1000)) {
+                        logout({ returnTo: `${window.location.origin}/session-expired` })
+                    }
                     dispatch(setAuth0AccessToken(accessToken))
                 } catch (e) {
                     console.error(`Could not refresh access token: ${e.message}`)
