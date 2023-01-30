@@ -35,7 +35,7 @@ const SessionArea = () => {
                                     {t("menu.tutorial")}
                                 </span>
                             </Link>
-                            <span onClick={() => logout({ returnTo: window.location.origin })}>
+                            <span onClick={() => logout({ returnTo: `${window.location.origin}/logged-out` })}>
                                 <img className={styles.button} src={img_arrow} alt={t("menu.logout")} />
                                 {t("menu.logout")}
                             </span>
