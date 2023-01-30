@@ -108,6 +108,7 @@
         "reset_password": "Reset my password",
         "reset_password_success": "A password reset had been initated. Please check your email for further instractions.",
         "reset_password_error": "Could not initiate password reset.",
+        "cannot_reset_password": "You signed up using single sign-on (SSO). In order to change your password, you need to change it in your SSO account.",
         "delete": "Delete my account and all my personal data",
         "delete_question": "Are you sure you want to delete you account? This action is irreversible.",
         "delete_yes": "Yes, I'm sure.",

@@ -20,6 +20,8 @@ const Profile = () => {
     const auth0AccessToken = useSelector(session.selectAuth0AccessToken)
     const extendedUser = useSelector(session.selectExtendedUser)
 
+    const is_username_password = user?.sub.startsWith("auth0|")
+
     const languages = Object.keys(i18n?.store?.data)
     const allLanguages = languages.map(l => {
         return { value: l, label: l }
@@ -68,7 +70,7 @@ const Profile = () => {
     const resetPassword = event => {
         const doIt = async extendedUser => {
             dispatch(setLoadingMessage(t("profile.saving")))
-            const result = await api.resetPassword(user.sub, auth0AccessToken)
+            const result = await api.resetPassword(user?.email, auth0AccessToken)
             dispatch(setLoadingMessage())
             if (result) {
                 dispatch(setMessage(["ok", t("profile.reset_password_success")]))
@@ -117,9 +119,17 @@ const Profile = () => {
                     </div>
                     <div className={styles.userProperty}>
                         <span className={styles.userPropertyKey}>{t("profile.password")}</span>
-                        <span className={`${styles.userPropertyValue} ${styles.link}`} onClick={() => resetPassword()}>
-                            {t("profile.reset_password")}
-                        </span>
+                        {is_username_password && (
+                            <span
+                                className={`${styles.userPropertyValue} ${styles.link}`}
+                                onClick={() => resetPassword()}
+                            >
+                                {t("profile.reset_password")}
+                            </span>
+                        )}
+                        {!is_username_password && (
+                            <span className={styles.userPropertyValue}>{t("profile.cannot_reset_password")}</span>
+                        )}
                     </div>
                     <div className={styles.userProperty}>
                         <span className={styles.userPropertyKey}>{t("profile.signed_up")}</span>

@@ -108,6 +108,7 @@
         "reset_password": "Réinitialiser mon mot de passe",
         "reset_password_success": "Une réinitialisation du mot de passe avait été initiée. Veuillez vérifier votre courrier électronique pour d'autres instructions.",
         "reset_password_error": "Impossible de lancer la réinitialisation du mot de passe.",
+        "cannot_reset_password": "Vous vous êtes inscrit à l'aide de l'authentification unique (SSO). Pour modifier votre mot de passe, vous devez le modifier dans votre compte SSO.",
         "delete": "Supprimer mon compte et toutes mes données personnelles",
         "delete_question": "Êtes-vous sûr(e) de vouloir supprimer votre compte ? Cette action est irréversible.",
         "delete_yes": "Oui, je suis sûr(e)",

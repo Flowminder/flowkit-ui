@@ -81,8 +81,8 @@ const api = {
                 return false
             })
     },
-    resetPassword: async (uid, access_token) => {
-        return await axios(`${url}/reset_password/${encodeURIComponent(uid)}`, {
+    resetPassword: async (email, access_token) => {
+        return await axios(`${url}/reset_password/${encodeURIComponent(email)}`, {
             method: "GET",
             headers: {
                 authorization: `BEARER ${access_token}`
