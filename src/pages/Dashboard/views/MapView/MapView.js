@@ -2,7 +2,7 @@
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import React, { useState, useEffect, useRef } from "react"
-import { useDispatch } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { useTranslation } from "react-i18next"
 import { setLoadingMessage } from "../../../../components/SessionArea/sessionSlice"
 import styles from "./MapView.module.css"
@@ -13,6 +13,7 @@ import env from "../../../../app/env"
 import { InteractiveMap, MapContext, NavigationControl } from "react-map-gl"
 import DeckGL, { GeoJsonLayer, ScatterplotLayer, ArcLayer } from "deck.gl"
 import { Legend } from "../../components"
+import session from "../../../../components/SessionArea/sessionSlice.selectors"
 
 const DATA_LAYER_ID = "my-data"
 const OUT_COLOUR = [112, 31, 83]
@@ -38,6 +39,8 @@ const MapView = ({
     const dispatch = useDispatch()
     const { t, i18n } = useTranslation()
 
+    const currentSpatialResolution = useSelector(session.selectCurrentSpatialResolution)
+
     const persistentRedrawKey = useRef(undefined)
     // For some obscure reason the value was lost when using state. This works. Hands off!
     const pcodeKey = useRef(undefined)
@@ -49,6 +52,7 @@ const MapView = ({
     const [hoveredFeature, setHoveredFeature] = useState(undefined)
     const [tooltip, setTooltip] = useState(undefined)
     const [selectedNode, setSelectedNode] = useState(undefined)
+    const [selectedFeature, setSelectedFeature] = useState(undefined)
     const [nameKey, setNameKey] = useState(undefined)
 
     // Leaving creole out for the moment - the fields are null for admin levels>1 in the source file
@@ -255,7 +259,11 @@ const MapView = ({
                 util.hexToRgb(
                     util.getBin(info?.object?.properties[pcodeKey.current], data, bins, minValue, maxValue)?.colour
                 ),
-            onHover: info => setHoveredFeature(info?.object)
+            onHover: info => setHoveredFeature(info?.object),
+            onClick: info => {
+                console.log(info?.object)
+                setSelectedFeature(info?.object)
+            }
         })
     }
 
@@ -294,6 +302,9 @@ const MapView = ({
         // -> deselection is manual. exception: if we're rendering a polygon layer
         if (type !== "flow") {
             setSelectedNode(undefined)
+        }
+        if (type === "flow") {
+            setSelectedFeature(undefined)
         }
         setHoveredFeature(undefined)
         setTooltip(undefined)
@@ -391,7 +402,7 @@ const MapView = ({
         if (type === "single_location" && boundaries && data) {
             setLayers([makePolygonLayer()])
         }
-    }, [boundaries, data, hoveredFeature, minValue, maxValue, persistentRedrawKey.current])
+    }, [boundaries, data, hoveredFeature, selectedFeature, minValue, maxValue, persistentRedrawKey.current])
 
     return (
         <div className={`${styles.MapView} MapView`} data-testid="MapView">
@@ -421,6 +432,20 @@ const MapView = ({
                             </p>
                         </>
                     )}
+                    {selectedFeature && (
+                        <>
+                            <h3>
+                                {
+                                    selectedFeature?.properties[
+                                        `ADM${currentSpatialResolution?.index}${languageSuffix.toUpperCase()}`
+                                    ]
+                                }
+                            </h3>
+                            {[...Array(currentSpatialResolution?.index).keys()].reverse().map(i => (
+                                <p>{selectedFeature?.properties[`ADM${i}${languageSuffix.toUpperCase()}`]}</p>
+                            ))}
+                        </>
+                    )}
                 </div>
             )}
 
@@ -443,6 +468,7 @@ const MapView = ({
                 onClick={object => {
                     if (object.index === -1) {
                         setSelectedNode(undefined)
+                        setSelectedFeature(undefined)
                     }
                 }}
             >
