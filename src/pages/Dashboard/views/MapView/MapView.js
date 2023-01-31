@@ -261,7 +261,6 @@ const MapView = ({
                 ),
             onHover: info => setHoveredFeature(info?.object),
             onClick: info => {
-                console.log(info?.object)
                 setSelectedFeature(info?.object)
             }
         })
@@ -440,6 +439,7 @@ const MapView = ({
                                         `ADM${currentSpatialResolution?.index}${languageSuffix.toUpperCase()}`
                                     ]
                                 }
+                                <br />({selectedFeature?.properties[`ADM${currentSpatialResolution?.index}_PCODE`]})
                             </h3>
                             {[...Array(currentSpatialResolution?.index).keys()].reverse().map(i => (
                                 <p>{selectedFeature?.properties[`ADM${i}${languageSuffix.toUpperCase()}`]}</p>
