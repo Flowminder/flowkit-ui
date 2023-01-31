@@ -7,7 +7,7 @@
     position: relative;
     padding: 10px;
     background: var(--white);
-    z-index: 99;
+    z-index: 700;
     margin: 10px;
     border-radius: var(--border-radius);
     border: 1px solid var(--medium);
