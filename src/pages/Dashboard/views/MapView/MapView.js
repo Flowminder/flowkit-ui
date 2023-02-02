@@ -418,7 +418,7 @@ const MapView = ({
                 />
             )}
             {timeRange && selectedTimeEntity && (
-                <div className={styles.Info}>
+                <div className={`${styles.Info} ${type === "single_location" && selectedFeature ? styles.large : ""}`}>
                     <h2>{timeRange[selectedTimeEntity]}</h2>
                     {selectedNode && (
                         <>
@@ -434,16 +434,33 @@ const MapView = ({
                     {selectedFeature && (
                         <>
                             <h3>
+                                ({selectedFeature?.properties[`ADM${currentSpatialResolution?.index}_PCODE`]})&nbsp;
                                 {
                                     selectedFeature?.properties[
                                         `ADM${currentSpatialResolution?.index}${languageSuffix.toUpperCase()}`
                                     ]
                                 }
-                                <br />({selectedFeature?.properties[`ADM${currentSpatialResolution?.index}_PCODE`]})
+                                :{" "}
+                                {JSON.stringify(
+                                    data[selectedFeature?.properties[`ADM${currentSpatialResolution?.index}_PCODE`]]
+                                )}
                             </h3>
-                            {[...Array(currentSpatialResolution?.index).keys()].reverse().map(i => (
-                                <p>{selectedFeature?.properties[`ADM${i}${languageSuffix.toUpperCase()}`]}</p>
-                            ))}
+                            <p>
+                                {[...Array(currentSpatialResolution?.index).keys()]
+                                    .reverse()
+                                    .map(i => selectedFeature?.properties[`ADM${i}${languageSuffix.toUpperCase()}`])
+                                    .join(", ")}
+                            </p>
+                            <div className={styles.Detail}>
+                                <p
+                                    style={{
+                                        textAlign: "center",
+                                        verticalAlign: "middle"
+                                    }}
+                                >
+                                    time series here
+                                </p>
+                            </div>
                         </>
                     )}
                 </div>

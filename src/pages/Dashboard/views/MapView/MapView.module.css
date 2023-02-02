@@ -5,6 +5,7 @@
 
 .MapView {
     flex: 1;
+    position: relative;
 }
 
 .MapView .Map {
@@ -34,6 +35,11 @@
     gap: 5px;
 }
 
+.MapView .Info.large {
+    height: calc(100% - 40px);
+    width: calc(50% - 40px);
+}
+
 .MapView .Info h2 {
     font-size: 14px;
     margin: 0;
@@ -41,10 +47,21 @@
 
 .MapView .Info h3 {
     font-size: 16px;
-    margin: 10px 0;
+    margin: 10px 0 0;
 }
 
 .MapView .Info p {
     margin: 0;
     font-size: 13px;
+}
+
+.MapView .Detail {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--quaternary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: stretch;
 }
