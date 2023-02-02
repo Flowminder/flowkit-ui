@@ -246,7 +246,7 @@ const MapView = ({
             getFillColor: f =>
                 util.hexToRgb(util.getBin(f?.properties[pcodeKey.current], data, bins, minValue, maxValue)?.colour),
             getLineColor: [199, 163, 95],
-            getLineWidth: f => (f === hoveredFeature ? 3 : 1),
+            getLineWidth: f => (f === hoveredFeature || f === selectedFeature ? 3 : 1),
             lineWidthUnits: "pixels",
             updateTriggers: {
                 // change line width as hover effect
