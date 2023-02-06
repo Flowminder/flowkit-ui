@@ -20,7 +20,14 @@ const LoggedOut = ({ reason = undefined }) => {
             <div>
                 <FMTrans k="logged_out.text1" />
             </div>
-            <FMButton link={"login"} label="Login" />
+            <br />
+            <div
+                style={{
+                    width: "170px"
+                }}
+            >
+                <FMButton link={"login"} label="Login" />
+            </div>
         </div>
     )
 }
