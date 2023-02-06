@@ -3,5 +3,37 @@
     If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 */
 
-.Explore {
+.Explore h2 {
+    font-size: 30px !important;
+}
+
+.Explore h3 {
+    font-size: 20px !important;
+}
+
+.Explore .StartExploring h2,
+.Explore .StartExploring h2 div,
+.Explore .StartExploring h2 div p {
+    margin: 0 !important;
+}
+
+.Explore .StartExploring button {
+    margin: 0 !important;
+}
+
+.Explore .TutorialBanner {
+    text-align: left;
+}
+
+.Explore .TutorialContent ul {
+    list-style: none;
+    margin: 20px 0 0;
+}
+
+.Explore .TutorialContent ul li::before {
+    content: "\25AA";
+    color: var(--tertiary);
+    display: inline-block;
+    width: 1em;
+    margin: 0 10px 5px -20px;
 }

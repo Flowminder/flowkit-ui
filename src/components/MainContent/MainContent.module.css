@@ -40,10 +40,10 @@
 }
 
 /* Backgrounds */
-.MainContent .primary *:first-child {
+.MainContent.fullWidth .primary *:first-child {
     margin-top: 50px;
 }
-.MainContent .primary *:last-child {
+.MainContent.fullWidth .primary *:last-child {
     margin-bottom: 50px;
 }
 .MainContent .primary > *,

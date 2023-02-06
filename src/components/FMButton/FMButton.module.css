@@ -5,10 +5,18 @@
 
 .FMButton {
     margin: 0 10px;
-    border-radius: 7.5px !important;
+    border-radius: 9px !important;
+    border: 1px solid var(--white);
 }
 
 .FMButton a,
+.FMButton a button {
+    width: 100% !important;
+    display: block;
+    border-radius: 8px !important;
+    margin: 0 !important;
+}
+
 .FMButton button,
 .FMButton button:focus {
     font-size: 14px !important;
@@ -20,10 +28,21 @@
     border: none;
     margin: 0 !important;
     display: inline-block;
+    border-radius: 8px !important;
 }
 
-.FMButton.outline {
-    border: 1px solid var(--primary) !important;
+.FMButton.primary {
+    border-color: var(--primary);
+}
+.FMButton.secondary {
+    border-color: var(--secondary);
+}
+
+.FMButton.outline.primary {
+    border-color: var(--secondary);
+}
+.FMButton.outline.secondary {
+    border-color: var(--primary);
 }
 
 .FMButton a:hover,
@@ -53,28 +72,34 @@
     border-color: var(--primary) !important;
 }
 
+.FMButton.primary.inverted,
 .FMButton.primary.inverted a,
 .FMButton.primary.inverted button {
     color: var(--primary) !important;
     background: var(--white) !important;
-    border: 1px solid var(--primary) !important;
+    border-color: var(--primary) !important;
 }
 
+.FMButton.secondary.inverted,
 .FMButton.secondary.inverted a,
 .FMButton.secondary.inverted button {
     color: var(--secondary) !important;
     background: var(--white) !important;
-    border: 1px solid var(--secondary) !important;
+    border-color: var(--secondary) !important;
 }
 
+.FMButton.primary.inactive,
+.FMButton.secondary.inactive,
 .FMButton.inactive a,
+.FMButton.primary.inactive a,
 .FMButton.secondary.inverted.inactive a,
 .FMButton.inactive button,
+.FMButton.secondary.inactive button,
 .FMButton.secondary.inverted.inactive button {
     cursor: default;
     color: var(--white) !important;
     background-color: var(--light) !important;
-    border: 1px solid var(--light) !important;
+    border-color: var(--light) !important;
 }
 
 .FMButton.inactive button:hover {

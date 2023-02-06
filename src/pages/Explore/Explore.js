@@ -21,7 +21,7 @@ const Explore = () => {
             <h1>Explore</h1>
 
             <Container>
-                <Row>
+                <Row className="justify-content-md-center">
                     <Col xs lg="4">
                         <h2>
                             <FMTrans k="explore.heading1" />
@@ -33,11 +33,64 @@ const Explore = () => {
                             <p>
                                 <FMTrans k="explore.text1" />
                             </p>
+                            <br />
                         </div>
                     </Col>
-                    <Col xs lg="2"></Col>
                 </Row>
             </Container>
+
+            <Container className={`${mainStyles.fullWidth} ${mainStyles.primary} ${styles.StartExploring}`}>
+                <Row className="justify-content-md-center">
+                    <Col
+                        xs
+                        lg="12"
+                        style={{
+                            margin: "30px 0 20px"
+                        }}
+                    >
+                        <h2
+                            style={{
+                                textAlign: "center"
+                            }}
+                        >
+                            <FMTrans k="explore.heading2" />
+                        </h2>
+                    </Col>
+                </Row>
+                <Row className="justify-content-md-center">
+                    <Col
+                        xs
+                        lg="2"
+                        style={{
+                            margin: 0,
+                            padding: 0
+                        }}
+                    >
+                        <FMButton
+                            link={isAuthenticated ? "/" : "/register"}
+                            label={t("explore.access_dashboard")}
+                            primary={false}
+                            outline={false}
+                        />
+                    </Col>
+                    <Col
+                        xs
+                        lg="2"
+                        style={{
+                            margin: "0 0 30px",
+                            padding: 0
+                        }}
+                    >
+                        <FMButton
+                            link={"/tutorial"}
+                            label={t("explore.access_tutorial")}
+                            primary={true}
+                            outline={true}
+                        />
+                    </Col>
+                </Row>
+            </Container>
+            <br />
 
             <Container className={mainStyles.fullWidth}>
                 <Row className="justify-content-md-center">
@@ -76,21 +129,122 @@ const Explore = () => {
                     <Col xs lg="1"></Col>
                     <Col xs lg="4">
                         <h2>
-                            <FMTrans k="explore.heading2" />
+                            <FMTrans k="explore.heading3" />
                         </h2>
                         <p>
-                            <FMTrans k="explore.text2" />
+                            <FMTrans k="explore.text3" />
                         </p>
+                    </Col>
+                    <Col xs lg="1"></Col>
+                    <Col xs lg="3">
+                        <img src={img_houses} width={400} height={300} alt="" />
+                    </Col>
+                    <Col xs lg="1"></Col>
+                </Row>
+                <Row className="">
+                    <Col xs lg="1"></Col>
+                    <Col
+                        xs
+                        lg="2"
+                        style={{
+                            margin: 0,
+                            padding: 0
+                        }}
+                    >
                         <FMButton
                             link={isAuthenticated ? "/" : "/register"}
                             label={t("explore.access_data")}
-                            primary={true}
-                            outline={false}
+                            primary={false}
+                            outline={true}
+                        />
+                    </Col>
+                    <Col
+                        xs
+                        lg="2"
+                        style={{
+                            margin: "0 0 30px",
+                            padding: 0
+                        }}
+                    >
+                        <FMButton
+                            link={"/tutorial"}
+                            label={t("explore.access_tutorial")}
+                            primary={false}
+                            outline={true}
+                            inverted={true}
                         />
                     </Col>
                     <Col xs lg="1"></Col>
-                    <Col>
-                        <img src={img_houses} width={400} height={300} alt="" />
+                </Row>
+            </Container>
+
+            <Container className={`${mainStyles.fullWidth} ${mainStyles.tertiary} ${styles.TutorialBanner}`}>
+                <Row className="justify-content-md-center">
+                    <Col
+                        xs
+                        lg="12"
+                        style={{
+                            margin: "30px 0 20px"
+                        }}
+                    >
+                        <h2
+                            style={{
+                                fontSize: "30px"
+                            }}
+                        >
+                            <FMTrans k="tutorial.title" />
+                        </h2>
+                    </Col>
+                </Row>
+            </Container>
+
+            <Container className={styles.TutorialContent}>
+                <Row>
+                    <Col xs lg="1"></Col>
+                    <Col xs lg="10">
+                        <br />
+                        <h3>
+                            <FMTrans k="explore.heading4" />
+                        </h3>
+                        <p>
+                            <FMTrans k="explore.text4" />
+                        </p>
+                        <br />
+                    </Col>
+                    <Col xs lg="1"></Col>
+                </Row>
+                <Row className="">
+                    <Col xs lg="1"></Col>
+                    <Col
+                        xs
+                        lg="2"
+                        style={{
+                            margin: 0,
+                            padding: 0
+                        }}
+                    >
+                        <FMButton
+                            link={"/tutorial"}
+                            label={t("explore.access_tutorial")}
+                            primary={false}
+                            outline={true}
+                        />
+                    </Col>
+                    <Col
+                        xs
+                        lg="2"
+                        style={{
+                            margin: 0,
+                            padding: 0
+                        }}
+                    >
+                        <FMButton
+                            link={isAuthenticated ? "/" : "/register"}
+                            label={t("explore.create_account")}
+                            primary={false}
+                            outline={true}
+                            inverted={true}
+                        />
                     </Col>
                     <Col xs lg="1"></Col>
                 </Row>

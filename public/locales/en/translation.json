@@ -200,11 +200,17 @@
     "explore": {
         "title": "Explore",
         "heading1": "Why is the Haiti mobility dashboard important?",
-        "text1": "Understanding where people live, work or commute to is an asset for those planning, implementing, monitoring or evaluating public policies or those advising on resource allocations in emergencies, post disaster recovery or disaster risk reduction interventions contexts. The private sector is also likely to benefit from insights on where people are for investment decisions.\n\n&nbsp;\n\nDiscover below how to use the dashboard and what data are available.",
+        "text1": "**Understanding where people live, work or commute to is an asset** for those planning, implementing, monitoring or evaluating public policies or those advising on resource allocations in emergencies, post disaster recovery or disaster risk reduction interventions contexts.\n\nThe private sector is also likely to benefit from insights on where people are for investment decisions.\n\n### Discover below how to use the dashboard and what data are available.",
         "video_url": "https://youtube.com/embed/JBgIOHMlxkY",
-        "heading2": "How does it work?",
-        "text2": "The dashboard can be accessed [here](/), provided you're logged in. You will first need to register and create an account. Find out more about our account types [here](/pricing).\n\nWe've also put together a short tutorial to help you navigate the platform. You will be able to go through it when you first log on and get to the dashboard. It will also be available via your profile account.\n\nData on the platform are indicators that are produced from pseudonymised Call Detail Records (CDR data) provided by Digicel Haiti. These indicators provide only anonymised and aggregated results. To understand how these are produced, visit FlowGeek, our online knowledge centre for all things CDR.\n\n<a href=\"https://flowgeek.org/from-data-to-insights\" target=\"_blank\">Read more</a>",
-        "access_data": "Access data"
+        "heading2": "Start <span style=\"color: var(--secondary)\">exploring</span> the data now",
+        "heading3": "How does it work?",
+        "text3": "The dashboard can be accessed [here](/), provided you're logged in. You will first need to register and create an account. Find out more about our account types [here](/pricing).\n\nWe've also put together a short tutorial to help you navigate the platform. You will be able to go through it when you first log on and get to the dashboard. It will also be available via your profile account.\n\nData on the platform are indicators that are produced from pseudonymised Call Detail Records (CDR data) provided by Digicel Haiti. These indicators provide only anonymised and aggregated results. To understand how these are produced, visit <a href=\"https://flowgeek.org/from-data-to-insights\" target=\"_blank\">FlowGeek</a>, our online knowledge centre for all things CDR.\n\n&nbsp;",
+        "heading4": "We've created an entire section dedicated to supporting you explore the dashboard easily, and understand the ethical and data security principles governing our work.",
+        "text4": "You might want to create an account first, but here is what you can expect in the tutorial:\n\n* Dashboard overview\n* Account management\n* Ethics\n* Help",
+        "access_data": "Access data",
+        "access_dashboard": "Go to the dashboard",
+        "access_tutorial": "Start the tutorial",
+        "create_account": "Create account"
     },
     "intro": {
         "main_heading": "Haiti Mobility Data Platform",

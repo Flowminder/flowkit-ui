@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown"
 import styles from "./FMTrans.module.css"
 import rehypeRaw from "rehype-raw"
 
-const FMTrans = ({ k = undefined, markdown = true }) => {
+const FMTrans = ({ k = undefined, markdown = true, style = {} }) => {
     const { t } = useTranslation()
 
     const allowedElements = [
@@ -30,7 +30,7 @@ const FMTrans = ({ k = undefined, markdown = true }) => {
     ]
 
     return (
-        <div data-testid="FMTrans" className={styles.FMTrans}>
+        <div data-testid="FMTrans" className={styles.FMTrans} style={style}>
             {!markdown && <Trans i18nKey={k} />}
             {markdown && (
                 <ReactMarkdown
