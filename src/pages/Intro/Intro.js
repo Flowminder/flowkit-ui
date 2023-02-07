@@ -23,11 +23,15 @@ const Intro = () => {
 
             <Container className={`${mainStyles.fullWidth} ${mainStyles.firstItem}`}>
                 <Row>
-                    <Col xs={4} className={`${mainStyles.primary} ${mainStyles.noPadding}`}>
+                    <Col
+                        xs={4}
+                        className={`${mainStyles.primary} ${mainStyles.noPadding}`}
+                        style={{ padding: "50px 0 0" }}
+                    >
                         <h2>
                             <FMTrans k="intro.heading1" />
                         </h2>
-                        <div className={mainStyles.opaque}>
+                        <div className={mainStyles.opaque} style={{ padding: "0 20px 20px" }}>
                             <FMTrans k="intro.text1" />
                         </div>
                         <div className={styles.buttons}>
