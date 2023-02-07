@@ -47,6 +47,7 @@ const Footer = () => {
                         <img src={img_hewlett} className={styles.DonorLogo} alt={"hewlett.org"} />
                     </a>
                 </p>
+                <FMTrans k="footer.flowgeek" />
             </div>
             <div className={styles.Links}>
                 <Link to="/about">{t("about.title")}</Link>
