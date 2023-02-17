@@ -352,13 +352,13 @@ const Menu = () => {
                         <Accordion.Header>{t("dashboard.map_parameters")}</Accordion.Header>
                         <Accordion.Body>
                             {!currentCategory?.type && <p>{t("dashboard.map_parameters_text")}</p>}
-                            {currentCategory?.type === "single" && (
+                            {currentCategory?.type === "single_location" && (
                                 <>
                                     <h3>{t("dashboard.map_parameters_bounding")}</h3>
 
                                     <p>{t("dashboard.map_parameters_bounding_min")}</p>
                                     <input
-                                        type="tel"
+                                        type="text"
                                         value={currentMinValue}
                                         onChange={e => dispatch(setCurrentMinValue(Number(e.currentTarget.value)))}
                                         pattern="^-?\d*\.?\d*$"
