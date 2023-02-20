@@ -451,16 +451,6 @@ const MapView = ({
                                     .map(i => selectedFeature?.properties[`ADM${i}${languageSuffix.toUpperCase()}`])
                                     .join(", ")}
                             </p>
-                            <div className={styles.Detail}>
-                                <p
-                                    style={{
-                                        textAlign: "center",
-                                        verticalAlign: "middle"
-                                    }}
-                                >
-                                    time series here
-                                </p>
-                            </div>
                         </>
                     )}
                 </div>
