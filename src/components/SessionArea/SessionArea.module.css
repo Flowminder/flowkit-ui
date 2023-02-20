@@ -6,8 +6,8 @@
 .SessionArea {
     display: flex;
     flex: 0 fit-content;
-    gap: 50px;
-    min-width: 250px;
+    gap: 30px;
+    margin: 0 0 0 20px;
 }
 
 .SessionArea img {
@@ -50,6 +50,7 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-width: 250px;
 }
 
 .SessionArea .User {
