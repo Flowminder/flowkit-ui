@@ -29,7 +29,7 @@
 
 .BannerRight {
     flex-direction: row-reverse;
-    gap: 50px;
+    gap: 30px;
 }
 
 .Banner > div * {
@@ -97,9 +97,9 @@
 .Banner .LanguageButtons {
     flex: 0;
     display: flex;
-    gap: 20px;
+    gap: 10px;
     float: right;
-    margin: 0 -20px 0 0 !important;
+    margin: 0 -10px 0 0 !important;
     height: 100%;
 }
 
