@@ -431,7 +431,7 @@ const MapView = ({
                             </p>
                         </>
                     )}
-                    {selectedFeature && (
+                    {selectedFeature && selectedFeature?.properties && data && (
                         <>
                             <h3>
                                 ({selectedFeature?.properties[`ADM${currentSpatialResolution?.index}_PCODE`]})&nbsp;
