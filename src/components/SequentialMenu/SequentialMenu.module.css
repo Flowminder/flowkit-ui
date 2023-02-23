@@ -57,6 +57,10 @@
     -ms-text-overflow: ellipsis;
 }
 
+.SequentialMenu .Breadcrumbs li::before {
+    content: "";
+}
+
 .SequentialMenu .Breadcrumbs li.active,
 .SequentialMenu .Breadcrumbs li.done {
     background: var(--quaternary);

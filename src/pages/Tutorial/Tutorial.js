@@ -81,8 +81,10 @@ const Tutorial = () => {
     return (
         <div className={styles.Tutorial} data-testid="Tutorial">
             <h1>{t("tutorial.title")}</h1>
-            <SequentialMenu items={stages} currentItem={currentStage} setCurrentItem={setCurrentStage} />
-            <div className={styles.Content}>{stages[currentStage]?.element}</div>
+            {currentStage > 0 && (
+                <SequentialMenu items={stages} currentItem={currentStage} setCurrentItem={setCurrentStage} />
+            )}
+            <div className={currentStage > 0 ? styles.Content : ""}>{stages[currentStage]?.element}</div>
 
             {currentStage < stages.length && currentStage > 0 && (
                 <div className={styles.Buttons}>

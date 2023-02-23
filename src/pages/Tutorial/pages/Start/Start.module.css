@@ -1,10 +1,5 @@
-.Start .Text {
-    display: flex;
-    margin: 50px 0;
-}
-
 .Start .Buttons {
-    margin: 50px auto 0;
+    margin: 20px auto;
     width: fit-content;
     display: flex;
     gap: 5px;
@@ -13,8 +8,4 @@
 .Start .Buttons .ExploreButton button {
     width: fit-content !important;
     padding: 0 15px;
-}
-
-.Start h2:last-of-type {
-    text-align: center;
 }
