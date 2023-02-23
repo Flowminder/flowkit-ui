@@ -336,6 +336,7 @@
         "button_no2": "Ignorer et accéder aux données",
 
         "tab_menu": "Cliquez sur l'un des onglets ci-dessous pour sélectionner votre tutoriel d'intérêt",
+        "sections_links": "Cliquez sur les hyperliens ci-dessous pour accéder aux sections pertinentes",
 
         "wheredoi": "Utilisation du tableau de bord",
         "access_data": "**Utilisation du tableau de bord**",
@@ -346,9 +347,11 @@
         "heading4": "Gestion du compte",
         "text4": "**Comment accéder et modifier votre profil**\n\n1. Vous pouvez vous connecter en cliquant sur le bouton « Connexion » situé dans le coin supérieur droit de la plate-forme. Si vous n'avez pas encore créé de compte, vous devrez d'abord vous inscrire.\n\n2. Une fois que vous êtes connecté, vous verrez votre nom apparaître dans le coin supérieur droit du site, dans un encadré jaune. Cliquez sur l'encadré pour ouvrir 'Compte et paramètres'.\n\n3. Vous accédez à présent à la page « Mon profil ». Elle contient les informations suivantes : Votre nom ; Votre adresse électronique  ; Votre date d'inscription ; La date de votre dernière mise à jour de profil ; Le nombre de fois que vous vous êtes connecté sur la plateforme ; La date de votre dernière connexion.\n\n4. C'est également sur cette page que vous pouvez : Sélectionnez le choix de la langue ou choisir de voir le tutoriel à chaque  connexion.\n\n&nbsp;\n\n**Conditions générales**\n\nVous pouvez accéder aux conditions générales (conditions de licence) en bas de page de la plateforme, ou en cliquant [ici](/terms).\n\n&nbsp;\n\n**Changer de type de compte**\n\nVous devez d'abord créer un compte gratuit pour pouvoir passer à la version premium. Néanmoins, comme nous sommes en phase de démonstration, cette option n'est pas encore disponible. Pour plus d'informations, consultez la page [Tarifs](/pricing).",
 
-        "ethics": "Confidentialité & éthique",
-        "heading5": "Confidentialité & éthique",
-        "text5": "Le respect de la confidentialité et de la sécurité des données fait partie intégrante de la collaboration entre Flowminder et Digicel Haïti. Pour obtenir des informations sur la manière dont les données sont collectées, traitées et protégées, nous vous recommandons de lire les deux pages suivantes :\n\n1. L'[avis de confidentialité du site](/privacy) qui précise les modalités de protection de la vie privée des visiteurs de cette plateforme;\n\n2. La [page sur la confidentialité des données des abonnés](/subscriber-privacy) qui précise les modalités de protection de la vie privée des abonnés de Digicel Haïti.",
+        "ethics": "Confidentialité des données et éthique",
+        "ethics_heading1": "Avis de confidentialité et informations sur les données personnelles",
+        "ethics_text1": "La confidentialité et la sécurité des données sont au cœur de la collaboration entre Flowminder et Digicel Haïti. Pour plus d'informations sur la manière dont les données sont collectées, traitées et protégées, nous vous recommandons de lire les deux pages suivantes :\n1. [Avis de confidentialité de notre site Web] (/privacy) décrivant comment nous protégeons la vie privée des visiteurs sur cette plateforme ;\n2. [Page de confidentialité des données des abonnés] (/subscribers-privacy), décrivant comment nous protégeons la vie privée des abonnés de Digicel Haiti.",
+        "ethics_heading2": "Termes et conditions",
+        "ethics_text2": "Vous pouvez accéder aux conditions générales (conditions de licence) dans le pied de page de la plateforme, ou en cliquant sur [ici](/terms).\n\nNous attirons votre attention sur les éléments suivants :\n1. à confirmer\n2. à confirmer\n3. à confirmer",
 
         "help": "Aide & support",
         "heading6": "Obtenir de l'aide",

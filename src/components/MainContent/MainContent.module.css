@@ -40,6 +40,21 @@
 }
 
 /* Backgrounds */
+
+.MainContent .fullWidth.pageNav {
+    background: var(--light);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 50px 30px !important;
+}
+
+.MainContent .fullWidth.pageNav li::before {
+    color: var(--dark);
+    vertical-align: middle;
+}
+.MainContent .fullWidth.pageNav li a {
+}
+
 .MainContent.fullWidth .primary *:first-child {
     margin-top: 50px;
 }

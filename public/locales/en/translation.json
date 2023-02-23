@@ -336,6 +336,7 @@
         "button_no2": "Skip and access data",
 
         "tab_menu": "Click on one of the tabs below to select your tutorial of interest",
+        "sections_links": "Click on the hyperlinks below to jump to the relevant sections",
 
         "wheredoi": "Using the dashboard",
         "access_data": "**Using the dashboard**",
@@ -347,8 +348,10 @@
         "text4": "**How to access & edit your profile**\n\n1. You can log in by clicking on the 'login' button at the top right corner of the platform. If you have not yet created an account, you will need to first register.\n\n2. Once you are logged in, you will see your name appear in the top right corner of the site, in a yellow box. Click on the box to open 'Account & settings'\n\n3. You have now reached 'My profile' page. It provides information about Your name; Your email address; When you signed up; Last time you updated your profile; How many times you have logged in on the platform; Your last login date.\n\n4. This is also where you can: Select your preferred language or decide to see the tutorial on login.\n\n&nbsp;\n\n**Terms & Conditions**\n\nYou can access the terms and conditions (licencing terms) in the footer of the platform, or by clicking [here](/terms).\n\n&nbsp;\n\n**How to upgrade**\n\nYou must first create a Free account to be able to upgrade to Premium. However, as we are in the demo phase, this option is not yet available. Check out the [Pricing](/pricing) page for more information.",
 
         "ethics": "Data privacy & ethics",
-        "heading5": "Data privacy & ethics",
-        "text5": "Data privacy and security is core to the collaboration between Flowminder and Digicel Haiti. For information on how data are collected, processed and protected, we recommend you read the following two pages:\n\n1. Our [Website privacy notice](/privacy) describing how we protect the privacy of the visitors on this platform;\n\n2. [Subscribers data privacy page](/subscriber-privacy), describing how we protect the privacy of Digicel Haiti's subscribers.",
+        "ethics_heading1": "Privacy notices & information on personal data",
+        "ethics_text1": "Data privacy and security is core to the collaboration between Flowminder and Digicel Haiti. For information on how data are collected, processed and protected, we recommend you read the following two pages:\n1. [Our Website privacy notice](/privacy) describing how we protect the privacy of the visitors on this platform;\n2. [Subscribers data privacy page](/subscribers-privacy), describing how we protect the privacy of Digicel Haiti's subscribers.",
+        "ethics_heading2": "Terms & Conditions",
+        "ethics_text2": "You can access the terms and conditions (licencing terms) in the footer of the platform, or by clicking [here](/terms).\n\nWe would like to draw your attention to the following elements:\n1. tbc\n2. tbc\n3. tbc",
 
         "help": "Help & support",
         "help_heading1": "Contact us for general support or data queries.",
