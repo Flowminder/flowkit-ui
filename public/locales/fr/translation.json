@@ -335,6 +335,8 @@
         "button_yes2": "Passer par le tutoriel",
         "button_no2": "Ignorer et accéder aux données",
 
+        "tab_menu": "Cliquez sur l'un des onglets ci-dessous pour sélectionner votre tutoriel d'intérêt",
+
         "wheredoi": "Utilisation du tableau de bord",
         "access_data": "**Utilisation du tableau de bord**",
         "heading3": "**Cette page présente les différentes fonctionnalités du tableau de bord pour vous permettre de les exploiter au mieux et d'utiliser les données de la manière la plus adaptée à vos besoins.**",
@@ -348,7 +350,7 @@
         "heading5": "Confidentialité & éthique",
         "text5": "Le respect de la confidentialité et de la sécurité des données fait partie intégrante de la collaboration entre Flowminder et Digicel Haïti. Pour obtenir des informations sur la manière dont les données sont collectées, traitées et protégées, nous vous recommandons de lire les deux pages suivantes :\n\n1. L'[avis de confidentialité du site](/privacy) qui précise les modalités de protection de la vie privée des visiteurs de cette plateforme;\n\n2. La [page sur la confidentialité des données des abonnés](/subscriber-privacy) qui précise les modalités de protection de la vie privée des abonnés de Digicel Haïti.",
 
-        "help": "Aide",
+        "help": "Aide & support",
         "heading6": "Obtenir de l'aide",
         "text6": "Pour plus d'informations sur la mission ou sur la manière d'utiliser la plate-forme, veuillez nous contacter à l'adresse suivante : haiti.mobility-dashboard@flowminder.org"
     },

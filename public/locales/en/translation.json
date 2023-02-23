@@ -319,7 +319,7 @@
     },
     "tutorial": {
         "title": "Tutorial",
-        "final_button": "Take me to the Dashboard!",
+        "final_button": "Take me to the dashboard!",
         "welcome": "Welcome",
         "welcome_heading": "Welcome to the Haiti Mobility Dashboard, where you can access timely and accurate data on mobility in Haiti.",
         "welcome1": "In this section, you will find documentation to help you get started, make the most of the platform's capabilities, and understand the ethics and processes behind the platform.",
@@ -335,6 +335,8 @@
         "button_yes2": "Go through tutorial",
         "button_no2": "Skip and access data",
 
+        "tab_menu": "Click on one of the tabs below to select your tutorial of interest",
+
         "wheredoi": "Using the dashboard",
         "access_data": "**Using the dashboard**",
         "heading3": "**On this page, we will go through the various features of the dashboard, to make sure you get the most out of it, and use the data in a way that best suits your needs.**",
@@ -348,9 +350,11 @@
         "heading5": "Data privacy & ethics",
         "text5": "Data privacy and security is core to the collaboration between Flowminder and Digicel Haiti. For information on how data are collected, processed and protected, we recommend you read the following two pages:\n\n1. Our [Website privacy notice](/privacy) describing how we protect the privacy of the visitors on this platform;\n\n2. [Subscribers data privacy page](/subscriber-privacy), describing how we protect the privacy of Digicel Haiti's subscribers.",
 
-        "help": "Help",
-        "heading6": "How to get help",
-        "text6": "Find out how to contact us for general support or data queries. For more information on the work, or on how to use the platform, please contact us at haiti.mobility-dashboard@flowminder.org"
+        "help": "Help & support",
+        "help_heading1": "Contact us for general support or data queries.",
+        "help_text1": "For more information on the work, or on how to use the platform, please contact us at [haiti.mobility-dashboard@flowminder.org](mailto:haiti.mobility-dashboard@flowminder.org).",
+        "help_heading2": "Bespoke support & consultancy",
+        "help_text2": "You can also contact us to request bespoke support or consultancy projects, such as mobility analysis for a specific sector or application, or to request data training support or capacity strengthening. Email us at [haiti.mobility-dashboard@flowminder.org](mailto:haiti.mobility-dashboard@flowminder.org)."
     },
     "contact": {
         "title": "Contact us",

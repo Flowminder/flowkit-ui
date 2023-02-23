@@ -31,3 +31,15 @@
     width: 1em;
     margin: 0 10px 5px -20px;
 }
+
+.Tutorial .Tabs img {
+    display: none;
+}
+
+.Tutorial .Tabs ul {
+    padding: 0;
+}
+
+.Tutorial .Tabs li:first-child {
+    display: none;
+}

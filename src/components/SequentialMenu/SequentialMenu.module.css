@@ -6,7 +6,7 @@
 .SequentialMenu .Breadcrumbs {
     display: flex;
     padding: 0 60px;
-    gap: 10px;
+    gap: 20px;
     margin: 0;
 }
 
@@ -61,10 +61,17 @@
     content: "";
 }
 
+.SequentialMenu .Breadcrumbs li.notActive {
+    background: var(--white);
+    color: var(--secondary);
+    outline: 2px solid var(--secondary);
+}
+
 .SequentialMenu .Breadcrumbs li.active,
 .SequentialMenu .Breadcrumbs li.done {
-    background: var(--quaternary);
-    color: var(--white);
+    background: var(--secondary);
+    color: var(--primary);
+    outline: 2px solid var(--primary);
 }
 
 .SequentialMenu .Breadcrumbs li img {

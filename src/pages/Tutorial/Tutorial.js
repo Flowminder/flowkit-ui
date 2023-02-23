@@ -5,6 +5,10 @@ import React, { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import session from "../../components/SessionArea/sessionSlice.selectors"
 import styles from "./Tutorial.module.css"
+import mainStyles from "../../components/MainContent/MainContent.module.css"
+import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 import { Start, WhereToFind, DataTerms, Ethics, Help } from "./pages"
 import { SequentialMenu, FMButton } from "../../components"
 import { useTranslation } from "react-i18next"
@@ -82,7 +86,26 @@ const Tutorial = () => {
         <div className={styles.Tutorial} data-testid="Tutorial">
             <h1>{t("tutorial.title")}</h1>
             {currentStage > 0 && (
-                <SequentialMenu items={stages} currentItem={currentStage} setCurrentItem={setCurrentStage} />
+                <>
+                    <h2>{t("tutorial.tab_menu")}</h2>
+                    <SequentialMenu
+                        clickableItems={true}
+                        items={stages}
+                        currentItem={currentStage}
+                        setCurrentItem={setCurrentStage}
+                        className={styles.Tabs}
+                    />
+                    <br />
+                </>
+            )}
+            {currentStage > 0 && (
+                <Container className={mainStyles.fullWidth}>
+                    <Row className={mainStyles.tertiary}>
+                        <Col>
+                            <h2>{stages[currentStage]?.name}</h2>
+                        </Col>
+                    </Row>
+                </Container>
             )}
             <div className={currentStage > 0 ? styles.Content : ""}>{stages[currentStage]?.element}</div>
 

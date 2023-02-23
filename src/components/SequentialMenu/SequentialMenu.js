@@ -6,7 +6,15 @@ import styles from "./SequentialMenu.module.css"
 import img_tick from "./img/tick.svg"
 import img_chevron from "./img/chevron.svg"
 
-const SequentialMenu = ({ items, showArrowNavigation = false, nextPageEnabled, currentItem, setCurrentItem }) => {
+const SequentialMenu = ({
+    items,
+    showArrowNavigation = false,
+    clickableItems = false,
+    nextPageEnabled,
+    currentItem,
+    setCurrentItem,
+    className
+}) => {
     const increment = () => {
         if (currentItem < items.length) {
             setCurrentItem(currentItem + 1)
@@ -19,8 +27,14 @@ const SequentialMenu = ({ items, showArrowNavigation = false, nextPageEnabled, c
         }
     }
 
+    const selectItem = index => {
+        if (clickableItems) {
+            setCurrentItem(index)
+        }
+    }
+
     return (
-        <div className={styles.SequentialMenu} data-testid="SequentialMenu">
+        <div className={`${styles.SequentialMenu} ${className ? className : ""}`} data-testid="SequentialMenu">
             <ul className={styles.Breadcrumbs}>
                 {showArrowNavigation && items && (
                     <li onClick={decrement} className={`${styles.back} ${currentItem === 0 ? styles.inactive : ""}`}>
@@ -31,8 +45,15 @@ const SequentialMenu = ({ items, showArrowNavigation = false, nextPageEnabled, c
                     items.map((stage, index) => {
                         return (
                             <li
+                                onClick={() => selectItem(index)}
                                 className={
-                                    index === currentItem ? styles.active : index < currentItem ? styles.done : ""
+                                    index === currentItem
+                                        ? styles.active
+                                        : clickableItems
+                                        ? styles.notActive
+                                        : index < currentItem
+                                        ? styles.done
+                                        : ""
                                 }
                                 key={`breadcrumb-${index}`}
                                 title={stage.name}
