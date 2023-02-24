@@ -1,0 +1,25 @@
+.Dashboard .VerificationBox {
+    background: #e3fcf9;
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+
+.Dashboard .VerificationBox div h1 {
+    background: none;
+    font-size: 14px !important;
+    margin: 0 0 14px;
+    padding: 0;
+}
+
+.Dashboard .VerificationBox div * {
+    font-size: 13px !important;
+}
+
+.Dashboard .VerificationBox div p {
+    margin: 0 0 10px !important;
+}
+
+.Dashboard .VerificationBox div strong {
+    font-family: var(--font-control) !important;
+    color: var(--black);
+}

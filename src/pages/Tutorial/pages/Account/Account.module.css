@@ -1,20 +1,2 @@
-.Account strong {
-    color: var(--quaternary);
-    font-weight: bold;
-    font-family: var(--font-control);
-}
-
-.Account ol li ol {
-    list-style: lower-alpha;
-}
-
-.Account .Pictures {
-    display: flex;
-    gap: 20px;
-}
-
-.Account .Pictures div {
-    background: var(--medium);
-    height: 200px;
-    width: 100%;
+.Account {
 }

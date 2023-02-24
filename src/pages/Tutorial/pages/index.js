@@ -1,5 +1,5 @@
 export { default as Start } from "./Start/Start.js"
-export { default as WhereToFind } from "./WhereToFind/WhereToFind.js"
+export { default as Dashboard } from "./Dashboard/Dashboard.js"
 export { default as Account } from "./Account/Account.js"
 export { default as Ethics } from "./Ethics/Ethics.js"
 export { default as Help } from "./Help/Help.js"

@@ -1,9 +1,8 @@
 import React from "react"
 import styles from "./Account.module.css"
+import tutorialStyles from "../../Tutorial.module.css"
 import mainStyles from "../../../../components/MainContent/MainContent.module.css"
-import Container from "react-bootstrap/Container"
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
+import { Container, Row, Col } from "react-bootstrap"
 import { useTranslation } from "react-i18next"
 import { FMTrans } from "../../../../components"
 
@@ -35,7 +34,7 @@ const Account = () => {
             <p>
                 <FMTrans k="tutorial.account_text1" />
             </p>
-            <div className={styles.Pictures}>
+            <div className={tutorialStyles.Pictures}>
                 <div></div>
                 <div></div>
             </div>

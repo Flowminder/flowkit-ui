@@ -9,7 +9,7 @@ import mainStyles from "../../components/MainContent/MainContent.module.css"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import { Start, WhereToFind, Account, Ethics, Help } from "./pages"
+import { Start, Dashboard, Account, Ethics, Help } from "./pages"
 import { SequentialMenu, FMButton } from "../../components"
 import { useTranslation } from "react-i18next"
 import api from "../../app/api"
@@ -31,7 +31,7 @@ const Tutorial = () => {
             name: t("tutorial.welcome"),
             element: <Start next={() => setCurrentStage(currentStage + 1)} />
         },
-        { name: t("tutorial.wheredoi"), element: <WhereToFind /> },
+        { name: t("tutorial.dashboard"), element: <Dashboard /> },
         { name: t("tutorial.account"), element: <Account /> },
         { name: t("tutorial.ethics"), element: <Ethics /> },
         {

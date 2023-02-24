@@ -47,3 +47,37 @@
 .Tutorial .Tabs li:first-child {
     display: none;
 }
+
+.Tutorial strong {
+    color: var(--quaternary);
+    font-weight: bold;
+    font-family: var(--font-control);
+}
+
+.Tutorial ol {
+    margin: 25px 0;
+}
+
+.Tutorial ol li {
+    margin: 5px 0;
+}
+
+.Tutorial ol li ol {
+    margin: 0;
+    list-style: lower-alpha;
+}
+
+.Tutorial ol li ol li {
+    margin: 0;
+}
+
+.Tutorial .Pictures {
+    display: flex;
+    gap: 20px;
+}
+
+.Tutorial .Pictures div {
+    background: var(--medium);
+    height: 200px;
+    width: 100%;
+}
