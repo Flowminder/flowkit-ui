@@ -40,6 +40,10 @@
     padding: 0;
 }
 
+.Tutorial .Tabs ul li {
+    cursor: pointer;
+}
+
 .Tutorial .Tabs li:first-child {
     display: none;
 }
