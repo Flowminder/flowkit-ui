@@ -2,6 +2,7 @@
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import React from "react"
+import "./Explore.scss"
 import styles from "./Explore.module.css"
 import mainStyles from "../../components/MainContent/MainContent.module.css"
 import { useTranslation } from "react-i18next"
@@ -17,22 +18,23 @@ const Explore = () => {
     const { isAuthenticated } = useAuth0()
 
     return (
-        <div className={styles.Explore} data-testid="Explore">
+        <div className={`Explore ${styles.Explore}`} data-testid="Explore">
             <h1>Explore</h1>
 
-            <Container>
+            <Container className={styles.NoMargin}>
                 <Row className="justify-content-md-center">
-                    <Col xs lg="4">
+                    <Col xs lg="5">
                         <h2>
                             <FMTrans k="explore.heading1" />
                         </h2>
                     </Col>
                     <Col xs lg="1"></Col>
-                    <Col xs lg="5" className={mainStyles.noPadding}>
+                    <Col xs lg="6" className={mainStyles.noPadding}>
                         <div>
                             <p>
                                 <FMTrans k="explore.text1" />
                             </p>
+                            <br />
                             <br />
                         </div>
                     </Col>
@@ -100,6 +102,7 @@ const Explore = () => {
                                 padding: "30px 0 30px"
                             }}
                         >
+                            <br />
                             <iframe
                                 src={t("explore.video_url")}
                                 frameBorder="0"
@@ -118,16 +121,16 @@ const Explore = () => {
                                     background: "var(--black)"
                                 }}
                             />
+                            <br />
                         </div>
                     </Col>
                 </Row>
             </Container>
             <br />
             <br />
-            <Container>
+            <Container className={styles.NoMargin}>
                 <Row>
-                    <Col xs lg="1"></Col>
-                    <Col xs lg="4">
+                    <Col xs lg="6">
                         <h2>
                             <FMTrans k="explore.heading3" />
                         </h2>
@@ -136,10 +139,12 @@ const Explore = () => {
                         </p>
                     </Col>
                     <Col xs lg="1"></Col>
-                    <Col xs lg="3">
+                    <Col xs lg="5">
+                        <br />
+                        <br />
+                        <br />
                         <img src={img_houses} width={400} height={300} alt="" />
                     </Col>
-                    <Col xs lg="1"></Col>
                 </Row>
                 <Row className="">
                     <Col xs lg="1"></Col>
@@ -180,16 +185,11 @@ const Explore = () => {
 
             <Container className={`${mainStyles.fullWidth} ${mainStyles.tertiary} ${styles.TutorialBanner}`}>
                 <Row className="justify-content-md-center">
-                    <Col
-                        xs
-                        lg="12"
-                        style={{
-                            margin: "30px 0 20px"
-                        }}
-                    >
+                    <Col xs lg="12">
                         <h2
                             style={{
-                                fontSize: "30px"
+                                fontSize: "30px",
+                                padding: "10px 0 0 50px"
                             }}
                         >
                             <FMTrans k="tutorial.title" />
@@ -198,10 +198,9 @@ const Explore = () => {
                 </Row>
             </Container>
 
-            <Container className={styles.TutorialContent}>
+            <Container className={`${styles.TutorialContent} ${styles.NoMargin}`}>
                 <Row>
-                    <Col xs lg="1"></Col>
-                    <Col xs lg="10">
+                    <Col xs lg="12">
                         <br />
                         <h3>
                             <FMTrans k="explore.heading4" />
@@ -211,10 +210,8 @@ const Explore = () => {
                         </p>
                         <br />
                     </Col>
-                    <Col xs lg="1"></Col>
                 </Row>
                 <Row className="">
-                    <Col xs lg="1"></Col>
                     <Col
                         xs
                         lg="2"
@@ -246,7 +243,6 @@ const Explore = () => {
                             inverted={true}
                         />
                     </Col>
-                    <Col xs lg="1"></Col>
                 </Row>
             </Container>
         </div>
