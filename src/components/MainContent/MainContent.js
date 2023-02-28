@@ -35,7 +35,7 @@ const MainContent = () => {
     const dataProviders = useSelector(session.selectDataProviders) || []
     const auth0AccessToken = useSelector(session.selectAuth0AccessToken)
     const extendedUser = useSelector(session.selectExtendedUser)
-    const showAllComponents = isAuthenticated && extendedUser?.user_metadata?.show_tutorial !== true
+    const showTutorialInsteadOfDashboard = isAuthenticated && extendedUser?.user_metadata?.show_tutorial === true
     const modal = useSelector(session.selectModal)
 
     // Get extended user information
@@ -60,55 +60,56 @@ const MainContent = () => {
                 keyboard={false}
                 centered
             >
-                <Modal.Header>
-                    <Modal.Title>{modal?.heading}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>{modal?.text}</Modal.Body>
-                <Modal.Footer>
-                    <div style={{ flex: 1 }}></div>
-                    <FMButton
-                        link={undefined}
-                        label={modal?.ok || ""}
-                        onClick={() => {
-                            dispatch(setModal())
-                            if (modal?.onSuccess) {
-                                modal?.onSuccess()
-                            }
-                        }}
-                    />
-                    {modal?.cancel && (
+                <div class="modal-inner">
+                    <Modal.Header>
+                        <Modal.Title>{modal?.heading}</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>{modal?.text}</Modal.Body>
+                    <Modal.Footer>
+                        <div style={{ flex: 1 }}></div>
                         <FMButton
-                            primary={false}
                             link={undefined}
-                            label={modal?.cancel || ""}
+                            label={modal?.ok || ""}
                             onClick={() => {
                                 dispatch(setModal())
-                                if (modal?.onCancel) {
-                                    modal?.onCancel()
+                                if (modal?.onSuccess) {
+                                    modal?.onSuccess()
                                 }
                             }}
                         />
-                    )}
-                    <div style={{ flex: 1 }}></div>
-                </Modal.Footer>
+                        {modal?.cancel && (
+                            <FMButton
+                                primary={false}
+                                link={undefined}
+                                label={modal?.cancel || ""}
+                                onClick={() => {
+                                    dispatch(setModal())
+                                    if (modal?.onCancel) {
+                                        modal?.onCancel()
+                                    }
+                                }}
+                            />
+                        )}
+                        <div style={{ flex: 1 }}></div>
+                    </Modal.Footer>
+                </div>
             </Modal>
             <Routes>
-                <Route exact path="/" element={showAllComponents && <Sidebar />} />
+                <Route exact path="/" element={<Sidebar />} />
             </Routes>
             <div className={styles.MainContent} data-testid="MainContent">
                 <Routes>
+                    {/* Publicly accessible pages */}
+                    <Route exact path="/" element={<Intro />} />
                     <Route
-                        exact
-                        path="/"
+                        path="/dashboard"
                         element={
                             <>
-                                {!isAuthenticated && <Intro />}
-                                {showAllComponents && <Dashboard />}
-                                {isAuthenticated && extendedUser?.user_metadata?.show_tutorial === true && <Tutorial />}
+                                {!showTutorialInsteadOfDashboard && <Dashboard />}
+                                {showTutorialInsteadOfDashboard && <Tutorial />}
                             </>
                         }
                     />
-                    {/* Publicly accessible pages */}
                     <Route path={`/logged-out`} element={<LoggedOut reason="logout" />} />
                     <Route path={`/session-expired`} element={<LoggedOut reason="expired" />} />
                     <Route path={`/intro`} element={<Intro />} />
@@ -120,8 +121,6 @@ const MainContent = () => {
                     <Route path={`/subscriber-privacy`} element={<SubscriberPrivacy />} />
                     <Route path={`/register`} element={<Registration />} />
                     <Route path={`/terms`} element={<Terms />} />
-                    {/* Only accessible after login */}
-                    <Route path={`/profile`} element={<Profile />} />
                     <Route path={`/tutorial`} element={<Tutorial />} />
                     {dataProviders.map((dataProvider, i) => {
                         return (
@@ -132,6 +131,8 @@ const MainContent = () => {
                             />
                         )
                     })}
+                    {/* Only accessible after login */}
+                    <Route path={`/profile`} element={<Profile />} />
                 </Routes>
             </div>
         </>

@@ -16,7 +16,7 @@ root.render(
     <Auth0Provider
         domain={env.REACT_APP_AUTH0_DOMAIN}
         clientId={env.REACT_APP_AUTH0_CLIENT_ID_UI}
-        redirectUri={window.location.origin}
+        redirectUri={`${window.location.origin}/dashboard`}
         audience={"https://flowkit-ui-backend.flowminder.org"}
         // need to declare *all* possible scopes, see https://github.com/auth0/auth0-react/issues/183#issuecomment-758886856
         scope={"read:current_user update:current_user_metadata delete:current_user read:free_data read:premium_data"}

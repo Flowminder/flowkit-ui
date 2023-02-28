@@ -226,12 +226,18 @@ label.btn:hover {
 // Modals ======================================================================
 
 .modal-content {
-    border-radius: var(--border-radius) !important;
+    border-radius: var(--border-radius-outer) !important;
     background: var(--bg-tertiary);
 }
 .modal-content a {
     font-weight: bold;
     color: var(--quaternary) !important;
+}
+
+.modal-inner {
+    margin: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: var(--border-radius-inner);
 }
 
 .modal-header,

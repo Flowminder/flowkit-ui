@@ -34,11 +34,12 @@ import {
     setCurrentMinValue,
     setCurrentMaxValue,
     setRedrawKey,
-    setCurrentAvailableTimeRange
+    setCurrentAvailableTimeRange,
+    setModal
 } from "../../components/SessionArea/sessionSlice"
 import session from "../../components/SessionArea/sessionSlice.selectors"
 import util from "../../app/util"
-import { Unverified, Disconnected } from "../../components"
+import { Disconnected, FMTrans } from "../../components"
 import { GraphView, MapView, TableView } from "./views"
 import { Menu, CurrentTimeUnitSlider } from "./components"
 import img_world from "./img/world.png"
@@ -58,7 +59,7 @@ const colourScales = [
 const Dashboard = () => {
     const { t, i18n } = useTranslation()
     const dispatch = useDispatch()
-    const { isAuthenticated } = useAuth0()
+    const { isAuthenticated, loginWithRedirect } = useAuth0()
 
     const initialised = useRef(false)
 
@@ -100,12 +101,59 @@ const Dashboard = () => {
     const [indicatorName, setIndicatorName] = useState(undefined)
     const [indicatorDescription, setIndicatorDescription] = useState(undefined)
 
+    const unverified =
+        heartbeat && isAuthenticated && extendedUser !== undefined && extendedUser?.email_verified !== true
+    const unapproved =
+        heartbeat &&
+        isAuthenticated &&
+        extendedUser?.email_verified === true &&
+        !extendedUser?.app_metadata?.roles.includes("Free")
+    const approved =
+        heartbeat &&
+        isAuthenticated &&
+        extendedUser?.email_verified === true &&
+        extendedUser?.app_metadata?.roles.includes("Free")
+
     // scale, bins and other viz-related settings
     const [colourScale, setColourScale] = useState(colourScales[0])
 
     const getNextView = () => {
         return views[(views.indexOf(currentView) + 1) % views.length]
     }
+
+    // initialise modal. this will be shown only once upon page load.
+    useEffect(() => {
+        if (unapproved) {
+            dispatch(
+                setModal({
+                    heading: t("dashboard.unapproved1"),
+                    text: <FMTrans k="dashboard.unapproved2" />,
+                    ok: t("dashboard.wait_for_approval"),
+                    onSuccess: () => console.log("logout")
+                })
+            )
+        } else if (unverified) {
+            dispatch(
+                setModal({
+                    heading: t("dashboard.unverified1"),
+                    text: <FMTrans k="dashboard.unverified2" />,
+                    ok: t("dashboard.verify email"),
+                    onSuccess: () => console.log("logout")
+                })
+            )
+        } else {
+            dispatch(
+                setModal({
+                    heading: t("dashboard.logged_out1"),
+                    text: <FMTrans k="dashboard.logged_out2" />,
+                    ok: t("dashboard.login"),
+                    cancel: t("dashboard.register"),
+                    onSuccess: () => loginWithRedirect(),
+                    onCancel: () => console.log("send to signup")
+                })
+            )
+        }
+    }, [])
 
     // one-off getting of initial data which is then cached and reused
     useEffect(() => {
@@ -413,136 +461,116 @@ const Dashboard = () => {
     }, [i18n.language, currentIndicator])
 
     return (
-        <div className={`${styles.Dashboard} Dashboard`} data-testid="Dashboard">
+        <div
+            className={`${styles.Dashboard} Dashboard ${approved ? styles.approved : styles.unapproved}`}
+            data-testid="Dashboard"
+        >
             <div className={styles.Wrapper}>
                 {!heartbeat && <Disconnected />}
-                {isAuthenticated && extendedUser !== undefined && extendedUser?.email_verified !== true && (
-                    <Unverified />
-                )}
-                {isAuthenticated &&
-                    extendedUser?.email_verified === true &&
-                    !extendedUser?.app_metadata?.roles.includes("Free") && (
-                        <div>
-                            <h2>{t("dashboard.unapproved1")}</h2>
-                            <p>{t("dashboard.unapproved2")}</p>
-                        </div>
-                    )}
-                {isAuthenticated &&
-                    extendedUser?.email_verified === true &&
-                    extendedUser?.app_metadata?.roles.includes("Free") && (
-                        <>
-                            <Menu />
+                <Menu />
 
-                            <div className={styles.Content}>
-                                <div className={styles.MapInfo}>
-                                    <div className={styles.Description}>
-                                        <h2>
-                                            {t("dashboard.indicators_metrics")}: {indicatorName}
-                                        </h2>
-                                        <p>{indicatorDescription}</p>
+                <div className={styles.Content}>
+                    <div className={styles.MapInfo}>
+                        <div className={styles.Description}>
+                            <h2>
+                                {t("dashboard.indicators_metrics")}: {indicatorName}
+                            </h2>
+                            <p>{indicatorDescription}</p>
+                        </div>
+                        <div className={styles.Space}></div>
+                        <div className={styles.Buttons}>
+                            {currentCategory && currentIndicator && (
+                                <>
+                                    <div className={`${styles.Download} ${showDownloadBubble ? "" : styles.hidden}`}>
+                                        <span>{t("dashboard.download_all")}</span>
+                                        <span>{t("dashboard.download_selected")}</span>
                                     </div>
-                                    <div className={styles.Space}></div>
-                                    <div className={styles.Buttons}>
-                                        {currentCategory && currentIndicator && (
-                                            <>
-                                                <div
-                                                    className={`${styles.Download} ${
-                                                        showDownloadBubble ? "" : styles.hidden
-                                                    }`}
-                                                >
-                                                    <span>{t("dashboard.download_all")}</span>
-                                                    <span>{t("dashboard.download_selected")}</span>
-                                                </div>
-                                                <Button
-                                                    variant="secondary"
-                                                    onClick={() => setShowDownloadBubble(!showDownloadBubble)}
-                                                >
-                                                    {t("dashboard.download")}
-                                                </Button>
-                                                <div
-                                                    className={styles.MapToggle}
-                                                    title={`${t("dashboard.switch_to")} ${t(
-                                                        `dashboard.${getNextView()}_view`
-                                                    )}`}
-                                                    onClick={() => {
-                                                        const nextView = getNextView()
-                                                        console.debug(`Switching to "${nextView}" view`)
-                                                        setCurrentView(nextView)
-                                                        dispatch(setRedrawKey(uuidv4()))
-                                                    }}
-                                                >
-                                                    <img
-                                                        src={
-                                                            viewToggleCurrentImg === "map"
-                                                                ? img_world
-                                                                : viewToggleCurrentImg === "graph"
-                                                                ? img_graph
-                                                                : img_table
-                                                        }
-                                                        alt={
-                                                            viewToggleCurrentImg === "map"
-                                                                ? t("dashboard.map_view")
-                                                                : viewToggleCurrentImg === "graph"
-                                                                ? t("dashboard.graph_view")
-                                                                : t("dashboard.table_view")
-                                                        }
-                                                        onMouseEnter={() => setViewToggleCurrentImg(getNextView())}
-                                                        onMouseLeave={() => setViewToggleCurrentImg(currentView)}
-                                                    />
-                                                    <span>
-                                                        {viewToggleCurrentImg
-                                                            .split("_")
-                                                            .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-                                                            .join(" ")}
-                                                    </span>
-                                                </div>
-                                            </>
-                                        )}
+                                    <Button
+                                        variant="secondary"
+                                        onClick={() => setShowDownloadBubble(!showDownloadBubble)}
+                                    >
+                                        {t("dashboard.download")}
+                                    </Button>
+                                    <div
+                                        className={styles.MapToggle}
+                                        title={`${t("dashboard.switch_to")} ${t(`dashboard.${getNextView()}_view`)}`}
+                                        onClick={() => {
+                                            const nextView = getNextView()
+                                            console.debug(`Switching to "${nextView}" view`)
+                                            setCurrentView(nextView)
+                                            dispatch(setRedrawKey(uuidv4()))
+                                        }}
+                                    >
+                                        <img
+                                            src={
+                                                viewToggleCurrentImg === "map"
+                                                    ? img_world
+                                                    : viewToggleCurrentImg === "graph"
+                                                    ? img_graph
+                                                    : img_table
+                                            }
+                                            alt={
+                                                viewToggleCurrentImg === "map"
+                                                    ? t("dashboard.map_view")
+                                                    : viewToggleCurrentImg === "graph"
+                                                    ? t("dashboard.graph_view")
+                                                    : t("dashboard.table_view")
+                                            }
+                                            onMouseEnter={() => setViewToggleCurrentImg(getNextView())}
+                                            onMouseLeave={() => setViewToggleCurrentImg(currentView)}
+                                        />
+                                        <span>
+                                            {viewToggleCurrentImg
+                                                .split("_")
+                                                .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+                                                .join(" ")}
+                                        </span>
                                     </div>
-                                </div>
-                                {currentView === "map" && (
-                                    <MapView
-                                        type={currentCategory?.type}
-                                        boundaries={currentBoundaries}
-                                        timeRange={currentAvailableTimeRange}
-                                        selectedTimeEntity={selectedTimeEntity}
-                                        indicator={currentIndicator}
-                                        decimals={currentIndicator?.decimals}
-                                        minValue={currentMinValue}
-                                        maxValue={currentMaxValue}
-                                        data={currentData}
-                                        redrawKey={redrawKey}
-                                        colourScale={colourScale?.scale}
-                                    />
-                                )}
-                                {currentView === "graph" && (
-                                    <GraphView
-                                        type={currentCategory?.type}
-                                        timeRange={currentAvailableTimeRange}
-                                        selectedTimeEntity={selectedTimeEntity}
-                                        data={currentData}
-                                        currentSpatialResolution={currentSpatialResolution}
-                                        spatialEntities={currentBoundaries?.features.map(f => f.properties) || []}
-                                        labels={currentLabels}
-                                        decimals={currentIndicator?.decimals}
-                                        minValue={currentMinValue}
-                                        maxValue={currentMaxValue}
-                                        colourScale={colourScale?.scale}
-                                    />
-                                )}
-                                {currentView === "table" && (
-                                    <TableView
-                                        type={currentCategory?.type}
-                                        timeRange={currentAvailableTimeRange}
-                                        selectedTimeEntity={selectedTimeEntity}
-                                        data={currentData}
-                                        labels={currentLabels}
-                                    />
-                                )}
-                                <CurrentTimeUnitSlider />
-                            </div>
-                        </>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                    {currentView === "map" && (
+                        <MapView
+                            type={currentCategory?.type}
+                            boundaries={currentBoundaries}
+                            timeRange={currentAvailableTimeRange}
+                            selectedTimeEntity={selectedTimeEntity}
+                            indicator={currentIndicator}
+                            decimals={currentIndicator?.decimals}
+                            minValue={currentMinValue}
+                            maxValue={currentMaxValue}
+                            data={currentData}
+                            redrawKey={redrawKey}
+                            colourScale={colourScale?.scale}
+                        />
                     )}
+                    {currentView === "graph" && (
+                        <GraphView
+                            type={currentCategory?.type}
+                            timeRange={currentAvailableTimeRange}
+                            selectedTimeEntity={selectedTimeEntity}
+                            data={currentData}
+                            currentSpatialResolution={currentSpatialResolution}
+                            spatialEntities={currentBoundaries?.features.map(f => f.properties) || []}
+                            labels={currentLabels}
+                            decimals={currentIndicator?.decimals}
+                            minValue={currentMinValue}
+                            maxValue={currentMaxValue}
+                            colourScale={colourScale?.scale}
+                        />
+                    )}
+                    {currentView === "table" && (
+                        <TableView
+                            type={currentCategory?.type}
+                            timeRange={currentAvailableTimeRange}
+                            selectedTimeEntity={selectedTimeEntity}
+                            data={currentData}
+                            labels={currentLabels}
+                        />
+                    )}
+                    <CurrentTimeUnitSlider />
+                </div>
             </div>
             <div className={styles.bottomBar}>
                 <span className={styles.BackendConnection}>

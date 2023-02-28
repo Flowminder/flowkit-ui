@@ -72,11 +72,9 @@ const Banner = () => {
                 <Link className={styles.BannerLink} to="/explore">
                     {t("menu.explore")}
                 </Link>
-                {isAuthenticated && (
-                    <Link className={styles.BannerLink} to="/">
-                        {t("menu.dashboard")}
-                    </Link>
-                )}
+                <Link className={styles.BannerLink} to="/dashboard">
+                    {t("menu.dashboard")}
+                </Link>
                 <div className={styles.LanguageButtons}>
                     {languages.map(l => {
                         i18n.loadLanguages(l)
