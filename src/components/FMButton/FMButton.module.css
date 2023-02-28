@@ -13,7 +13,7 @@
 .FMButton a button {
     width: 100% !important;
     display: block;
-    border-radius: 8px !important;
+    border-radius: 5px !important;
     margin: 0 !important;
 }
 
@@ -28,7 +28,7 @@
     border: none;
     margin: 0 !important;
     display: inline-block;
-    border-radius: 8px !important;
+    border-radius: 5px !important;
 }
 
 .FMButton.primary {
