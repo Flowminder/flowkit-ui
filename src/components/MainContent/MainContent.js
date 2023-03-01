@@ -95,7 +95,7 @@ const MainContent = () => {
                 </div>
             </Modal>
             <Routes>
-                <Route exact path="/" element={<Sidebar />} />
+                <Route exact path="/dashboard" element={<Sidebar />} />
             </Routes>
             <div className={styles.MainContent} data-testid="MainContent">
                 <Routes>
