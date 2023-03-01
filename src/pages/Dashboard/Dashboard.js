@@ -123,6 +123,17 @@ const Dashboard = () => {
         return views[(views.indexOf(currentView) + 1) % views.length]
     }
 
+    // dismiss modal for authenticated users
+    useEffect(() => {
+        if (!isAuthenticated) {
+            return
+        }
+        const dismissModal = async () => {
+            dispatch(setModal(undefined))
+        }
+        dismissModal()
+    }, [isAuthenticated])
+
     // initialise modal. this will be shown only once upon page load.
     useEffect(() => {
         if (unapproved) {
@@ -143,7 +154,7 @@ const Dashboard = () => {
                     onSuccess: () => logout({ returnTo: `${window.location.origin}/logged-out` })
                 })
             )
-        } else {
+        } else if (!isAuthenticated) {
             dispatch(
                 setModal({
                     heading: t("dashboard.logged_out1"),
