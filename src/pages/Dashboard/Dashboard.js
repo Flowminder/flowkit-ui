@@ -48,6 +48,7 @@ import img_table from "./img/table.png"
 import img_online from "./img/online.svg"
 import img_offline from "./img/offline.svg"
 import env from "../../app/env"
+import { useNavigate } from "react-router-dom"
 
 // Scales are build-time environment variables
 const colourScales = [
@@ -59,7 +60,8 @@ const colourScales = [
 const Dashboard = () => {
     const { t, i18n } = useTranslation()
     const dispatch = useDispatch()
-    const { isAuthenticated, loginWithRedirect } = useAuth0()
+    const navigate = useNavigate()
+    const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
 
     const initialised = useRef(false)
 
@@ -129,7 +131,7 @@ const Dashboard = () => {
                     heading: t("dashboard.unapproved1"),
                     text: <FMTrans k="dashboard.unapproved2" />,
                     ok: t("dashboard.wait_for_approval"),
-                    onSuccess: () => console.log("logout")
+                    onSuccess: () => logout({ returnTo: `${window.location.origin}/logged-out` })
                 })
             )
         } else if (unverified) {
@@ -138,7 +140,7 @@ const Dashboard = () => {
                     heading: t("dashboard.unverified1"),
                     text: <FMTrans k="dashboard.unverified2" />,
                     ok: t("dashboard.verify email"),
-                    onSuccess: () => console.log("logout")
+                    onSuccess: () => logout({ returnTo: `${window.location.origin}/logged-out` })
                 })
             )
         } else {
@@ -149,7 +151,7 @@ const Dashboard = () => {
                     ok: t("dashboard.login"),
                     cancel: t("dashboard.register"),
                     onSuccess: () => loginWithRedirect(),
-                    onCancel: () => console.log("send to signup")
+                    onCancel: () => navigate("/register")
                 })
             )
         }
@@ -467,7 +469,7 @@ const Dashboard = () => {
         >
             <div className={styles.Wrapper}>
                 {!heartbeat && <Disconnected />}
-                <Menu />
+                <Menu collapsed={!approved} />
 
                 <div className={styles.Content}>
                     <div className={styles.MapInfo}>

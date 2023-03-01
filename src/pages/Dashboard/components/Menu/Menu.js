@@ -22,7 +22,7 @@ import {
 import session from "../../../../components/SessionArea/sessionSlice.selectors"
 import { FMSlider, FMSelect } from "../../../../components"
 
-const Menu = () => {
+const Menu = ({ collapsed = false }) => {
     const { t, i18n } = useTranslation()
     const dispatch = useDispatch()
 
@@ -50,7 +50,7 @@ const Menu = () => {
     return (
         <div className={styles.Menu} data-testid="Menu">
             <div className={styles.MenuItem}>
-                <Accordion defaultActiveKey="0" flush>
+                <Accordion defaultActiveKey={collapsed ? undefined : "0"} flush>
                     <Accordion.Item eventKey="0" className={styles.AccordionItem}>
                         <Accordion.Header>{t("dashboard.indicators_metrics")}</Accordion.Header>
                         <Accordion.Body>
