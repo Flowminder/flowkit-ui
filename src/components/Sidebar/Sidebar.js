@@ -10,6 +10,7 @@ import { ToggleButton } from "react-bootstrap"
 import { useTranslation } from "react-i18next"
 import img_info from "./img/info.svg"
 import "./Sidebar.scss"
+import { FMButton } from "../"
 import session from "../../components/SessionArea/sessionSlice.selectors"
 
 const Sidebar = () => {
@@ -71,12 +72,23 @@ const Sidebar = () => {
                             />
                             <br />
                             {currentIndicator && (
-                                <p>
-                                    {t("sidebar.flowgeek_text")}
-                                    <a href={currentIndicator.flowgeek_url} target="_blank" rel="noreferrer">
-                                        Flowgeek
-                                    </a>
-                                </p>
+                                <>
+                                    <p>
+                                        {t("sidebar.flowgeek_text")}
+                                        <a href="https://www.flowgeek.org/" target="_blank" rel="noreferrer">
+                                            FlowGeek
+                                        </a>
+                                        :
+                                    </p>
+                                    <br />
+                                    <FMButton
+                                        primary={false}
+                                        outline={true}
+                                        className={styles.SidebarButton}
+                                        link={currentIndicator.flowgeek_url}
+                                        label={t("sidebar.read_more")}
+                                    />
+                                </>
                             )}
                         </>
                     )}

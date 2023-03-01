@@ -32,7 +32,8 @@
     "sidebar": {
         "loading_guidance": "Vous trouverez ici les méthodes utilisées pour calculer l'indicateur. Veuillez sélectionner un indicateur pour continuer.",
         "info": "Aperçu de la méthode",
-        "flowgeek_text": "Pour plus d'informations, s'il vous plaît visitez "
+        "flowgeek_text": "Pour plus d'informations, s'il vous plaît visitez ",
+        "read_more": "En savoir plus"
     },
     "dashboard": {
         "dashboard": "Haiti Mobility Data Dashboard",

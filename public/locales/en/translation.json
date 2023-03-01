@@ -32,7 +32,8 @@
     "sidebar": {
         "loading_guidance": "Here you can read about the methods that were used to compute the indicator.\n\nPlease select an indicator to continue.",
         "info": "Method Overview",
-        "flowgeek_text": "For more information please visit "
+        "flowgeek_text": "For more information please visit ",
+        "read_more": "Read more"
     },
     "dashboard": {
         "dashboard": "Haiti Mobility Data Dashboard",
