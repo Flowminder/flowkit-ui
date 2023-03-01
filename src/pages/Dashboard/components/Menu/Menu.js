@@ -1,7 +1,7 @@
 // This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import React, { forwardRef } from "react"
+import React, { forwardRef, useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import styles from "./Menu.module.css"
 import util from "../../../../app/util"
@@ -41,16 +41,28 @@ const Menu = ({ collapsed = false }) => {
     const currentMinValue = useSelector(session.selectCurrentMinValue)
     const currentMaxValue = useSelector(session.selectCurrentMaxValue)
 
+    const [activeKey, setActiveKey] = useState(!collapsed ? "0" : undefined)
+
     const DateRangeInput = forwardRef(({ value, onClick }, ref) => (
         <button className={styles.datePicker} onClick={onClick} ref={ref}>
             {value}
         </button>
     ))
 
+    useEffect(() => {
+        setActiveKey(!collapsed ? ["0"] : undefined)
+    }, [collapsed])
+
     return (
         <div className={styles.Menu} data-testid="Menu">
             <div className={styles.MenuItem}>
-                <Accordion defaultActiveKey={collapsed ? undefined : "0"} flush>
+                <Accordion
+                    activeKey={activeKey}
+                    onSelect={eventKey => {
+                        setActiveKey(eventKey)
+                    }}
+                    flush
+                >
                     <Accordion.Item eventKey="0" className={styles.AccordionItem}>
                         <Accordion.Header>{t("dashboard.indicators_metrics")}</Accordion.Header>
                         <Accordion.Body>

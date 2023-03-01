@@ -118,17 +118,19 @@ const Dashboard = () => {
 
     // scale, bins and other viz-related settings
     const [colourScale, setColourScale] = useState(colourScales[0])
+    const [showMenu, setShowMenu] = useState(approved)
 
     const getNextView = () => {
         return views[(views.indexOf(currentView) + 1) % views.length]
     }
 
-    // dismiss modal for authenticated users
+    // dismiss modal for authenticated users and expand indicators menu
     useEffect(() => {
         if (!isAuthenticated) {
             return
         }
         const dismissModal = async () => {
+            setShowMenu(true)
             dispatch(setModal(undefined))
         }
         dismissModal()
@@ -480,7 +482,7 @@ const Dashboard = () => {
         >
             <div className={styles.Wrapper}>
                 {!heartbeat && <Disconnected />}
-                <Menu collapsed={!approved} />
+                <Menu collapsed={!showMenu} />
 
                 <div className={styles.Content}>
                     <div className={styles.MapInfo}>
