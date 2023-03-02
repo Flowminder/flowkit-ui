@@ -73,6 +73,7 @@ code {
 b,
 strong {
     font-weight: bold !important;
+    font-family: var(--font-control) !important;
 }
 
 a,
@@ -240,11 +241,27 @@ label.btn:hover {
     border-radius: var(--border-radius-inner);
 }
 
+.modal-title {
+    font-size: 20px !important;
+}
+
 .modal-header,
 .modal-body,
 .modal-footer {
     border: none !important;
-    text-align: center;
+    text-align: left;
+}
+
+.modal-body ul {
+    list-style: none;
+    margin: 10px 0 0;
+}
+.modal-body ul li::before {
+    content: "\25AA";
+    color: var(--tertiary);
+    display: inline-block;
+    width: 1em;
+    margin: 0 10px 5px -20px;
 }
 
 .modal-title {
