@@ -61,8 +61,8 @@ const Registration = () => {
                         link={undefined}
                         label={t("register.back")}
                         primary={false}
-                        outline={false}
-                        inverted={true}
+                        outline={true}
+                        inverted={false}
                         inactive={currentStage === 0}
                         onClick={() => {
                             if (currentStage > 0) {
@@ -74,7 +74,7 @@ const Registration = () => {
                         link={stages[currentStage]?.link}
                         label={stages[currentStage]?.nextLabel || t("register.next")}
                         primary={true}
-                        outline={true}
+                        outline={false}
                         inactive={currentStage >= stages.length || nextPageEnabled !== true}
                         form={stages[currentStage]?.form}
                         onClick={() => {

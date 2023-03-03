@@ -80,6 +80,7 @@ const MainContent = () => {
                         {modal?.cancel && (
                             <FMButton
                                 primary={false}
+                                outline={true}
                                 link={undefined}
                                 label={modal?.cancel || ""}
                                 onClick={() => {
