@@ -69,6 +69,7 @@ const Explore = () => {
                         }}
                     >
                         <FMButton
+                            className={styles.CenteredButton}
                             link={isAuthenticated ? "/" : "/register"}
                             label={t("explore.access_dashboard")}
                             primary={false}
@@ -84,6 +85,7 @@ const Explore = () => {
                         }}
                     >
                         <FMButton
+                            className={styles.CenteredButton}
                             link={"/tutorial"}
                             label={t("explore.access_tutorial")}
                             primary={true}
@@ -159,8 +161,8 @@ const Explore = () => {
                         <FMButton
                             link={isAuthenticated ? "/" : "/register"}
                             label={t("explore.access_data")}
-                            primary={false}
-                            outline={true}
+                            primary={true}
+                            outline={false}
                         />
                     </Col>
                     <Col
@@ -176,7 +178,7 @@ const Explore = () => {
                             label={t("explore.access_tutorial")}
                             primary={false}
                             outline={true}
-                            inverted={true}
+                            inverted={false}
                         />
                     </Col>
                     <Col xs lg="1"></Col>
@@ -223,8 +225,8 @@ const Explore = () => {
                         <FMButton
                             link={"/tutorial"}
                             label={t("explore.access_tutorial")}
-                            primary={false}
-                            outline={true}
+                            primary={true}
+                            outline={false}
                         />
                     </Col>
                     <Col
@@ -240,7 +242,7 @@ const Explore = () => {
                             label={t("explore.create_account")}
                             primary={false}
                             outline={true}
-                            inverted={true}
+                            inverted={false}
                         />
                     </Col>
                 </Row>

@@ -16,11 +16,20 @@
     font-size: 14px;
 }
 
+.Pricing th.tableHeader h2 {
+    margin: 10px 0 0 !important;
+}
+
 .Pricing th.tableHeader button,
 .Pricing th.tableHeader a {
     background: var(--white) !important;
     border: none !important;
     color: var(--dark) !important;
+}
+
+.Pricing .Button {
+    border-color: var(--white) !important;
+    margin: 0 auto;
 }
 
 .Pricing td {

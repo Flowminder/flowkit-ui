@@ -62,10 +62,12 @@ const Pricing = () => {
                                             <FMTrans k="pricing.text_free" />
                                         </p>
                                         <FMButton
+                                            className={styles.Button}
                                             link="/register"
                                             label={t("pricing.get_started")}
                                             primary={true}
                                             outline={false}
+                                            inverted={false}
                                         />
                                     </th>
                                     <th className={`${styles.tableHeader} ${mainStyles.tertiary} ${mainStyles.opaque}`}>
@@ -76,6 +78,7 @@ const Pricing = () => {
                                             <FMTrans k="pricing.text_pro" />
                                         </p>
                                         <FMButton
+                                            className={styles.Button}
                                             link="/register"
                                             label={t("pricing.get_started")}
                                             primary={true}
@@ -176,9 +179,7 @@ const Pricing = () => {
                     <Col xs lg="8">
                         <br />
                         <br />
-                        <h2>
-                            <FMTrans k="pricing.heading3" />
-                        </h2>
+                        <h2>{t("pricing.heading3")}</h2>
                         <p>
                             <FMTrans k="pricing.text3" />
                         </p>

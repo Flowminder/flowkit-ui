@@ -41,3 +41,7 @@
 .Explore .NoMargin {
     margin: 0 !important;
 }
+
+.Explore .CenteredButton {
+    margin: 0 auto !important;
+}

@@ -7,14 +7,16 @@
     margin: 0 10px;
     border-radius: 9px !important;
     border: 2px solid var(--white);
+    width: fit-content;
 }
 
 .FMButton a,
 .FMButton a button {
-    width: 100% !important;
+    width: auto !important;
     display: block;
-    border-radius: 5px !important;
+    border-radius: 6px !important;
     margin: 0 !important;
+    padding: 0 10px;
 }
 
 .FMButton button,
@@ -28,7 +30,6 @@
     border: none;
     margin: 0 !important;
     display: inline-block;
-    border-radius: 5px !important;
 }
 
 .FMButton.primary {
@@ -45,8 +46,7 @@
     border-color: var(--primary);
 }
 
-.FMButton a:hover,
-.FMButton button:hover {
+.FMButton a:hover {
     filter: brightness(95%) !important;
 }
 
