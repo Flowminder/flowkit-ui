@@ -1,7 +1,7 @@
 // This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import styles from "./MainContent.module.css"
 import session from "../SessionArea/sessionSlice.selectors"
@@ -25,7 +25,7 @@ import {
     LoggedOut
 } from "../../pages/index"
 import { Sidebar, FMButton } from "../"
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, UNSAFE_NavigationContext } from "react-router-dom"
 import Modal from "react-bootstrap/Modal"
 
 const MainContent = () => {
@@ -37,6 +37,27 @@ const MainContent = () => {
     const extendedUser = useSelector(session.selectExtendedUser)
     const showTutorialInsteadOfDashboard = isAuthenticated && extendedUser?.user_metadata?.show_tutorial === true
     const modal = useSelector(session.selectModal)
+
+    const useBackListener = callback => {
+        const navigator = useContext(UNSAFE_NavigationContext).navigator
+
+        useEffect(() => {
+            const listener = ({ location, action }) => {
+                if (action === "POP") {
+                    callback({ location, action })
+                }
+            }
+
+            const unlisten = navigator.listen(listener)
+            return unlisten
+        }, [callback, navigator])
+    }
+
+    useBackListener(({ location }) => {
+        // Clearing modal in case the back button was hit.
+        // This is necessary because the dashboard modal is otherwise still displayed when navigating away instead of dismissing it.
+        dispatch(setModal())
+    })
 
     // Get extended user information
     useEffect(() => {
