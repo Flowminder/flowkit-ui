@@ -12,10 +12,8 @@ import SessionArea from "../SessionArea/SessionArea"
 import img_fm from "./img/fmlogo.png"
 import img_arrow from "./img/arrow.svg"
 import env from "../../app/env"
-import { useAuth0 } from "@auth0/auth0-react"
 
 const Banner = () => {
-    const { isAuthenticated } = useAuth0()
     const { t, i18n } = useTranslation()
     const languages = (i18n?.store?.data ? Object.keys(i18n?.store?.data) : undefined) || []
 
