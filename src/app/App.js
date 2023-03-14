@@ -6,7 +6,7 @@ import "./App.scss"
 import { useTranslation } from "react-i18next"
 import React, { useRef, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { Banner, NotificationArea, MainContent, Footer } from "../components"
+import { Banner, NotificationArea, MainContent, Footer, ScrollToTop } from "../components"
 import LoadingOverlay from "fork-victorvhn-react-loading-overlay"
 import {
     setAuth0IdToken,
@@ -93,6 +93,7 @@ function App() {
 
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <div className="App">
                 <Banner />
                 <LoadingOverlay
