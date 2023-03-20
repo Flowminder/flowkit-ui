@@ -82,7 +82,7 @@ const Start = ({ next }) => {
                                 outline={true}
                                 onClick={() => {
                                     storeMetadata()
-                                    navigate("/")
+                                    navigate("/dashboard")
                                 }}
                                 className={styles.ExploreButton}
                             />
