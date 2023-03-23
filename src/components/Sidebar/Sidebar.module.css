@@ -15,6 +15,10 @@
     margin: 0;
 }
 
+.Sidebar .SidebarButton a {
+    background: var(--quaternary) !important;
+}
+
 .Sidebar .SidebarButton a button {
     background: var(--quaternary) !important;
     color: var(--white) !important;
