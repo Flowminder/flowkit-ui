@@ -482,110 +482,120 @@ const Dashboard = () => {
         >
             <div className={styles.Wrapper}>
                 {!heartbeat && <Disconnected />}
-                <Menu collapsed={!showMenu} />
+                {heartbeat && (
+                    <>
+                        <Menu collapsed={!showMenu} />
 
-                <div className={styles.Content}>
-                    <div className={styles.MapInfo}>
-                        <div className={styles.Description}>
-                            <h2>
-                                {t("dashboard.indicators_metrics")}: {indicatorName}
-                            </h2>
-                            <p>{indicatorDescription}</p>
-                        </div>
-                        <div className={styles.Space}></div>
-                        <div className={styles.Buttons}>
-                            {currentCategory && currentIndicator && (
-                                <>
-                                    <div className={`${styles.Download} ${showDownloadBubble ? "" : styles.hidden}`}>
-                                        <span>{t("dashboard.download_all")}</span>
-                                        <span>{t("dashboard.download_selected")}</span>
-                                    </div>
-                                    <Button
-                                        variant="secondary"
-                                        onClick={() => setShowDownloadBubble(!showDownloadBubble)}
-                                    >
-                                        {t("dashboard.download")}
-                                    </Button>
-                                    <div
-                                        className={styles.MapToggle}
-                                        title={`${t("dashboard.switch_to")} ${t(`dashboard.${getNextView()}_view`)}`}
-                                        onClick={() => {
-                                            const nextView = getNextView()
-                                            console.debug(`Switching to "${nextView}" view`)
-                                            setCurrentView(nextView)
-                                            dispatch(setRedrawKey(uuidv4()))
-                                        }}
-                                    >
-                                        <img
-                                            src={
-                                                viewToggleCurrentImg === "map"
-                                                    ? img_world
-                                                    : viewToggleCurrentImg === "graph"
-                                                    ? img_graph
-                                                    : img_table
-                                            }
-                                            alt={
-                                                viewToggleCurrentImg === "map"
-                                                    ? t("dashboard.map_view")
-                                                    : viewToggleCurrentImg === "graph"
-                                                    ? t("dashboard.graph_view")
-                                                    : t("dashboard.table_view")
-                                            }
-                                            onMouseEnter={() => setViewToggleCurrentImg(getNextView())}
-                                            onMouseLeave={() => setViewToggleCurrentImg(currentView)}
-                                        />
-                                        <span>
-                                            {viewToggleCurrentImg
-                                                .split("_")
-                                                .map(w => w.charAt(0).toUpperCase() + w.slice(1))
-                                                .join(" ")}
-                                        </span>
-                                    </div>
-                                </>
+                        <div className={styles.Content}>
+                            <div className={styles.MapInfo}>
+                                <div className={styles.Description}>
+                                    <h2>
+                                        {t("dashboard.indicators_metrics")}: {indicatorName}
+                                    </h2>
+                                    <p>{indicatorDescription}</p>
+                                </div>
+                                <div className={styles.Space}></div>
+                                <div className={styles.Buttons}>
+                                    {currentCategory && currentIndicator && (
+                                        <>
+                                            <div
+                                                className={`${styles.Download} ${
+                                                    showDownloadBubble ? "" : styles.hidden
+                                                }`}
+                                            >
+                                                <span>{t("dashboard.download_all")}</span>
+                                                <span>{t("dashboard.download_selected")}</span>
+                                            </div>
+                                            <Button
+                                                variant="secondary"
+                                                onClick={() => setShowDownloadBubble(!showDownloadBubble)}
+                                            >
+                                                {t("dashboard.download")}
+                                            </Button>
+                                            <div
+                                                className={styles.MapToggle}
+                                                title={`${t("dashboard.switch_to")} ${t(
+                                                    `dashboard.${getNextView()}_view`
+                                                )}`}
+                                                onClick={() => {
+                                                    const nextView = getNextView()
+                                                    console.debug(`Switching to "${nextView}" view`)
+                                                    setCurrentView(nextView)
+                                                    dispatch(setRedrawKey(uuidv4()))
+                                                }}
+                                            >
+                                                <img
+                                                    src={
+                                                        viewToggleCurrentImg === "map"
+                                                            ? img_world
+                                                            : viewToggleCurrentImg === "graph"
+                                                            ? img_graph
+                                                            : img_table
+                                                    }
+                                                    alt={
+                                                        viewToggleCurrentImg === "map"
+                                                            ? t("dashboard.map_view")
+                                                            : viewToggleCurrentImg === "graph"
+                                                            ? t("dashboard.graph_view")
+                                                            : t("dashboard.table_view")
+                                                    }
+                                                    onMouseEnter={() => setViewToggleCurrentImg(getNextView())}
+                                                    onMouseLeave={() => setViewToggleCurrentImg(currentView)}
+                                                />
+                                                <span>
+                                                    {viewToggleCurrentImg
+                                                        .split("_")
+                                                        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+                                                        .join(" ")}
+                                                </span>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+                            {currentView === "map" && (
+                                <MapView
+                                    type={currentCategory?.type}
+                                    boundaries={currentBoundaries}
+                                    timeRange={currentAvailableTimeRange}
+                                    selectedTimeEntity={selectedTimeEntity}
+                                    indicator={currentIndicator}
+                                    decimals={currentIndicator?.decimals}
+                                    minValue={currentMinValue}
+                                    maxValue={currentMaxValue}
+                                    data={currentData}
+                                    redrawKey={redrawKey}
+                                    colourScale={colourScale?.scale}
+                                />
                             )}
+                            {currentView === "graph" && (
+                                <GraphView
+                                    type={currentCategory?.type}
+                                    timeRange={currentAvailableTimeRange}
+                                    selectedTimeEntity={selectedTimeEntity}
+                                    data={currentData}
+                                    currentSpatialResolution={currentSpatialResolution}
+                                    spatialEntities={currentBoundaries?.features.map(f => f.properties) || []}
+                                    labels={currentLabels}
+                                    decimals={currentIndicator?.decimals}
+                                    minValue={currentMinValue}
+                                    maxValue={currentMaxValue}
+                                    colourScale={colourScale?.scale}
+                                />
+                            )}
+                            {currentView === "table" && (
+                                <TableView
+                                    type={currentCategory?.type}
+                                    timeRange={currentAvailableTimeRange}
+                                    selectedTimeEntity={selectedTimeEntity}
+                                    data={currentData}
+                                    labels={currentLabels}
+                                />
+                            )}
+                            <CurrentTimeUnitSlider />
                         </div>
-                    </div>
-                    {currentView === "map" && (
-                        <MapView
-                            type={currentCategory?.type}
-                            boundaries={currentBoundaries}
-                            timeRange={currentAvailableTimeRange}
-                            selectedTimeEntity={selectedTimeEntity}
-                            indicator={currentIndicator}
-                            decimals={currentIndicator?.decimals}
-                            minValue={currentMinValue}
-                            maxValue={currentMaxValue}
-                            data={currentData}
-                            redrawKey={redrawKey}
-                            colourScale={colourScale?.scale}
-                        />
-                    )}
-                    {currentView === "graph" && (
-                        <GraphView
-                            type={currentCategory?.type}
-                            timeRange={currentAvailableTimeRange}
-                            selectedTimeEntity={selectedTimeEntity}
-                            data={currentData}
-                            currentSpatialResolution={currentSpatialResolution}
-                            spatialEntities={currentBoundaries?.features.map(f => f.properties) || []}
-                            labels={currentLabels}
-                            decimals={currentIndicator?.decimals}
-                            minValue={currentMinValue}
-                            maxValue={currentMaxValue}
-                            colourScale={colourScale?.scale}
-                        />
-                    )}
-                    {currentView === "table" && (
-                        <TableView
-                            type={currentCategory?.type}
-                            timeRange={currentAvailableTimeRange}
-                            selectedTimeEntity={selectedTimeEntity}
-                            data={currentData}
-                            labels={currentLabels}
-                        />
-                    )}
-                    <CurrentTimeUnitSlider />
-                </div>
+                    </>
+                )}
             </div>
             <div className={styles.bottomBar}>
                 <span className={styles.BackendConnection}>
