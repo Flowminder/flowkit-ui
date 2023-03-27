@@ -158,12 +158,7 @@ const Explore = () => {
                             padding: 0
                         }}
                     >
-                        <FMButton
-                            link={isAuthenticated ? "/" : "/register"}
-                            label={t("explore.access_data")}
-                            primary={true}
-                            outline={false}
-                        />
+                        <FMButton link={"/dashboard"} label={t("explore.access_data")} primary={true} outline={false} />
                     </Col>
                     <Col
                         xs
