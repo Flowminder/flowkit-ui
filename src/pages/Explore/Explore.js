@@ -232,13 +232,15 @@ const Explore = () => {
                             padding: 0
                         }}
                     >
-                        <FMButton
-                            link={isAuthenticated ? "/" : "/register"}
-                            label={t("explore.create_account")}
-                            primary={false}
-                            outline={true}
-                            inverted={false}
-                        />
+                        {!isAuthenticated && (
+                            <FMButton
+                                link={"/register"}
+                                label={t("explore.create_account")}
+                                primary={false}
+                                outline={true}
+                                inverted={false}
+                            />
+                        )}
                     </Col>
                 </Row>
             </Container>
