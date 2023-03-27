@@ -70,7 +70,7 @@ const Explore = () => {
                     >
                         <FMButton
                             className={styles.CenteredButton}
-                            link={isAuthenticated ? "/" : "/register"}
+                            link={"/dashboard"}
                             label={t("explore.access_dashboard")}
                             primary={false}
                             outline={false}
