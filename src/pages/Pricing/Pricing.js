@@ -2,6 +2,7 @@
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import React from "react"
+import "./Pricing.scss"
 import styles from "./Pricing.module.css"
 import mainStyles from "../../components/MainContent/MainContent.module.css"
 import { useTranslation } from "react-i18next"
@@ -17,7 +18,7 @@ const Pricing = () => {
     const { t } = useTranslation()
 
     return (
-        <div className={styles.Pricing} data-testid="Pricing">
+        <div className={`Pricing ${styles.Pricing}`} data-testid="Pricing">
             <h1>{t("pricing.title")}</h1>
 
             <Container>
