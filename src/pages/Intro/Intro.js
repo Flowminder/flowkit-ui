@@ -26,13 +26,14 @@ const Intro = () => {
                     <Col
                         xs={4}
                         className={`${mainStyles.primary} ${mainStyles.noPadding}`}
-                        style={{ padding: "50px 0 0" }}
+                        style={{ padding: "50px 0 0!important" }}
                     >
+                        <br />
                         <h2>
                             <FMTrans k="intro.heading1" />
                         </h2>
-                        <div className={mainStyles.opaque} style={{ padding: "0 20px 20px" }}>
-                            <FMTrans k="intro.text1" />
+                        <div className={mainStyles.opaque}>
+                            <FMTrans k="intro.text1" style={{ margin: "20px" }} />
                         </div>
                         <div className={styles.buttons}>
                             <FMButton link="/register" label={t("intro.signup")} primary={false} outline={false} />
@@ -51,6 +52,7 @@ const Intro = () => {
                                     padding: "60px 0 30px"
                                 }}
                             >
+                                <br />
                                 <iframe
                                     src={t("explore.video_url")}
                                     frameBorder="0"
@@ -70,6 +72,8 @@ const Intro = () => {
                                     }}
                                 />
                             </div>
+                            <br />
+                            <br />
                             <div className={styles.buttons}>
                                 <FMButton link="/explore" label={t("intro.explore")} primary={true} outline={false} />
                             </div>

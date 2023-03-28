@@ -5,4 +5,9 @@
 
 .FMTrans {
     display: inline-block;
+    margin: 0;
+}
+
+.FMTrans p {
+    margin: 0 !important;
 }
