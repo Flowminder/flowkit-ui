@@ -39,6 +39,10 @@
     background-image: none;
 }
 
+.About .partnerBox div {
+    margin: 0 auto;
+}
+
 .About .DataProviderLogo {
     width: 70%;
     height: 170px;
