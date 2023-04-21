@@ -14,7 +14,7 @@
 .FMButton a button {
     width: auto !important;
     display: block;
-    border-radius: 6px !important;
+    border-radius: 4px !important;
     margin: 0 !important;
     padding: 0 10px;
 }
