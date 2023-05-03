@@ -4,18 +4,6 @@ import tutorialStyles from "../../Tutorial.module.css"
 import mainStyles from "../../../../components/MainContent/MainContent.module.css"
 import { Container, Row, Col, Accordion } from "react-bootstrap"
 import img_dashboard from "./img/dashboard.jpg"
-import img_access_1 from "./img/accessing_the_dashboard_1.png"
-import img_access_2 from "./img/accessing_the_dashboard_2.png"
-import img_param_choice_1 from "./img/choosing_the_parameters_1.png"
-import img_param_choice_2 from "./img/choosing_the_parameters_2.png"
-import img_param_choice_3 from "./img/choosing_the_parameters_3.png"
-import img_select_1 from "./img/selecting_the_indicators_1.png"
-import img_select_2 from "./img/selecting_the_indicators_2.png"
-import img_understanding_1 from "./img/understanding_the_indicators_1.png"
-import img_understanding_2 from "./img/understanding_the_indicators_2.png"
-import img_understanding_3 from "./img/understanding_the_indicators_3.png"
-import img_visualising_1 from "./img/visualising_the_data_1.png"
-
 import { useTranslation } from "react-i18next"
 import { FMTrans } from "../../../../components"
 
@@ -92,17 +80,9 @@ const Dashboard = () => {
             <p>
                 <FMTrans k="tutorial.dashboard_text1" />
             </p>
-            <Container className={tutorialStyles.Pictures}>
-                <Row>
-                    <Col>
-                        <img src={img_access_1} alt="" />
-                    </Col>
-                    <Col>
-                        <img src={img_access_2} alt="" />
-                    </Col>
-                </Row>
-            </Container>
-
+            <div className={tutorialStyles.Pictures}>
+                <div></div>
+            </div>
             <br />
 
             <h2 id="dashboard_heading2">
@@ -112,16 +92,7 @@ const Dashboard = () => {
                 <FMTrans k="tutorial.dashboard_text2" />
             </p>
             <div className={tutorialStyles.Pictures}>
-                <Container className={tutorialStyles.Pictures}>
-                    <Row>
-                        <Col>
-                            <img src={img_select_1} alt="" />
-                        </Col>
-                        <Col>
-                            <img src={img_select_2} alt="" />
-                        </Col>
-                    </Row>
-                </Container>
+                <div></div>
             </div>
             <br />
 
@@ -132,19 +103,8 @@ const Dashboard = () => {
                 <FMTrans k="tutorial.dashboard_text3" />
             </p>
             <div className={tutorialStyles.Pictures}>
-                <Container className={tutorialStyles.Pictures}>
-                    <Row>
-                        <Col>
-                            <img src={img_param_choice_1} alt="" />
-                        </Col>
-                        <Col>
-                            <img src={img_param_choice_2} alt="" />
-                        </Col>
-                        <Col>
-                            <img src={img_param_choice_3} alt="" />
-                        </Col>
-                    </Row>
-                </Container>
+                <div></div>
+                <div></div>
             </div>
             <br />
 
@@ -155,19 +115,7 @@ const Dashboard = () => {
                 <FMTrans k="tutorial.dashboard_text4" />
             </p>
             <div className={tutorialStyles.Pictures}>
-                <Container className={tutorialStyles.Pictures}>
-                    <Row>
-                        <Col>
-                            <img src={img_understanding_1} alt="" />
-                        </Col>
-                        <Col>
-                            <img src={img_understanding_2} alt="" />
-                        </Col>
-                        <Col>
-                            <img src={img_understanding_3} alt="" />
-                        </Col>
-                    </Row>
-                </Container>
+                <div></div>
             </div>
             <br />
 
@@ -178,13 +126,7 @@ const Dashboard = () => {
                 <FMTrans k="tutorial.dashboard_text5" />
             </p>
             <div className={tutorialStyles.Pictures}>
-                <Container>
-                    <Row>
-                        <Col>
-                            <img src={img_visualising_1} alt="" />
-                        </Col>
-                    </Row>
-                </Container>
+                <div></div>
             </div>
             <br />
 
