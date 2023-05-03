@@ -73,11 +73,17 @@
 
 .Tutorial .Pictures {
     display: flex;
-    gap: 20px;
+    gap: 50px;
 }
 
-.Tutorial .Pictures div {
-    background: var(--medium);
-    height: 200px;
-    width: 100%;
+.Tutorial .Pictures Container {
+    border: 20px;
+    flex-direction: row;
+}
+
+.Tutorial .Pictures img {
+    margin: 5px;
+    min-width: 200px;
+    max-width: 650px;
+    min-height: 100px;
 }
