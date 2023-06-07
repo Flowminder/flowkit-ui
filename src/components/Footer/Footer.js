@@ -10,6 +10,7 @@ import session from "../SessionArea/sessionSlice.selectors"
 import img_fm from "./img/fmlogo.png"
 import img_afd from "./img/afd.svg"
 import img_hewlett from "./img/hewlett.svg"
+import img_fdfa from "./img/fdfa.png"
 import { FMTrans } from "../"
 
 const Footer = () => {
@@ -45,6 +46,9 @@ const Footer = () => {
                     </a>
                     <a href="https://hewlett.org/" target="_blank" rel="noreferrer">
                         <img src={img_hewlett} className={styles.DonorLogo} alt={"hewlett.org"} />
+                    </a>
+                    <a href="https://www.eda.admin.ch/eda/en/home.html/" target="_blank" rel="noreferrer">
+                        <img src={img_fdfa} className={styles.DonorLogo} alt={"eda.admin.ch"} />
                     </a>
                 </p>
                 <FMTrans k="footer.flowgeek" />
