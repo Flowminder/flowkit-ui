@@ -2,7 +2,7 @@ import React from "react"
 import styles from "./Dashboard.module.css"
 import tutorialStyles from "../../Tutorial.module.css"
 import mainStyles from "../../../../components/MainContent/MainContent.module.css"
-import { Container, Row, Col, Accordion } from "react-bootstrap"
+import { Container, Row, Col, Accordion, Image } from "react-bootstrap"
 import img_dashboard from "./img/dashboard.jpg"
 import img_access_1 from "./img/accessing_the_dashboard_1.png"
 import img_access_2 from "./img/accessing_the_dashboard_2.png"
@@ -23,7 +23,7 @@ const Dashboard = () => {
     const { t } = useTranslation()
 
     return (
-        <div className={styles.Dashboard} data-testid="Dashboard">
+        <Container className={styles.Dashboard} data-testid="Dashboard">
             <br />
             <Container>
                 <Row>
@@ -37,7 +37,7 @@ const Dashboard = () => {
                     </Col>
                     <Col xs lg="2"></Col>
                     <Col xs lg="4">
-                        <div className={styles.VerificationBox}>
+                        <Container className={styles.VerificationBox}>
                             <Accordion className="AccountSetup" defaultActiveKey="0">
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header>
@@ -48,7 +48,7 @@ const Dashboard = () => {
                                     </Accordion.Body>
                                 </Accordion.Item>
                             </Accordion>
-                        </div>
+                        </Container>
                     </Col>
                 </Row>
             </Container>
@@ -56,7 +56,7 @@ const Dashboard = () => {
 
             <Container className={`${mainStyles.fullWidth} ${mainStyles.pageNav}`}>
                 <Row>
-                    <Col xs lg="8">
+                    <Col xs>
                         <h2>{t("tutorial.sections_links")}</h2>
                         <ul>
                             <li>
@@ -79,8 +79,8 @@ const Dashboard = () => {
                             </li>
                         </ul>
                     </Col>
-                    <Col xs lg="4" style={{ display: "flex", flexDirection: "column" }}>
-                        <img src={img_dashboard} width="400px" alt="" style={{ flex: "1" }} />
+                    <Col xs>
+                        <Image src={img_dashboard} width="600px" alt="" />
                     </Col>
                 </Row>
             </Container>
@@ -194,7 +194,7 @@ const Dashboard = () => {
             <p>
                 <FMTrans k="tutorial.dashboard_text6" />
             </p>
-        </div>
+        </Container>
     )
 }
 
