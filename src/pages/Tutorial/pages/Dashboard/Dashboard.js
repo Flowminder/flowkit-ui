@@ -63,7 +63,7 @@ const Dashboard = () => {
                                 <a href="#dashboard_heading1">{t("tutorial.dashboard_heading1")}</a>
                             </li>
                             <li>
-                                <a href="#dashboard_heading2">{t("tutorial.dashboard_heading3")}</a>
+                                <a href="#dashboard_heading2">{t("tutorial.dashboard_heading2")}</a>
                             </li>
                             <li>
                                 <a href="#dashboard_heading3">{t("tutorial.dashboard_heading3")}</a>
