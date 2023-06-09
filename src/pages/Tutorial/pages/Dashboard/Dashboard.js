@@ -37,8 +37,8 @@ const Dashboard = () => {
                     </Col>
                     <Col xs lg="2"></Col>
                     <Col xs lg="4">
-                        <Container className={styles.VerificationBox}>
-                            <Accordion className="AccountSetup" defaultActiveKey="0">
+                        <Container>
+                            <Accordion defaultActiveKey="0" flush="true">
                                 <Accordion.Item eventKey="0">
                                     <Accordion.Header>
                                         <FMTrans k="tutorial.dashboard_heading_box" />
@@ -54,7 +54,7 @@ const Dashboard = () => {
             </Container>
             <br />
 
-            <Container className={`${mainStyles.fullWidth} ${mainStyles.pageNav}`}>
+            <Container className={`${mainStyles.pageNav}`}>
                 <Row>
                     <Col xs>
                         <h2>{t("tutorial.sections_links")}</h2>
