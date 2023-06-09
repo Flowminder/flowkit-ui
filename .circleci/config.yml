@@ -70,7 +70,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "d9:69:66:8a:97:f4:e7:3c:49:d7:61:ad:88:5d:ae:62"
+            - "65:69:69:6a:d2:9e:92:12:b0:dc:26:24:70:3f:f0:04"
       - run:
           name: Create known hosts file
           command: |
