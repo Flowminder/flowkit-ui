@@ -124,6 +124,18 @@ const Dashboard = () => {
         return views[(views.indexOf(currentView) + 1) % views.length]
     }
 
+    const downloadCSV = () => {
+        console.log("downloading CSV")
+        const element = document.createElement("a")
+        const csv_string = api.csv(auth0AccessToken)
+        const file = new Blob(csv_string, {
+            type: "text/plain"
+        })
+        element.href = URL.createObjectURL(file)
+        element.download = "data.csv"
+        document.body.appendChild(element)
+        element.click()
+    }
     // dismiss modal for authenticated users and expand indicators menu
     useEffect(() => {
         if (!isAuthenticated) {
@@ -506,10 +518,7 @@ const Dashboard = () => {
                                                 <span>{t("dashboard.download_all")}</span>
                                                 <span>{t("dashboard.download_selected")}</span>
                                             </div>
-                                            <Button
-                                                variant="secondary"
-                                                onClick={() => setShowDownloadBubble(!showDownloadBubble)}
-                                            >
+                                            <Button variant="secondary" onClick={() => downloadCSV()}>
                                                 {t("dashboard.download")}
                                             </Button>
                                             <div

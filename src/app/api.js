@@ -232,6 +232,25 @@ const api = {
                 console.error(error)
                 return false
             })
+    },
+    csv: async (access_token, query_parameters) => {
+        return await axios(`${url}/csv`, {
+            method: "POST",
+            headers: {
+                authorization: `BEARER ${access_token}`,
+                "Content-Type": "application/json",
+                // allow caching of data
+                "Cache-Control": "private"
+            },
+            data: query_parameters
+        })
+            .then(response => {
+                return response?.data
+            })
+            .catch(error => {
+                console.error(error)
+                return false
+            })
     }
 }
 
