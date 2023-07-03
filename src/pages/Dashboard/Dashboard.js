@@ -124,11 +124,20 @@ const Dashboard = () => {
         return views[(views.indexOf(currentView) + 1) % views.length]
     }
 
-    const downloadCSV = () => {
+    const downloadCSV = async () => {
         console.log("downloading CSV")
         const element = document.createElement("a")
-        const csv_string = api.csv(auth0AccessToken)
-        const file = new Blob(csv_string, {
+        const query_parameters = {
+            category_id: currentIndicator.category_id,
+            indicator_id: currentIndicator.indicator_id,
+            srid: currentSpatialResolution.srid,
+            trid: currentTemporalResolution.trid,
+            start_date: currentAvailableTimeRange[0],
+            duration: 1
+        }
+
+        const csv_string = await api.csv(auth0AccessToken, query_parameters)
+        const file = new Blob([csv_string], {
             type: "text/plain"
         })
         element.href = URL.createObjectURL(file)
