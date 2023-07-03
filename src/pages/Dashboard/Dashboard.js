@@ -97,7 +97,6 @@ const Dashboard = () => {
     const redrawKey = useSelector(session.selectRedrawKey)
 
     // local state
-    const [showDownloadBubble, setShowDownloadBubble] = useState(false)
     const [currentView, setCurrentView] = useState(views[0])
     const [viewToggleCurrentImg, setViewToggleCurrentImg] = useState(views[0])
     const [indicatorName, setIndicatorName] = useState(undefined)
@@ -133,7 +132,7 @@ const Dashboard = () => {
             srid: currentSpatialResolution.srid,
             trid: currentTemporalResolution.trid,
             start_date: currentAvailableTimeRange[0],
-            duration: 1
+            duration: currentAvailableTimeRange.length
         }
 
         const csv_string = await api.csv(auth0AccessToken, query_parameters)
@@ -519,14 +518,6 @@ const Dashboard = () => {
                                 <div className={styles.Buttons}>
                                     {currentCategory && currentIndicator && (
                                         <>
-                                            <div
-                                                className={`${styles.Download} ${
-                                                    showDownloadBubble ? "" : styles.hidden
-                                                }`}
-                                            >
-                                                <span>{t("dashboard.download_all")}</span>
-                                                <span>{t("dashboard.download_selected")}</span>
-                                            </div>
                                             <Button variant="secondary" onClick={() => downloadCSV()}>
                                                 {t("dashboard.download")}
                                             </Button>
