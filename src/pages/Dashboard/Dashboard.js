@@ -144,6 +144,8 @@ const Dashboard = () => {
         element.download = "data.csv"
         document.body.appendChild(element)
         element.click()
+        document.body.removeChild(element)
+        URL.revokeObjectURL(element.href)
     }
     // dismiss modal for authenticated users and expand indicators menu
     useEffect(() => {
