@@ -31,4 +31,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vscode
-cypress/*
+cypress/videos/*
+cypress/screenshots/*
