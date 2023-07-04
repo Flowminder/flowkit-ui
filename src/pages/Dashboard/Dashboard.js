@@ -140,6 +140,7 @@ const Dashboard = () => {
             type: "text/plain"
         })
         element.href = URL.createObjectURL(file)
+        //TODO: generate filename from params
         element.download = "data.csv"
         document.body.appendChild(element)
         element.click()
