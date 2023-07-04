@@ -106,7 +106,7 @@ const Dashboard = () => {
             </h2>
             <p>
                 <FMTrans k="tutorial.dashboard_text2" />
-            </p>{" "}
+            </p>
             <div className={tutorialStyles.Pictures}>
                 <Container className={tutorialStyles.Pictures}>
                     <Row>
