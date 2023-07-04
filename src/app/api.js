@@ -242,7 +242,8 @@ const api = {
                 // allow caching of data
                 "Cache-Control": "private"
             },
-            data: query_parameters
+            data: query_parameters,
+            responseType: "blob"
         })
             .then(response => {
                 return response?.data
