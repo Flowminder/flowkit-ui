@@ -134,14 +134,16 @@ const Dashboard = () => {
             start_date: currentAvailableTimeRange[0],
             duration: currentAvailableTimeRange.length
         }
+        debugger
 
         const csv_string = await api.csv(auth0AccessToken, query_parameters)
         const file = new Blob([csv_string], {
             type: "text/plain"
         })
         element.href = URL.createObjectURL(file)
-        //TODO: generate filename from params
-        element.download = "data.csv"
+        element.download = `${currentIndicator.category_id}_${currentAvailableTimeRange[0]}_${
+            currentAvailableTimeRange[currentAvailableTimeRange.length - 1]
+        }.csv`
         document.body.appendChild(element)
         element.click()
         document.body.removeChild(element)
