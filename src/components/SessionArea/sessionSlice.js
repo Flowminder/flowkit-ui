@@ -46,6 +46,7 @@ export const initialState = {
         email: undefined,
         org: undefined,
         industry: undefined,
+        plan: "free",
         purpose: undefined,
         terms: false,
         no_harm: false,
