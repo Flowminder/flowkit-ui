@@ -53,7 +53,6 @@ const Dashboard = () => {
                 </Row>
             </Container>
             <br />
-
             <Container className={`${mainStyles.pageNav}`}>
                 <Row>
                     <Col xs>
@@ -85,7 +84,6 @@ const Dashboard = () => {
                 </Row>
             </Container>
             <br />
-
             <h2 id="dashboard_heading1">
                 <FMTrans k="tutorial.dashboard_heading1" />
             </h2>
@@ -102,9 +100,7 @@ const Dashboard = () => {
                     </Col>
                 </Row>
             </Container>
-
             <br />
-
             <h2 id="dashboard_heading2">
                 <FMTrans k="tutorial.dashboard_heading2" />
             </h2>
@@ -124,7 +120,6 @@ const Dashboard = () => {
                 </Container>
             </div>
             <br />
-
             <h2 id="dashboard_heading3">
                 <FMTrans k="tutorial.dashboard_heading3" />
             </h2>
@@ -147,7 +142,6 @@ const Dashboard = () => {
                 </Container>
             </div>
             <br />
-
             <h2 id="dashboard_heading4">
                 <FMTrans k="tutorial.dashboard_heading4" />
             </h2>
@@ -170,7 +164,6 @@ const Dashboard = () => {
                 </Container>
             </div>
             <br />
-
             <h2 id="dashboard_heading5">
                 <FMTrans k="tutorial.dashboard_heading5" />
             </h2>
@@ -187,7 +180,6 @@ const Dashboard = () => {
                 </Container>
             </div>
             <br />
-
             <h2 id="dashboard_heading6">
                 <FMTrans k="tutorial.dashboard_heading6" />
             </h2>

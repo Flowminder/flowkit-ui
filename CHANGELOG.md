@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Added an initial implementation of data downloading, which gets CSVs for the currently selected indicator and time range.
 
 ### Changed
 

@@ -97,7 +97,6 @@ const Dashboard = () => {
     const redrawKey = useSelector(session.selectRedrawKey)
 
     // local state
-    const [showDownloadBubble, setShowDownloadBubble] = useState(false)
     const [currentView, setCurrentView] = useState(views[0])
     const [viewToggleCurrentImg, setViewToggleCurrentImg] = useState(views[0])
     const [indicatorName, setIndicatorName] = useState(undefined)
@@ -124,6 +123,29 @@ const Dashboard = () => {
         return views[(views.indexOf(currentView) + 1) % views.length]
     }
 
+    const downloadCSV = async () => {
+        console.log("downloading CSV")
+        const element = document.createElement("a")
+        const query_parameters = {
+            category_id: currentIndicator.category_id,
+            indicator_id: currentIndicator.indicator_id,
+            srid: currentSpatialResolution.srid,
+            trid: currentTemporalResolution.trid,
+            start_date: currentAvailableTimeRange[0],
+            duration: currentAvailableTimeRange.length
+        }
+
+        const csv_string = await api.csv(auth0AccessToken, query_parameters)
+        const file = new Blob([csv_string], {
+            type: "text/plain"
+        })
+        element.href = URL.createObjectURL(file)
+        element.download = `${currentIndicator.category_id}_${currentAvailableTimeRange[0]}_${
+            currentAvailableTimeRange[currentAvailableTimeRange.length - 1]
+        }.csv`
+        element.click()
+        URL.revokeObjectURL(element.href)
+    }
     // dismiss modal for authenticated users and expand indicators menu
     useEffect(() => {
         if (!isAuthenticated) {
@@ -498,18 +520,7 @@ const Dashboard = () => {
                                 <div className={styles.Buttons}>
                                     {currentCategory && currentIndicator && (
                                         <>
-                                            <div
-                                                className={`${styles.Download} ${
-                                                    showDownloadBubble ? "" : styles.hidden
-                                                }`}
-                                            >
-                                                <span>{t("dashboard.download_all")}</span>
-                                                <span>{t("dashboard.download_selected")}</span>
-                                            </div>
-                                            <Button
-                                                variant="secondary"
-                                                onClick={() => setShowDownloadBubble(!showDownloadBubble)}
-                                            >
+                                            <Button variant="secondary" onClick={() => downloadCSV()}>
                                                 {t("dashboard.download")}
                                             </Button>
                                             <div
