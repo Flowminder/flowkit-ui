@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Added an initial implementation of data downloading, which gets CSVs for the currently selected indicator and time range.
+- Added a plan type option to registration, so users can indicate whether they want to sign up for premium access at registration.
 
 ### Changed
 
