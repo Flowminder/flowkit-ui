@@ -143,9 +143,7 @@ const Dashboard = () => {
         element.download = `${currentIndicator.category_id}_${currentAvailableTimeRange[0]}_${
             currentAvailableTimeRange[currentAvailableTimeRange.length - 1]
         }.csv`
-        document.body.appendChild(element)
         element.click()
-        document.body.removeChild(element)
         URL.revokeObjectURL(element.href)
     }
     // dismiss modal for authenticated users and expand indicators menu
