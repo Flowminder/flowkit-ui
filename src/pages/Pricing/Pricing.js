@@ -31,14 +31,6 @@ const Pricing = () => {
                             <FMTrans k="pricing.text1" />
                         </p>
                     </Col>
-                    <Col>
-                        <h2>
-                            <FMTrans k="pricing.heading2" />
-                        </h2>
-                        <p>
-                            <FMTrans k="pricing.text2" />
-                        </p>
-                    </Col>
                 </Row>
             </Container>
             <br />
@@ -194,27 +186,8 @@ const Pricing = () => {
                         </Table>
                     </Col>
                 </Row>
-            </Container>
-            <br />
-            <br />
-            <Container className={mainStyles.fullWidth}>
-                <Row className={`justify-content-md-center ${mainStyles.secondary}`}>
-                    <Col xs lg="8">
-                        <br />
-                        <br />
-                        <h2>{t("pricing.heading3")}</h2>
-                        <p>
-                            <FMTrans k="pricing.text3" />
-                        </p>
-                        <br />
-                        <br />
-                    </Col>
-                    <Col xs lg="1">
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
+                <Row>
+                    <Col xs={1}>
                         <FMButton link="/register" label={t("pricing.button3")} primary={true} outline={false} />
                     </Col>
                 </Row>

@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update plans page to show that free accounts get access to all indicators, but over a limited time period.
 
 ### Removed
+- Removed demo mode indicators from plans page and top bar
 
 ### Fixed
 - Scales with fixed bounds now correctly use the bounds
