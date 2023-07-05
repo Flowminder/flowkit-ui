@@ -243,7 +243,7 @@ const api = {
                 "Cache-Control": "private"
             },
             data: query_parameters,
-            responseType: "blob"
+            responseType: "text"
         })
             .then(response => {
                 return response?.data
