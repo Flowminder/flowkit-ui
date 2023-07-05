@@ -134,7 +134,6 @@ const Dashboard = () => {
             start_date: currentAvailableTimeRange[0],
             duration: currentAvailableTimeRange.length
         }
-        debugger
 
         const csv_string = await api.csv(auth0AccessToken, query_parameters)
         const file = new Blob([csv_string], {
