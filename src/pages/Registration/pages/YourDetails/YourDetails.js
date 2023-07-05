@@ -162,6 +162,25 @@ const YourDetails = ({ enableNextPage = enabled => {}, gotoNextPage }) => {
                     </InputGroup>
                 </Form.Group>
 
+                <h2>{t("register.plan")}</h2>
+
+                <Form.Group className={styles.FormGroup} controlId="plan">
+                    <Form.Label>{t("register.plan_text")}*</Form.Label>
+                    <InputGroup hasValidation>
+                        <Form.Select
+                            required
+                            readOnly={submitted}
+                            rows={1}
+                            value={signupCache.plan}
+                            onChange={e => dispatch(setSignupCache(["plan", e.target.value]))}
+                        >
+                            <option value="free">{t("register.plan_free")}</option>
+                            <option value="premium">{t("register.plan_premium")}</option>
+                        </Form.Select>
+                    </InputGroup>
+                    <FMTrans k="register.premium_plan_text" />
+                </Form.Group>
+
                 <h2>{t("register.purpose")}</h2>
 
                 <Form.Group className={styles.FormGroup} controlId="purpose">

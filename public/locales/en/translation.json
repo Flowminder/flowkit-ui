@@ -146,8 +146,12 @@
         "text02": "This means that your registration will only be complete after we have checked and approved your details.",
         "text03": "This step is necessary to ensure only approved users get access.\n\nThe reason for this is that our data are compiled using both\n\n*commercially-sensitive* and *personal data*.",
         "text04": "This data originates from Digicel Haiti and is subject to strict licensing terms.\n\nVetting users ensures that all of the data are used responsibly.",
-
         "text05": "In addition to the standard [terms & conditions](/terms) and [privacy policy](/privacy), we also provide an easy-to-understand version of both documents.\n\nWe explain in both what data we collect, process and how it is used.\n\nYou can easily switch between the two versions of the page themselves.",
+        "plan":"Plan",
+        "plan_text": "Please select your plan / account type:",
+        "plan_free": "Free",
+        "plan_premium": "Premium*",
+        "premium_plan_text":"*Please note that premium accounts are not granted straight away. We will contact you via email to initiate the process. Premium accounts are granted to users upon validation, the user's signature of the T&Cs, and payment of the subscription fee.",
         "about_yourself": "About yourself",
         "first_name": "First name",
         "first_name_error": "What's your first name?",

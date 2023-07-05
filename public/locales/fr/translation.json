@@ -146,8 +146,12 @@
         "text02": "Cela signifie que votre inscription ne sera complète qu'après que nous ayons vérifié et approuvé vos données.",
         "text03": "Cette étape est nécessaire pour s'assurer que seuls les utilisateurs approuvés obtiennent un accès.\n\nCeci est lié au fait que nos données sont compilées en utilisant à la fois des données **commercialement sensibles** et des **données personnelles**.",
         "text04": "Ces données proviennent de Digicel Haïti et sont soumises à des conditions de licence strictes. La vérification des utilisateurs garantit que toutes les données sont utilisées de manière responsable.",
-
         "text05": "En plus des [conditions générales](/terms) et de la [politique de confidentialité](/privacy) standard, nous fournissons également une version simplifiée des deux documents. Nous expliquons dans les deux cas quelles sont les données que nous collectons, traitons et comment elles sont utilisées.",
+        "plan":"Plan",
+        "plan_text": "Veuillez choisir votre plan / type de compte:",
+        "plan_free": "Gratuit",
+        "plan_premium": "Premium*",
+        "premium_plan_text":"*Veuillez noter que les comptes premium ne sont pas accordés immédiatement. Nous vous contacterons par courrier électronique pour lancer le processus. Les comptes premium sont accordés aux utilisateurs après validation, signature des CGU par l'utilisateur et paiement des frais d'abonnement.",
         "about_yourself": "Sur vous-même",
         "first_name": "Prénom",
         "first_name_error": "Quel est votre prénom ?",
