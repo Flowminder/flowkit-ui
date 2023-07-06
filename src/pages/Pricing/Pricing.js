@@ -175,19 +175,6 @@ const Pricing = () => {
                                 <tr>
                                     <td>
                                         <span>
-                                            <FMTrans k="pricing.data_3" />
-                                        </span>
-                                    </td>
-                                    <td></td>
-                                    <td>
-                                        <img src={tick_turquoise} alt="✅" />
-                                        <br />
-                                        <FMTrans k="pricing.premium_update_frequency" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>
                                             <FMTrans k="pricing.data_4" />
                                         </span>
                                     </td>
