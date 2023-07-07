@@ -8,7 +8,8 @@
     background: var(--fg);
     margin-bottom: 10px;
     position: relative;
-    z-index: 999;
+    /*So this is over the top of the modal*/
+    z-index: 99999;
     padding: 10px 0 10px 50px;
     display: flex;
 }
