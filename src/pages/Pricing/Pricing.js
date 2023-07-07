@@ -91,58 +91,17 @@ const Pricing = () => {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <span>
-                                            <FMTrans k="pricing.feature1" />
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <img src={tick_yellow} alt="✅" />
-                                    </td>
-                                    <td>
-                                        <img src={tick_turquoise} alt="✅" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>
-                                            <FMTrans k="pricing.feature2" />
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <img src={tick_yellow} alt="✅" />
-                                    </td>
-                                    <td>
-                                        <img src={tick_turquoise} alt="✅" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>
-                                            <FMTrans k="pricing.feature3" />
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <img src={tick_yellow} alt="✅" />
-                                    </td>
-                                    <td>
-                                        <img src={tick_turquoise} alt="✅" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span>
-                                            <FMTrans k="pricing.feature4" />
-                                        </span>
+                                        <h3>
+                                            <FMTrans k="pricing.functionality_header" />
+                                        </h3>
                                     </td>
                                     <td></td>
-                                    <td>
-                                        <img src={tick_turquoise} alt="✅" />
-                                    </td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <span>
-                                            <FMTrans k="pricing.feature5" />
+                                            <FMTrans k="pricing.functionality_1" />
                                         </span>
                                     </td>
                                     <td>
@@ -155,12 +114,75 @@ const Pricing = () => {
                                 <tr>
                                     <td>
                                         <span>
-                                            <FMTrans k="pricing.feature6" />
+                                            <FMTrans k="pricing.functionality_2" />
                                         </span>
                                     </td>
-                                    <td></td>
+                                    <td>
+                                        <img src={tick_yellow} alt="✅" />
+                                    </td>
                                     <td>
                                         <img src={tick_turquoise} alt="✅" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>
+                                            <FMTrans k="pricing.functionality_3" />
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <img src={tick_yellow} alt="✅" />
+                                    </td>
+                                    <td>
+                                        <img src={tick_turquoise} alt="✅" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h3>
+                                            <FMTrans k="pricing.data_header" />
+                                        </h3>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>
+                                            <FMTrans k="pricing.data_1" />
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <img src={tick_yellow} alt="✅" />
+                                    </td>
+                                    <td>
+                                        <img src={tick_turquoise} alt="✅" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>
+                                            <FMTrans k="pricing.data_2" />
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <FMTrans k="pricing.data_2_free_timespan" />
+                                    </td>
+                                    <td>
+                                        <FMTrans k="pricing.data_2_premium_timespan" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>
+                                            <FMTrans k="pricing.data_4" />
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <FMTrans k="pricing.available_resolution" />
+                                    </td>
+                                    <td>
+                                        <FMTrans k="pricing.available_resolution" />
                                     </td>
                                 </tr>
                                 <tr>
