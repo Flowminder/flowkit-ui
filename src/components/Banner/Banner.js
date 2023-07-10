@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux"
 import styles from "./Banner.module.css"
 import i18next from "i18next"
 import { useTranslation } from "react-i18next"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import session from "../SessionArea/sessionSlice.selectors"
 import SessionArea from "../SessionArea/SessionArea"
 import { setModal } from "../SessionArea/sessionSlice"
@@ -17,23 +17,23 @@ import env from "../../app/env"
 const Banner = () => {
     const { t, i18n } = useTranslation()
     const languages = (i18n?.store?.data ? Object.keys(i18n?.store?.data) : undefined) || []
+    const location = useLocation()
 
     const dataProviders = useSelector(session.selectDataProviders) || []
     const dispatch = useDispatch()
-    const [activePage, setActivePage] = useState("initial")
 
     // If modal is up, dismiss modal
     useEffect(() => {
-        console.debug("activePage:", activePage)
-        if (activePage !== "dashboard") {
+        console.debug("location: ", location)
+        if (location?.pathname !== "/dashboard") {
             dispatch(setModal(undefined))
         }
-    }, [activePage])
+    }, [location])
 
     return (
         <div className={styles.Banner} data-testid="Banner">
             <div className={styles.BannerLeft}>
-                <Link to="/" onClick={() => setActivePage("home")}>
+                <Link to="/">
                     <img src={img_fm} className={styles.FlowminderLogo} alt={"Flowminder.org"} />
                     {dataProviders.map((dataProvider, i) => (
                         <img
@@ -49,50 +49,39 @@ const Banner = () => {
             <div className={styles.BannerRight}>
                 <SessionArea />
                 <div className={styles.BannerLink}>
-                    <Link to="/about" onClick={() => setActivePage("about")}>
-                        {t("menu.about")}
-                    </Link>
+                    <Link to="/about">{t("menu.about")}</Link>
                     <img src={img_arrow} className={styles.Arrow} alt={"v"} />
                     <ul className={styles.Dropdown}>
                         <li>
-                            <Link to="/about" onClick={() => setActivePage("about")}>
-                                {t("menu.about_platform")}
-                            </Link>
+                            <Link to="/about">{t("menu.about_platform")}</Link>
                         </li>
                         <li>
                             <Link
                                 to="/files/HTI-mobility-data-platform_Description-Indicators_Nov22.pdf"
                                 rel="noreferrer"
                                 target="_blank"
-                                onClick={() => setActivePage("about")}
                             >
                                 {`${t("menu.about_indicators")} [pdf]`}
                             </Link>
                         </li>
                         <li>
-                            <Link to="/terms" onClick={() => setActivePage("about")}>
-                                {t("terms.title")}
-                            </Link>
+                            <Link to="/terms">{t("terms.title")}</Link>
                         </li>
                         <li>
-                            <Link to="/privacy" onClick={() => setActivePage("about")}>
-                                {t("privacy.title")}
-                            </Link>
+                            <Link to="/privacy">{t("privacy.title")}</Link>
                         </li>
                         <li>
-                            <Link to="/subscriber-privacy" onClick={() => setActivePage("about")}>
-                                {t("sub_privacy.title")}
-                            </Link>
+                            <Link to="/subscriber-privacy">{t("sub_privacy.title")}</Link>
                         </li>
                     </ul>
                 </div>
-                <Link className={styles.BannerLink} to="/pricing" onClick={() => setActivePage("pricing")}>
+                <Link className={styles.BannerLink} to="/pricing">
                     {t("menu.pricing")}
                 </Link>
-                <Link className={styles.BannerLink} to="/explore" onClick={() => setActivePage("explore")}>
+                <Link className={styles.BannerLink} to="/explore">
                     {t("menu.explore")}
                 </Link>
-                <Link className={styles.BannerLink} to="/dashboard" onClick={() => setActivePage("dashboard")}>
+                <Link className={styles.BannerLink} to="/dashboard">
                     {t("menu.dashboard")}
                 </Link>
                 <div className={styles.LanguageButtons}>
@@ -100,7 +89,7 @@ const Banner = () => {
                         i18n.loadLanguages(l)
                         const fixedT = i18next.getFixedT(l)
                         return (
-                            <button key={l} title={fixedT("language.tooltip")} onClick={() => i18n.changeLanguage(l)}>
+                            <button key={l} title={fixedT("language.tooltip")}>
                                 <img
                                     src={`${process.env.PUBLIC_URL}/img/${fixedT("language.flag")}.svg`}
                                     alt={fixedT("language.flag")}
