@@ -1,14 +1,15 @@
 // This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import React from "react"
-import { useSelector } from "react-redux"
+import React, { useEffect, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import styles from "./Banner.module.css"
 import i18next from "i18next"
 import { useTranslation } from "react-i18next"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import session from "../SessionArea/sessionSlice.selectors"
 import SessionArea from "../SessionArea/SessionArea"
+import { setModal } from "../SessionArea/sessionSlice"
 import img_fm from "./img/fmlogo.png"
 import img_arrow from "./img/arrow.svg"
 import env from "../../app/env"
@@ -16,8 +17,18 @@ import env from "../../app/env"
 const Banner = () => {
     const { t, i18n } = useTranslation()
     const languages = (i18n?.store?.data ? Object.keys(i18n?.store?.data) : undefined) || []
+    const location = useLocation()
 
     const dataProviders = useSelector(session.selectDataProviders) || []
+    const dispatch = useDispatch()
+
+    // If modal is up, dismiss modal
+    useEffect(() => {
+        console.debug("location: ", location)
+        if (location?.pathname !== "/dashboard") {
+            dispatch(setModal(undefined))
+        }
+    }, [location])
 
     return (
         <div className={styles.Banner} data-testid="Banner">
@@ -78,7 +89,7 @@ const Banner = () => {
                         i18n.loadLanguages(l)
                         const fixedT = i18next.getFixedT(l)
                         return (
-                            <button key={l} title={fixedT("language.tooltip")} onClick={() => i18n.changeLanguage(l)}>
+                            <button key={l} title={fixedT("language.tooltip")}>
                                 <img
                                     src={`${process.env.PUBLIC_URL}/img/${fixedT("language.flag")}.svg`}
                                     alt={fixedT("language.flag")}
