@@ -420,6 +420,9 @@ const Dashboard = () => {
             if (!fixedMinMax) {
                 min = response.min_value
                 max = response.max_value
+            } else {
+                min = currentIndicator?.min_value
+                max = currentIndicator?.max_value
             }
 
             // adjust min/max to be symmetric for diverging scales
