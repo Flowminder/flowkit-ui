@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Fixed
+- Scales with fixed bounds now correctly use the bounds
 
 ## [0.1.1]
 ### Added
