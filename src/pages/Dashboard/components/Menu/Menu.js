@@ -43,8 +43,8 @@ const Menu = ({ collapsed = false }) => {
     const currentMaxValue = useSelector(session.selectCurrentMaxValue)
 
     const [activeKey, setActiveKey] = useState(!collapsed ? "0" : undefined)
-    const [currentMinValueInput, setcurrentMinValueInput] = useState(currentMinValue)
-    const [currentMaxValueInput, setcurrentMaxValueInput] = useState(currentMaxValue)
+    const [currentMinValueInput, setCurrentMinValueInput] = useState(currentMinValue)
+    const [currentMaxValueInput, setCurrentMaxValueInput] = useState(currentMaxValue)
 
     const DateRangeInput = forwardRef(({ value, onClick }, ref) => (
         <button className={styles.datePicker} onClick={onClick} ref={ref}>
