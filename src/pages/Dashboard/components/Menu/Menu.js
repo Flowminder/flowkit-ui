@@ -3,6 +3,7 @@
 
 import React, { forwardRef, useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { DateTime } from "luxon"
 import styles from "./Menu.module.css"
 import util from "../../../../app/util"
 import DatePicker from "react-datepicker"
@@ -291,7 +292,11 @@ const Menu = ({ collapsed = false }) => {
                                                     onChange={values => {
                                                         dispatch(setSelectedTimeRangeForCurrentData(values))
                                                     }}
-                                                    labels={currentAvailableTimeRange}
+                                                    labels={currentAvailableTimeRange.map(month_str => {
+                                                        const month = DateTime.fromFormat(month_str, "y-MM")
+                                                        const lastmonth = month.minus({ months: 1 }).toFormat("y-MM")
+                                                        return lastmonth + " to " + month.toFormat("y-MM")
+                                                    })}
                                                     isRange={true}
                                                     cumulative={false}
                                                     outputIsVisible={false}

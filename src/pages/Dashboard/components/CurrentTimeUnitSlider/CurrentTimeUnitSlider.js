@@ -53,7 +53,6 @@ const CurrentTimeUnitSlider = () => {
         if (currentAvailableTimeRange)
             setLabels(
                 currentAvailableTimeRange.map(month_str => {
-                    debugger
                     const month = DateTime.fromFormat(month_str, "y-MM")
                     const lastmonth = month.minus({ months: 1 }).toFormat("y-MM")
                     return lastmonth + " to " + month.toFormat("y-MM")
