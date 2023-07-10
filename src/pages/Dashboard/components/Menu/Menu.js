@@ -43,6 +43,8 @@ const Menu = ({ collapsed = false }) => {
     const currentMaxValue = useSelector(session.selectCurrentMaxValue)
 
     const [activeKey, setActiveKey] = useState(!collapsed ? "0" : undefined)
+    const [currentMinValueInput, setcurrentMinValueInput] = useState(currentMinValue)
+    const [currentMaxValueInput, setcurrentMaxValueInput] = useState(currentMaxValue)
 
     const DateRangeInput = forwardRef(({ value, onClick }, ref) => (
         <button className={styles.datePicker} onClick={onClick} ref={ref}>
@@ -376,16 +378,34 @@ const Menu = ({ collapsed = false }) => {
                                     <p>{t("dashboard.map_parameters_bounding_min")}</p>
                                     <input
                                         type="text"
-                                        value={currentMinValue}
-                                        onChange={e => dispatch(setCurrentMinValue(Number(e.currentTarget.value)))}
+                                        value={currentMinValueInput}
+                                        onChange={e => {
+                                            const value = e.currentTarget.value
+
+                                            const attemptedParse = Number(value)
+
+                                            if (!Object.is(NaN, attemptedParse)) {
+                                                dispatch(setCurrentMinValue(attemptedParse))
+                                            }
+                                            dispatch(setCurrentMinValueInput(e.currentTarget.value))
+                                        }}
                                         pattern="^-?\d*\.?\d*$"
                                     />
 
                                     <p>{t("dashboard.map_parameters_bounding_max")}</p>
                                     <input
                                         type="text"
-                                        value={currentMaxValue}
-                                        onChange={e => dispatch(setCurrentMaxValue(Number(e.currentTarget.value)))}
+                                        value={currentMaxValueInput}
+                                        onChange={e => {
+                                            const value = e.currentTarget.value
+
+                                            const attemptedParse = Number(value)
+
+                                            if (!Object.is(NaN, attemptedParse)) {
+                                                dispatch(setCurrentMaxValue(attemptedParse))
+                                            }
+                                            dispatch(setCurrentMaxValueInput(e.currentTarget.value))
+                                        }}
                                         pattern="^-?\d*\.?\d*$"
                                     />
                                 </>
