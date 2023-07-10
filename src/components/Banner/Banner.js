@@ -89,7 +89,7 @@ const Banner = () => {
                         i18n.loadLanguages(l)
                         const fixedT = i18next.getFixedT(l)
                         return (
-                            <button key={l} title={fixedT("language.tooltip")}>
+                            <button key={l} title={fixedT("language.tooltip")} onClick={() => i18n.changeLanguage(l)}>
                                 <img
                                     src={`${process.env.PUBLIC_URL}/img/${fixedT("language.flag")}.svg`}
                                     alt={fixedT("language.flag")}
