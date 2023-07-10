@@ -2,7 +2,7 @@
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import React, { useState, useEffect } from "react"
-import DateTime from "luxon"
+import { DateTime } from "luxon"
 import { useSelector, useDispatch } from "react-redux"
 import styles from "./CurrentTimeUnitSlider.module.css"
 import { useTranslation } from "react-i18next"
@@ -52,9 +52,11 @@ const CurrentTimeUnitSlider = () => {
     useEffect(() => {
         if (currentAvailableTimeRange)
             setLabels(
-                currentAvailableTimeRange.map(month => {
-                    var lastmonth = new DateTime(month).minus({ months: 1 })
-                    return lastmonth.toString(month) + " to " + month
+                currentAvailableTimeRange.map(month_str => {
+                    debugger
+                    const month = DateTime.fromFormat(month_str, "y-MM")
+                    const lastmonth = month.minus({ months: 1 }).toFormat("y-MM")
+                    return lastmonth + " to " + month.toFormat("y-MM")
                 })
             )
     }, [currentAvailableTimeRange])
