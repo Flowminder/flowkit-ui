@@ -122,7 +122,6 @@ function App() {
                     }}
                 >
                     <div id="mainContainer">
-                        <img id="Sticker" src={img_sticker} width={100} height={100} alt="Demo Version" />
                         <NotificationArea />
                         <MainContent />
                     </div>
