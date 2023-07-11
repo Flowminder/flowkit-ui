@@ -295,7 +295,7 @@ const Menu = ({ collapsed = false }) => {
                                                     labels={currentAvailableTimeRange.map(month_str => {
                                                         const month = DateTime.fromFormat(month_str, "y-MM")
                                                         const lastmonth = month.minus({ months: 1 }).toFormat("y-MM")
-                                                        return lastmonth + " to " + month.toFormat("y-MM")
+                                                        return lastmonth + "\nto\n" + month.toFormat("y-MM")
                                                     })}
                                                     isRange={true}
                                                     cumulative={false}
