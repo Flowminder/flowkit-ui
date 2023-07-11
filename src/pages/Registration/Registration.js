@@ -33,17 +33,6 @@ const Registration = () => {
         }
     ]
 
-    // initialise modal. this will be shown only once upon page load.
-    useEffect(() => {
-        dispatch(
-            setModal({
-                heading: t("register.modal_heading"),
-                text: t("register.modal_text"),
-                ok: t("register.modal_button")
-            })
-        )
-    }, [])
-
     return (
         <div className={`${styles.Registration} Registration`} data-testid="Registration">
             <h1>{currentStage < stages.length ? stages[currentStage]?.name : t("register.registration")}</h1>
