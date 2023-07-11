@@ -2,6 +2,7 @@
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 import React, { useState, useEffect } from "react"
+import { DateTime } from "luxon"
 import { useSelector, useDispatch } from "react-redux"
 import styles from "./CurrentTimeUnitSlider.module.css"
 import { useTranslation } from "react-i18next"
@@ -29,6 +30,7 @@ const CurrentTimeUnitSlider = () => {
         useState(undefined)
     const [previouslySelectedTimeEntity, setPreviouslySelectedTimeEntity] = useState(undefined)
     const [previousTemporalResolution, setPreviousTemporalResolution] = useState(undefined)
+    const [labels, setLabels] = useState([])
 
     // hang on to previous values when category changes
     useEffect(() => {
@@ -45,6 +47,18 @@ const CurrentTimeUnitSlider = () => {
         }
         savePreviousValues()
     }, [currentCategory])
+
+    // sets the labels of a given range to be 'month-1 - month'
+    useEffect(() => {
+        if (currentAvailableTimeRange)
+            setLabels(
+                currentAvailableTimeRange.map(month_str => {
+                    const month = DateTime.fromFormat(month_str, "y-MM")
+                    const lastmonth = month.minus({ months: 1 }).toFormat("y-MM")
+                    return lastmonth + " to " + month.toFormat("y-MM")
+                })
+            )
+    }, [currentAvailableTimeRange])
 
     // selected time range is changed in data parameters (also happens on indicator change!)
     useEffect(() => {
@@ -117,7 +131,6 @@ const CurrentTimeUnitSlider = () => {
                 newSelectedTimeEntity,
                 currentAvailableTimeRange[newSelectedTimeEntity]
             )
-
             const query_parameters = {
                 category_id: currentIndicator.category_id,
                 indicator_id: currentIndicator.indicator_id,
@@ -152,7 +165,7 @@ const CurrentTimeUnitSlider = () => {
                         setPreviouslySelectedTimeEntity(selectedTimeEntity)
                         dispatch(setSelectedTimeEntity(values))
                     }}
-                    labels={currentAvailableTimeRange}
+                    labels={labels}
                     isRange={false}
                     cumulative={false}
                     outputIsVisible={false}

@@ -32,6 +32,7 @@
     width: 100px;
     position: relative;
     left: -50px !important;
+    white-space: pre-line;
 }
 
 .FMSlider.outerLabelsOnly .SliderLabel {
