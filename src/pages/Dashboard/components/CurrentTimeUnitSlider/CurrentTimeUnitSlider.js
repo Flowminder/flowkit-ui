@@ -50,7 +50,7 @@ const CurrentTimeUnitSlider = () => {
 
     // sets the labels of a given range to be 'month-1 - month'
     useEffect(() => {
-        if (currentAvailableTimeRange)
+        if (currentAvailableTimeRange && currentCategory.type === "flow")
             setLabels(
                 currentAvailableTimeRange.map(month_str => {
                     const month = DateTime.fromFormat(month_str, "y-MM")
@@ -58,6 +58,7 @@ const CurrentTimeUnitSlider = () => {
                     return lastmonth + " to " + month.toFormat("y-MM")
                 })
             )
+        else setLabels(currentAvailableTimeRange)
     }, [currentAvailableTimeRange])
 
     // selected time range is changed in data parameters (also happens on indicator change!)

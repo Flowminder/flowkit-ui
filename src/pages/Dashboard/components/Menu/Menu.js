@@ -43,6 +43,7 @@ const Menu = ({ collapsed = false }) => {
     const currentMaxValue = useSelector(session.selectCurrentMaxValue)
 
     const [activeKey, setActiveKey] = useState(!collapsed ? "0" : undefined)
+    const [timeLabels, setTimeLabels] = useState([])
 
     const DateRangeInput = forwardRef(({ value, onClick }, ref) => (
         <button className={styles.datePicker} onClick={onClick} ref={ref}>
@@ -53,6 +54,18 @@ const Menu = ({ collapsed = false }) => {
     useEffect(() => {
         setActiveKey(!collapsed ? ["0"] : undefined)
     }, [collapsed])
+
+    useEffect(() => {
+        if (currentAvailableTimeRange && currentCategory.type === "flow")
+            setTimeLabels(
+                currentAvailableTimeRange.map(month_str => {
+                    const month = DateTime.fromFormat(month_str, "y-MM")
+                    const lastmonth = month.minus({ months: 1 }).toFormat("y-MM")
+                    return lastmonth + "\nto\n" + month.toFormat("y-MM")
+                })
+            )
+        else setTimeLabels(currentAvailableTimeRange)
+    }, [currentAvailableTimeRange])
 
     return (
         <div className={styles.Menu} data-testid="Menu">
@@ -292,11 +305,7 @@ const Menu = ({ collapsed = false }) => {
                                                     onChange={values => {
                                                         dispatch(setSelectedTimeRangeForCurrentData(values))
                                                     }}
-                                                    labels={currentAvailableTimeRange.map(month_str => {
-                                                        const month = DateTime.fromFormat(month_str, "y-MM")
-                                                        const lastmonth = month.minus({ months: 1 }).toFormat("y-MM")
-                                                        return lastmonth + "\nto\n" + month.toFormat("y-MM")
-                                                    })}
+                                                    labels={timeLabels}
                                                     isRange={true}
                                                     cumulative={false}
                                                     outputIsVisible={false}
