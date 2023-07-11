@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Flow indicators now display dates ranges on timeline pickers
 
 ### Removed
+- Removed demo mode indicators from plans page and top bar
 
 ### Fixed
 - Scales with fixed bounds now correctly use the bounds
