@@ -56,12 +56,10 @@ const CurrentTimeUnitSlider = () => {
                 .replace("%m", "MM")
                 .replace("%d", "dd")
             setLabels(
-                currentAvailableTimeRange.map(month_str => {
-                    const month = DateTime.fromFormat(month_str, frm_str)
-                    const lastmonth = month
-                        .minus({ [currentTemporalResolution.relativedelta_unit]: 1 })
-                        .toFormat(frm_str)
-                    return lastmonth + " to " + month.toFormat(frm_str)
+                currentAvailableTimeRange.map(date_str => {
+                    const date = DateTime.fromFormat(date_str, frm_str)
+                    const lastdate = date.minus({ [currentTemporalResolution.relativedelta_unit]: 1 }).toFormat(frm_str)
+                    return lastdate + " to " + date.toFormat(frm_str)
                 })
             )
         } else setLabels(currentAvailableTimeRange)
