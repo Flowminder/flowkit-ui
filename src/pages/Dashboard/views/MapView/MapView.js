@@ -30,6 +30,7 @@ const MapView = ({
     boundaries,
     data,
     indicator,
+    heading,
     decimals = 0,
     minValue = undefined,
     maxValue = undefined,
@@ -54,6 +55,7 @@ const MapView = ({
     const [selectedNode, setSelectedNode] = useState(undefined)
     const [selectedFeature, setSelectedFeature] = useState(undefined)
     const [nameKey, setNameKey] = useState(undefined)
+    const [label, setLabel] = useState("")
 
     // Leaving creole out for the moment - the fields are null for admin levels>1 in the source file
     const languageSuffix = i18n?.resolvedLanguage?.startsWith("fr") ? "_FR" : "_EN"
@@ -419,10 +421,10 @@ const MapView = ({
             )}
             {timeRange && selectedTimeEntity && (
                 <div className={`${styles.Info} ${type === "single_location" && selectedFeature ? styles.large : ""}`}>
-                    <h2>{timeRange[selectedTimeEntity]}</h2>
+                    <h2>{heading}</h2>
                     {selectedNode && (
                         <>
-                            <h3>{selectedNode?.object?.name}</h3>
+                            w<h3>{selectedNode?.object?.name}</h3>
                             <p>
                                 {t("dashboard.total_in")}: {selectedNode?.object?.in}
                             </p>

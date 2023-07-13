@@ -8,7 +8,14 @@ import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css"
 import BootstrapTable from "react-bootstrap-table-next"
 import { useTranslation } from "react-i18next"
 
-const TableView = ({ type = "single_location", timeRange, selectedTimeEntity, data = [], labels = {} }) => {
+const TableView = ({
+    type = "single_location",
+    timeRange,
+    selectedTimeEntity,
+    data = [],
+    labels = {},
+    heading = ""
+}) => {
     const { t } = useTranslation()
 
     const columns =
@@ -89,7 +96,7 @@ const TableView = ({ type = "single_location", timeRange, selectedTimeEntity, da
         <div className={`${styles.TableView} TableView`} data-testid="TableView">
             {timeRange && selectedTimeEntity !== undefined && data && (
                 <>
-                    <h2>{timeRange[selectedTimeEntity]}</h2>
+                    <h2>{heading}</h2>
 
                     <BootstrapTable
                         hover
