@@ -50,15 +50,21 @@ const CurrentTimeUnitSlider = () => {
 
     // sets the labels of a given range to be 'month-1 - month'
     useEffect(() => {
-        if (currentAvailableTimeRange && currentCategory.type === "flow")
+        if (currentAvailableTimeRange && currentCategory.type === "flow") {
+            const frm_str = currentTemporalResolution.date_format
+                .replace("%Y", "yyyy")
+                .replace("%m", "MM")
+                .replace("%d", "dd")
+            // TODO: This assumes that currentAvailableTimeRange is continuous - we should change
+            // this to use the previous date in currentAvailableTimeRange
             setLabels(
-                currentAvailableTimeRange.map(month_str => {
-                    const month = DateTime.fromFormat(month_str, "y-MM")
-                    const lastmonth = month.minus({ months: 1 }).toFormat("y-MM")
-                    return lastmonth + " to " + month.toFormat("y-MM")
+                currentAvailableTimeRange.map(date_str => {
+                    const date = DateTime.fromFormat(date_str, frm_str)
+                    const lastdate = date.minus({ [currentTemporalResolution.relativedelta_unit]: 1 }).toFormat(frm_str)
+                    return lastdate + " to " + date.toFormat(frm_str)
                 })
             )
-        else setLabels(currentAvailableTimeRange)
+        } else setLabels(currentAvailableTimeRange)
     }, [currentAvailableTimeRange])
 
     // selected time range is changed in data parameters (also happens on indicator change!)

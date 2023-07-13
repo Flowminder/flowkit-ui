@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { DateTime } from "luxon"
 import styles from "./Dashboard.module.css"
 import "react-datepicker/dist/react-datepicker.css"
 import "./Dashboard.scss"
@@ -101,6 +102,7 @@ const Dashboard = () => {
     const [viewToggleCurrentImg, setViewToggleCurrentImg] = useState(views[0])
     const [indicatorName, setIndicatorName] = useState(undefined)
     const [indicatorDescription, setIndicatorDescription] = useState(undefined)
+    const [currentHeading, setHeading] = useState("Loading")
 
     const unverified =
         heartbeat && isAuthenticated && extendedUser !== undefined && extendedUser?.email_verified !== true
@@ -500,6 +502,21 @@ const Dashboard = () => {
         }
     }, [i18n.language, currentIndicator])
 
+    useEffect(() => {
+        if (currentAvailableTimeRange && selectedTimeEntity && currentCategory && currentTemporalResolution) {
+            const current_date = currentAvailableTimeRange[selectedTimeEntity]
+            if (currentCategory?.type === "flow" && current_date) {
+                const frm_str = currentTemporalResolution.date_format
+                    .replace("%Y", "yyyy")
+                    .replace("%m", "MM")
+                    .replace("%d", "dd")
+                const month = DateTime.fromFormat(current_date, frm_str)
+                const lastmonth = month.minus({ [currentTemporalResolution.relativedelta_unit]: 1 }).toFormat(frm_str)
+                setHeading(lastmonth + " to " + month.toFormat(frm_str))
+            } else setHeading(current_date)
+        }
+    }, [currentAvailableTimeRange, selectedTimeEntity, currentIndicator, currentTemporalResolution])
+
     return (
         <div
             className={`${styles.Dashboard} Dashboard ${approved ? styles.approved : styles.unapproved}`}
@@ -574,6 +591,7 @@ const Dashboard = () => {
                                     timeRange={currentAvailableTimeRange}
                                     selectedTimeEntity={selectedTimeEntity}
                                     indicator={currentIndicator}
+                                    heading={currentHeading}
                                     decimals={currentIndicator?.decimals}
                                     minValue={currentMinValue}
                                     maxValue={currentMaxValue}
@@ -591,6 +609,7 @@ const Dashboard = () => {
                                     currentSpatialResolution={currentSpatialResolution}
                                     spatialEntities={currentBoundaries?.features.map(f => f.properties) || []}
                                     labels={currentLabels}
+                                    heading={currentHeading}
                                     decimals={currentIndicator?.decimals}
                                     minValue={currentMinValue}
                                     maxValue={currentMaxValue}
@@ -604,6 +623,7 @@ const Dashboard = () => {
                                     selectedTimeEntity={selectedTimeEntity}
                                     data={currentData}
                                     labels={currentLabels}
+                                    heading={currentHeading}
                                 />
                             )}
                             <CurrentTimeUnitSlider />
