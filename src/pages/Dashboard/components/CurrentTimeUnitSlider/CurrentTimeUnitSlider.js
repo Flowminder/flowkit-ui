@@ -58,7 +58,9 @@ const CurrentTimeUnitSlider = () => {
             setLabels(
                 currentAvailableTimeRange.map(month_str => {
                     const month = DateTime.fromFormat(month_str, frm_str)
-                    const lastmonth = month.minus({ months: 1 }).toFormat(frm_str)
+                    const lastmonth = month
+                        .minus({ [currentTemporalResolution.relativedelta_unit]: 1 })
+                        .toFormat(frm_str)
                     return lastmonth + " to " + month.toFormat(frm_str)
                 })
             )
