@@ -55,6 +55,8 @@ const CurrentTimeUnitSlider = () => {
                 .replace("%Y", "yyyy")
                 .replace("%m", "MM")
                 .replace("%d", "dd")
+            // TODO: This assumes that currentAvailableTimeRange is continuous - we should change
+            // this to use the previous date in currentAvailableTimeRange
             setLabels(
                 currentAvailableTimeRange.map(date_str => {
                     const date = DateTime.fromFormat(date_str, frm_str)
