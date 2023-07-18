@@ -13,7 +13,7 @@ import enGB from "date-fns/locale/en-GB"
 import fr from "date-fns/locale/fr"
 import * as topojson from "topojson-client"
 import { useTranslation } from "react-i18next"
-import { Button } from "react-bootstrap"
+import { Button, Spinner } from "react-bootstrap"
 import api from "../../app/api"
 import { v4 as uuidv4 } from "uuid"
 import {
@@ -530,6 +530,7 @@ const Dashboard = () => {
         else
             return (
                 <Button variant="secondary.inactive" disabled>
+                    <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />{" "}
                     {t("dashboard.loading")}
                 </Button>
             )
