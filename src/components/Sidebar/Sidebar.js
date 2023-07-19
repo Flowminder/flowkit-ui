@@ -77,7 +77,7 @@ const Sidebar = () => {
                                         primary={false}
                                         outline={true}
                                         className={styles.SidebarButton}
-                                        link="files/fm_haiti-mobility-dashboard_about-indicators__july_2023.pdf"
+                                        link="/files/fm_haiti-mobility-dashboard_about-indicators__july_2023.pdf"
                                         label={t("sidebar.read_more")}
                                     />
                                 </>
