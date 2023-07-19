@@ -73,19 +73,11 @@ const Sidebar = () => {
                             <br />
                             {currentIndicator && (
                                 <>
-                                    <p>
-                                        {t("sidebar.flowgeek_text")}
-                                        <a href="https://www.flowgeek.org/" target="_blank" rel="noreferrer">
-                                            FlowGeek
-                                        </a>
-                                        :
-                                    </p>
-                                    <br />
                                     <FMButton
                                         primary={false}
                                         outline={true}
                                         className={styles.SidebarButton}
-                                        link={currentIndicator.flowgeek_url}
+                                        link="https://dev.haiti.mobility-dashboard.org/files/HTI-mobility-data-platform_Description-Indicators_Nov22.pdf"
                                         label={t("sidebar.read_more")}
                                     />
                                 </>
