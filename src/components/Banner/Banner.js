@@ -63,6 +63,8 @@ const Banner = () => {
                             >
                                 {`${t("menu.about_indicators")} [pdf]`}
                             </Link>
+                        </li>
+                        <li>
                             <Link
                                 to="/files/haiti_mobility_data_platform_data_quality_status.pdf"
                                 rel="noreferrer"
