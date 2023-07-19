@@ -1,7 +1,7 @@
 // This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import styles from "./Banner.module.css"
 import i18next from "i18next"
@@ -62,6 +62,13 @@ const Banner = () => {
                                 target="_blank"
                             >
                                 {`${t("menu.about_indicators")} [pdf]`}
+                            </Link>
+                            <Link
+                                to="/files/haiti_mobility_data_platform_data_quality_status.pdf"
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                {`${t("menu.data_quality_status")} [pdf]`}
                             </Link>
                         </li>
                         <li>
