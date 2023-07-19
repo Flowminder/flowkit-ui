@@ -13,7 +13,7 @@ import enGB from "date-fns/locale/en-GB"
 import fr from "date-fns/locale/fr"
 import * as topojson from "topojson-client"
 import { useTranslation } from "react-i18next"
-import { Button } from "react-bootstrap"
+import { Button, Spinner } from "react-bootstrap"
 import api from "../../app/api"
 import { v4 as uuidv4 } from "uuid"
 import {
@@ -103,6 +103,7 @@ const Dashboard = () => {
     const [indicatorName, setIndicatorName] = useState(undefined)
     const [indicatorDescription, setIndicatorDescription] = useState(undefined)
     const [currentHeading, setHeading] = useState("Loading")
+    const [isDownloadingCsv, setIsDownloadingCsv] = useState(false)
 
     const unverified =
         heartbeat && isAuthenticated && extendedUser !== undefined && extendedUser?.email_verified !== true
@@ -136,18 +137,20 @@ const Dashboard = () => {
             start_date: currentAvailableTimeRange[0],
             duration: currentAvailableTimeRange.length
         }
-
+        setIsDownloadingCsv(true)
         const csv_string = await api.csv(auth0AccessToken, query_parameters)
         const file = new Blob([csv_string], {
             type: "text/plain"
         })
         element.href = URL.createObjectURL(file)
-        element.download = `${currentIndicator.category_id}_${currentAvailableTimeRange[0]}_${
+        element.download = `${currentIndicator.indicator_id}_${currentAvailableTimeRange[0]}_${
             currentAvailableTimeRange[currentAvailableTimeRange.length - 1]
         }.csv`
         element.click()
         URL.revokeObjectURL(element.href)
+        setIsDownloadingCsv(false)
     }
+
     // dismiss modal for authenticated users and expand indicators menu
     useEffect(() => {
         if (!isAuthenticated) {
@@ -517,6 +520,22 @@ const Dashboard = () => {
         }
     }, [currentAvailableTimeRange, selectedTimeEntity, currentIndicator, currentTemporalResolution])
 
+    function csv_button(is_downloading) {
+        if (!is_downloading)
+            return (
+                <Button variant="secondary" onClick={() => downloadCSV()}>
+                    {t("dashboard.download")}
+                </Button>
+            )
+        else
+            return (
+                <Button variant="secondary.inactive" disabled>
+                    <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />{" "}
+                    {t("dashboard.loading")}
+                </Button>
+            )
+    }
+
     return (
         <div
             className={`${styles.Dashboard} Dashboard ${approved ? styles.approved : styles.unapproved}`}
@@ -540,9 +559,7 @@ const Dashboard = () => {
                                 <div className={styles.Buttons}>
                                     {currentCategory && currentIndicator && (
                                         <>
-                                            <Button variant="secondary" onClick={() => downloadCSV()}>
-                                                {t("dashboard.download")}
-                                            </Button>
+                                            {csv_button(isDownloadingCsv)}
                                             <div
                                                 className={styles.MapToggle}
                                                 title={`${t("dashboard.switch_to")} ${t(

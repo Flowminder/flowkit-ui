@@ -92,7 +92,8 @@
         "loading_tr": "Loading available temporal resolutions...",
         "loading_boundaries": "Loading boundaries...",
         "total_in": "Total in",
-        "total_out": "Total out"
+        "total_out": "Total out",
+        "loading": "Loading..."
     },
     "profile": {
         "title": "Profile",
