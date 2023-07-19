@@ -77,7 +77,7 @@ const Sidebar = () => {
                                         primary={false}
                                         outline={true}
                                         className={styles.SidebarButton}
-                                        link="https://dev.haiti.mobility-dashboard.org/files/HTI-mobility-data-platform_Description-Indicators_Nov22.pdf"
+                                        link="/files/fm_haiti-mobility-dashboard_about-indicators__july_2023.pdf"
                                         label={t("sidebar.read_more")}
                                     />
                                 </>
