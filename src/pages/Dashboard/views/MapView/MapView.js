@@ -424,7 +424,7 @@ const MapView = ({
                     <h2>{heading}</h2>
                     {selectedNode && (
                         <>
-                            w<h3>{selectedNode?.object?.name}</h3>
+                            <h3>{selectedNode?.object?.name}</h3>
                             <p>
                                 {t("dashboard.total_in")}: {selectedNode?.object?.in}
                             </p>
