@@ -57,7 +57,7 @@ const Banner = () => {
                         </li>
                         <li>
                             <Link
-                                to="/files/HTI-mobility-data-platform_Description-Indicators_Nov22.pdf"
+                                to="/files/fm_haiti-mobility-dashboard_about-indicators__july_2023.pdf"
                                 rel="noreferrer"
                                 target="_blank"
                             >
