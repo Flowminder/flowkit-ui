@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Banner bar is now still available even if a dashboard modal is active - moving off the dashboard dismisses the modal.
 - Update plans page to show that free accounts get access to all indicators, but over a limited time period.
 - Flow indicators now display dates ranges on timeline pickers
+- Disabled variable size bubbles in OD visualisations
 
 ### Removed
 - Removed demo mode indicators from plans page and top bar

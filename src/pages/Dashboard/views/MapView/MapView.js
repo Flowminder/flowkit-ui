@@ -16,9 +16,9 @@ import { Legend } from "../../components"
 import session from "../../../../components/SessionArea/sessionSlice.selectors"
 
 const DATA_LAYER_ID = "my-data"
-const OUT_COLOUR = [112, 31, 83]
-const IN_COLOUR = [65, 180, 150]
-const IN_COLOUR_INACTIVE = [192, 192, 192]
+const OUT_COLOUR = [192, 192, 192]
+const IN_COLOUR = [192, 192, 192]
+const IN_COLOUR_INACTIVE = [128, 128, 128]
 const OUT_COLOUR_INACTIVE = [128, 128, 128]
 const TRANSPARENT = [0, 0, 0, 0]
 const HOVER_COLOUR = [255, 255, 255, 64]
@@ -109,7 +109,7 @@ const MapView = ({
             radiusUnits: "pixels",
             lineWidthUnits: "pixels",
             getPosition: n => n?.centroid,
-            getRadius: n => Math.max(5, (Math.max(n.in, n.out) / maxFlow) * 20),
+            getRadius: n => 5,
             getLineWidth: n => Math.max(2, (Math.abs(n.in - n.out) / maxFlow) * 20),
             getLineColor: n => getNodeColour(n, false),
             getFillColor: n => getNodeColour(n, true),
