@@ -16,10 +16,10 @@ import { Legend } from "../../components"
 import session from "../../../../components/SessionArea/sessionSlice.selectors"
 
 const DATA_LAYER_ID = "my-data"
-const OUT_COLOUR = [192, 192, 192]
-const IN_COLOUR = [192, 192, 192]
-const IN_COLOUR_INACTIVE = [128, 128, 128]
-const OUT_COLOUR_INACTIVE = [128, 128, 128]
+const OUT_COLOUR = [128, 128, 128]
+const IN_COLOUR = [128, 128, 128]
+const IN_COLOUR_INACTIVE = [192, 192, 192]
+const OUT_COLOUR_INACTIVE = [192, 192, 192]
 const TRANSPARENT = [0, 0, 0, 0]
 const HOVER_COLOUR = [255, 255, 255, 64]
 
@@ -109,9 +109,9 @@ const MapView = ({
             radiusUnits: "pixels",
             lineWidthUnits: "pixels",
             getPosition: n => n?.centroid,
-            getRadius: n => 5,
+            getRadius: n => 3,
             getLineWidth: n => Math.max(2, (Math.abs(n.in - n.out) / maxFlow) * 20),
-            getLineColor: n => getNodeColour(n, false),
+            getLineColor: n => [255, 255, 255],
             getFillColor: n => getNodeColour(n, true),
             updateTriggers: {
                 // hover effect for hovering over nodes
