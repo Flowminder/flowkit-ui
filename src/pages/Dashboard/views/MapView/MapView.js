@@ -108,9 +108,9 @@ const MapView = ({
             filled: true,
             radiusUnits: "pixels",
             lineWidthUnits: "pixels",
+            lineWidthMinPixels: 1,
             getPosition: n => n?.centroid,
             getRadius: n => 3,
-            getLineWidth: n => Math.max(2, (Math.abs(n.in - n.out) / maxFlow) * 20),
             getLineColor: n => [255, 255, 255],
             getFillColor: n => getNodeColour(n, true),
             updateTriggers: {
