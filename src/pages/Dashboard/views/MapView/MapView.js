@@ -22,6 +22,8 @@ const IN_COLOUR_INACTIVE = [192, 192, 192]
 const OUT_COLOUR_INACTIVE = [192, 192, 192]
 const TRANSPARENT = [0, 0, 0, 0]
 const HOVER_COLOUR = [255, 255, 255, 64]
+const OUT_COLOUR_ARC = [112, 31, 83]
+const IN_COLOUR_ARC = [65, 180, 150]
 
 const MapView = ({
     timeRange,
@@ -207,8 +209,8 @@ const MapView = ({
             },
             getSourcePosition: f => nodes.filter(n => n.id === f.origin)[0]?.centroid,
             getTargetPosition: f => nodes.filter(n => n.id === f.dest)[0]?.centroid,
-            getSourceColor: f => (selectedNode === undefined || touchesSelectedNode(f) ? OUT_COLOUR : TRANSPARENT),
-            getTargetColor: f => (selectedNode === undefined || touchesSelectedNode(f) ? IN_COLOUR : TRANSPARENT),
+            getSourceColor: f => (selectedNode === undefined || touchesSelectedNode(f) ? OUT_COLOUR_ARC : TRANSPARENT),
+            getTargetColor: f => (selectedNode === undefined || touchesSelectedNode(f) ? IN_COLOUR_ARC : TRANSPARENT),
             updateTriggers: {
                 getSourceColor: [selectedNode],
                 getTargetColor: [selectedNode]
