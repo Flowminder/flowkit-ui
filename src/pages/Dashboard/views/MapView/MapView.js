@@ -414,8 +414,8 @@ const MapView = ({
                     type={type}
                     bins={bins}
                     decimals={decimals}
-                    inColour={IN_COLOUR}
-                    outColour={OUT_COLOUR}
+                    inColour={IN_COLOUR_ARC}
+                    outColour={OUT_COLOUR_ARC}
                     inColourInactive={IN_COLOUR_INACTIVE}
                     outColourInactive={OUT_COLOUR_INACTIVE}
                     showInactive={selectedNode !== undefined}
