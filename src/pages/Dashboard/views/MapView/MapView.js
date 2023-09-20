@@ -416,9 +416,6 @@ const MapView = ({
                     decimals={decimals}
                     inColour={IN_COLOUR_ARC}
                     outColour={OUT_COLOUR_ARC}
-                    inColourInactive={IN_COLOUR_INACTIVE}
-                    outColourInactive={OUT_COLOUR_INACTIVE}
-                    showInactive={selectedNode !== undefined}
                 />
             )}
             {timeRange && selectedTimeEntity && (

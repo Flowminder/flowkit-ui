@@ -10,10 +10,7 @@ const Legend = ({
     bins = [],
     decimals = 0,
     inColour,
-    outColour,
-    inColourInactive,
-    outColourInactive,
-    showInactive = false
+    outColour
 }) => {
     return (
         <div className={styles.Legend} data-testid="Legend">
@@ -44,50 +41,6 @@ const Legend = ({
 
             {type === "flow" && (
                 <>
-                    {showInactive && (
-                        <>
-                            <div className={styles.Bin}>
-                                <div className={styles.Label}>
-                                    <span>Outgoing / From</span>
-                                </div>
-                                <div
-                                    key="outgoing"
-                                    className={styles.Colour}
-                                    style={{ background: `rgb(${outColourInactive.join(",")})` }}
-                                ></div>
-                            </div>
-                            <div className={styles.Bin}>
-                                <div className={styles.Label}>
-                                    <span>Incoming / To</span>
-                                </div>
-                                <div
-                                    key="incoming"
-                                    className={styles.Colour}
-                                    style={{ background: `rgb(${inColourInactive.join(",")})` }}
-                                ></div>
-                            </div>
-                        </>
-                    )}
-                    <div className={styles.Bin}>
-                        <div className={styles.Label}>
-                            <span>Outgoing / From</span>
-                        </div>
-                        <div
-                            key="outgoing"
-                            className={styles.Colour}
-                            style={{ background: `rgb(${outColour.join(",")})` }}
-                        ></div>
-                    </div>
-                    <div className={styles.Bin}>
-                        <div className={styles.Label}>
-                            <span>Incoming / To</span>
-                        </div>
-                        <div
-                            key="incoming"
-                            className={styles.Colour}
-                            style={{ background: `rgb(${inColour.join(",")})` }}
-                        ></div>
-                    </div>
                     <div className={styles.Bin}>
                         <div className={styles.Label}>
                             <span>From ➡ To</span>
