@@ -16,12 +16,14 @@ import { Legend } from "../../components"
 import session from "../../../../components/SessionArea/sessionSlice.selectors"
 
 const DATA_LAYER_ID = "my-data"
-const OUT_COLOUR = [112, 31, 83]
-const IN_COLOUR = [65, 180, 150]
+const OUT_COLOUR = [128, 128, 128]
+const IN_COLOUR = [128, 128, 128]
 const IN_COLOUR_INACTIVE = [192, 192, 192]
-const OUT_COLOUR_INACTIVE = [128, 128, 128]
+const OUT_COLOUR_INACTIVE = [192, 192, 192]
 const TRANSPARENT = [0, 0, 0, 0]
 const HOVER_COLOUR = [255, 255, 255, 64]
+const OUT_COLOUR_ARC = [112, 31, 83]
+const IN_COLOUR_ARC = [65, 180, 150]
 
 const MapView = ({
     timeRange,
@@ -108,10 +110,10 @@ const MapView = ({
             filled: true,
             radiusUnits: "pixels",
             lineWidthUnits: "pixels",
+            lineWidthMinPixels: 1,
             getPosition: n => n?.centroid,
-            getRadius: n => Math.max(5, (Math.max(n.in, n.out) / maxFlow) * 20),
-            getLineWidth: n => Math.max(2, (Math.abs(n.in - n.out) / maxFlow) * 20),
-            getLineColor: n => getNodeColour(n, false),
+            getRadius: n => 3,
+            getLineColor: n => [255, 255, 255],
             getFillColor: n => getNodeColour(n, true),
             updateTriggers: {
                 // hover effect for hovering over nodes
@@ -207,8 +209,8 @@ const MapView = ({
             },
             getSourcePosition: f => nodes.filter(n => n.id === f.origin)[0]?.centroid,
             getTargetPosition: f => nodes.filter(n => n.id === f.dest)[0]?.centroid,
-            getSourceColor: f => (selectedNode === undefined || touchesSelectedNode(f) ? OUT_COLOUR : TRANSPARENT),
-            getTargetColor: f => (selectedNode === undefined || touchesSelectedNode(f) ? IN_COLOUR : TRANSPARENT),
+            getSourceColor: f => (selectedNode === undefined || touchesSelectedNode(f) ? OUT_COLOUR_ARC : TRANSPARENT),
+            getTargetColor: f => (selectedNode === undefined || touchesSelectedNode(f) ? IN_COLOUR_ARC : TRANSPARENT),
             updateTriggers: {
                 getSourceColor: [selectedNode],
                 getTargetColor: [selectedNode]
@@ -412,11 +414,8 @@ const MapView = ({
                     type={type}
                     bins={bins}
                     decimals={decimals}
-                    inColour={IN_COLOUR}
-                    outColour={OUT_COLOUR}
-                    inColourInactive={IN_COLOUR_INACTIVE}
-                    outColourInactive={OUT_COLOUR_INACTIVE}
-                    showInactive={selectedNode !== undefined}
+                    inColour={IN_COLOUR_ARC}
+                    outColour={OUT_COLOUR_ARC}
                 />
             )}
             {timeRange && selectedTimeEntity && (
