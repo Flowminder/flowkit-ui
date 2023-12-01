@@ -139,7 +139,11 @@ const About = ({ subject }) => {
                                 <p>
                                     <FMTrans k="about.text4" />
                                 </p>
-                                <FMButton link={t("about.ethics_url")} label={t("about.ethics_label")}></FMButton>
+                                <FMButton
+                                    link={t("about.ethics_url")}
+                                    openInNewTab={true}
+                                    label={t("about.ethics_label")}
+                                ></FMButton>
                             </Col>
                             <Col xs lg="1"></Col>
                             <Col>
