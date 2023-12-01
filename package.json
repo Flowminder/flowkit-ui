@@ -63,7 +63,6 @@
         "babel-plugin-transform-remove-console": "6.9.4",
         "cypress": "^10.11.0",
         "eslint-plugin-cypress": "^2.12.1",
-        "gh-pages": "4.0.0",
         "husky": "8.0.1",
         "jest-coverage-badges-ts": "0.1.6",
         "lint-staged": "13.0.3",
