@@ -139,6 +139,7 @@ const About = ({ subject }) => {
                                 <p>
                                     <FMTrans k="about.text4" />
                                 </p>
+                                <br />
                                 <FMButton
                                     link={t("about.ethics_url")}
                                     openInNewTab={true}
