@@ -47,7 +47,7 @@ const Terms = () => {
                         </a>
                     </p>
                     <br />
-                    <FMTrans k="terms.legal_text" />
+                    <object data={t("terms.download_url")} class="border rounded w-100" height="600px" />
                 </Tab>
             </Tabs>
         </div>
