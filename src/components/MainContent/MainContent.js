@@ -25,8 +25,9 @@ import {
     LoggedOut
 } from "../../pages/index"
 import { Sidebar, FMButton } from "../"
-import { Routes, Route, UNSAFE_NavigationContext } from "react-router-dom"
+import { Routes, Route, UNSAFE_NavigationContext, useLocation } from "react-router-dom"
 import Modal from "react-bootstrap/Modal"
+import ReactGA from "react-ga4"
 
 const MainContent = () => {
     const { t } = useTranslation()
@@ -37,6 +38,11 @@ const MainContent = () => {
     const extendedUser = useSelector(session.selectExtendedUser)
     const showTutorialInsteadOfDashboard = isAuthenticated && extendedUser?.user_metadata?.show_tutorial === true
     const modal = useSelector(session.selectModal)
+
+    const location = useLocation()
+    useEffect(() => {
+        ReactGA.send({ hitType: "pageview", page: location.pathname + location.search })
+    }, [location])
 
     const useBackListener = callback => {
         const navigator = useContext(UNSAFE_NavigationContext).navigator
