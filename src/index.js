@@ -9,6 +9,8 @@ import "./app/i18n"
 import { Auth0Provider } from "@auth0/auth0-react"
 import env from "./app/env"
 import { createRoot } from "react-dom/client"
+import ReactGA from "react-ga4"
+ReactGA.initialize(env.GA_ID)
 
 const root = createRoot(document.getElementById("root"))
 
