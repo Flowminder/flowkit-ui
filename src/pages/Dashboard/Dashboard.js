@@ -50,6 +50,7 @@ import img_online from "./img/online.svg"
 import img_offline from "./img/offline.svg"
 import env from "../../app/env"
 import { useNavigate } from "react-router-dom"
+import ReactGA from "react-ga4"
 
 // Scales are build-time environment variables
 const colourScales = [
@@ -137,6 +138,7 @@ const Dashboard = () => {
             start_date: currentAvailableTimeRange[0],
             duration: currentAvailableTimeRange.length
         }
+        ReactGA.event("csv_download", query_parameters)
         setIsDownloadingCsv(true)
         const csv_string = await api.csv(auth0AccessToken, query_parameters)
         const file = new Blob([csv_string], {

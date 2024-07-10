@@ -41,7 +41,7 @@ const MainContent = () => {
 
     const location = useLocation()
     useEffect(() => {
-        ReactGA.send({ hitType: "pageview", page: location.pathname + location.search })
+        ReactGA.send({ hitType: "pageview", page: location.pathname + location.search, title: location.pathname })
     }, [location])
 
     const useBackListener = callback => {
