@@ -74,6 +74,15 @@ const Banner = () => {
                             </Link>
                         </li>
                         <li>
+                            <Link
+                                to="/files/haiti_mobility_data_platform_data_quality_status.xlsx"
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                {`${t("menu.data_quality_status")} [excel]`}
+                            </Link>
+                        </li>
+                        <li>
                             <Link to="/terms">{t("terms.title")}</Link>
                         </li>
                         <li>
