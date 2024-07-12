@@ -329,15 +329,14 @@
         "text1": "Vous trouverez ci-dessous une version **simplifiée** et une version **légale** de nos conditions générales.",
         "text2": "Cliquez sur l'onglet correspondant pour voir la version qui vous convient le mieux.",
         "download": "Veuillez cliquer ici pour télécharger les conditions d'utilisation en format PDF.",
-        "download_url": "/files/haiti_mobility_data_platform_terms_en_03_2024.pdf",
+        "download_url": "/files/haiti_mobility_data_platform_terms_fr_07_2024.pdf",
         "simple": "Version simplifiée",
         "simple_header": "Termes & conditions d'utilisation - Version simplifiée",
         "simple_intro1": "",
         "simple_intro2": "Bienvenue sur le tableau de bord de la mobilité en Haïti développé par Flowminder.",
         "simple_intro3": "La plateforme permet aux utilisateurs autorisés d'accéder à des visualisations interactives d'indicateurs de mobilité précalculés et anonymisés, basés sur les comptes rendus d'appels pseudonymisés de Digicel et sur les méthodes de traitement des données de Flowminder.\n\n**La version actuelle de la plateforme est un produit bêta. Elle ne doit pas être utilisée à des fins décisionnelles ou opérationnelles (y compris la recherche) sans l'approbation expresse de Flowminder** (contactez-nous à haiti.mobility-dashboard@flowminder.org).\n\n\n\nLa plateforme de démonstration doit être utilisée uniquement pour visualiser les indicateurs de mobilité fournis. Sans autorisation expresse et écrite de Flowminder, **l'utilisateur ne doit pas** :\n\n1. Télécharger les données ;\n\n2. Stocker les données ;\n\n3. Manipuler les données et créer tout produit utilisant les données ;\n\n4. Utiliser les données ou tout produit dérivé des données dans des publications ;\n\n5. Partager les données avec un utilisateur non autorisé.\n\n\n\nUne fois que votre demande a été approuvée, vous recevrez une copie des termes de la commande et les termes et conditions décrits ci-dessous.",
         "legal": "Version légale",
-        "legal_header": "Termes & conditions d'utilisation - Version légale",
-        "legal_text": ""
+        "legal_header": "Termes & conditions d'utilisation - Version légale"
     },    
     "tutorial": {
         "title": "Tutoriel",

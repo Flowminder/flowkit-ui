@@ -329,15 +329,15 @@
         "text1": "You will find below a **user-friendly** and a **legal** version of our terms & conditions.",
         "text2": "Click on the relevant tab to access the version that is most suitable for you.",
         "download": "Please click here to download the terms and conditions in PDF format.",
-        "download_url": "/files/haiti_mobility_data_platform_terms_en_03_2024.pdf",
+        "download_url": "/files/haiti_mobility_data_platform_terms_en_07_2024.pdf",
         "simple": "User-friendly",
         "simple_header": "Terms & Conditions - User-friendly version",
         "simple_intro1": "",
         "simple_intro2": "Our licensing terms give you peace of mind to use our data while ensuring that use is responsible.",
         "simple_intro3": "Welcome to the Haiti Mobility Dashboard developed by Flowminder. The platform provides access to authorised users to interactive visualisations of pre-computed and anonymised mobility indicators based on Digicel’s pseudonymised call detail records (CDR data), and Flowminder Foundation's data processing and analytical methods.<br /><br />The current version of the platform is a beta product.<br /><br />Once your account has been created, you will be able to:\n<ul><li>Visualise, and interact with, the data  via the dashboard functionality</li><li>Download the data</li><li>Store the service data and manipulated data on a customer terminal</li><li>Manipulate the data and create derived data for internal purposes only</li></ul>\nPlease note that premium accounts are not granted straight away. We will contact you via email to initiate the process. Premium accounts are granted to users upon validation, the user's signature of the T&Cs, and payment of the subscription fee.\nWithout express written approval from Flowminder (contact us at <a href=\"mailto:haiti.mobility-dashboard@flowminder.org)\">haiti.mobility-dashboard@flowminder.org</a>), you shall not:\n<ul><li>Incorporate service data or derived data into external publications</li><li>Share the service data, derived data, and access to the platform with unauthorised users</li></ul>",
         "legal": "Legal",
-        "legal_header": "Terms & Conditions - Legal version",
-        "legal_text": ""
+        "legal_header": "Terms & Conditions - Legal version"
+
     },
     "tutorial": {
         "title": "Tutorial",
