@@ -153,7 +153,7 @@ const Dashboard = () => {
 
     // // dismiss modal for authenticated users and expand indicators menu
     useEffect(() => {
-        if (!isAuthenticated && !process.env.REACT_APP_MAINTAINENCE_MODE) {
+        if (!isAuthenticated && env.REACT_APP_MAINTAINENCE_MODE) {
             return
         }
         const dismissModal = async () => {
