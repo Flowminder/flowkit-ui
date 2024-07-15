@@ -167,7 +167,7 @@ const Dashboard = () => {
     useEffect(() => {}, [])
     // initialise modal. this will be shown only once upon page load.
     useEffect(() => {
-        if (process.env.REACT_APP_MAINTAINENCE_MODE)
+        if (env.REACT_APP_MAINTAINENCE_MODE)
             dispatch(
                 setModal({
                     heading: t("dashboard.maintainence_title"),
