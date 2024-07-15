@@ -151,51 +151,62 @@ const Dashboard = () => {
         setIsDownloadingCsv(false)
     }
 
-    // dismiss modal for authenticated users and expand indicators menu
-    useEffect(() => {
-        if (!isAuthenticated) {
-            return
-        }
-        const dismissModal = async () => {
-            setShowMenu(true)
-            dispatch(setModal(undefined))
-        }
-        dismissModal()
-    }, [isAuthenticated])
+    // // dismiss modal for authenticated users and expand indicators menu
+    // useEffect(() => {
+    //     if (!isAuthenticated) {
+    //         return
+    //     }
+    //     const dismissModal = async () => {
+    //         setShowMenu(true)
+    //         dispatch(setModal(undefined))
+    //     }
+    //     dismissModal()
+    // }, [isAuthenticated])
 
-    // initialise modal. this will be shown only once upon page load.
+    // Set the maintainence model that takes the user back to root
     useEffect(() => {
-        if (unapproved) {
-            dispatch(
-                setModal({
-                    heading: t("dashboard.unapproved1"),
-                    text: <FMTrans k="dashboard.unapproved2" />,
-                    ok: t("dashboard.wait_for_approval"),
-                    onSuccess: () => logout({ returnTo: `${window.location.origin}/logged-out` })
-                })
-            )
-        } else if (unverified) {
-            dispatch(
-                setModal({
-                    heading: t("dashboard.unverified1"),
-                    text: <FMTrans k="dashboard.unverified2" />,
-                    ok: t("dashboard.verify email"),
-                    onSuccess: () => logout({ returnTo: `${window.location.origin}/logged-out` })
-                })
-            )
-        } else if (!isAuthenticated) {
-            dispatch(
-                setModal({
-                    heading: t("dashboard.logged_out1"),
-                    text: <FMTrans k="dashboard.logged_out2" />,
-                    ok: t("dashboard.login"),
-                    cancel: t("dashboard.register"),
-                    onSuccess: () => loginWithRedirect(),
-                    onCancel: () => navigate("/register")
-                })
-            )
-        }
+        dispatch(
+            setModal({
+                heading: t("dashboard.maintainence_title"),
+                text: <FMTrans k="dashboard.maintainence_text" />,
+                ok: t("dashboard.maintainence_approve"),
+                onSuccess: () => navigate("/")
+            })
+        )
     }, [])
+    // initialise modal. this will be shown only once upon page load.
+    // useEffect(() => {
+    //     if (unapproved) {
+    //         dispatch(
+    //             setModal({
+    //                 heading: t("dashboard.unapproved1"),
+    //                 text: <FMTrans k="dashboard.unapproved2" />,
+    //                 ok: t("dashboard.wait_for_approval"),
+    //                 onSuccess: () => logout({ returnTo: `${window.location.origin}/logged-out` })
+    //             })
+    //         )
+    //     } else if (unverified) {
+    //         dispatch(
+    //             setModal({
+    //                 heading: t("dashboard.unverified1"),
+    //                 text: <FMTrans k="dashboard.unverified2" />,
+    //                 ok: t("dashboard.verify email"),
+    //                 onSuccess: () => logout({ returnTo: `${window.location.origin}/logged-out` })
+    //             })
+    //         )
+    //     } else if (!isAuthenticated) {
+    //         dispatch(
+    //             setModal({
+    //                 heading: t("dashboard.logged_out1"),
+    //                 text: <FMTrans k="dashboard.logged_out2" />,
+    //                 ok: t("dashboard.login"),
+    //                 cancel: t("dashboard.register"),
+    //                 onSuccess: () => loginWithRedirect(),
+    //                 onCancel: () => navigate("/register")
+    //             })
+    //         )
+    //     }
+    // }, [])
 
     // one-off getting of initial data which is then cached and reused
     useEffect(() => {
