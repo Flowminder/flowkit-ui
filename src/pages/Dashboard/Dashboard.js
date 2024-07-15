@@ -138,7 +138,9 @@ const Dashboard = () => {
             start_date: currentAvailableTimeRange[0],
             duration: currentAvailableTimeRange.length
         }
-        ReactGA.event("csv_download", query_parameters)
+        if (env.GA_ID !== "") {
+            ReactGA.event("csv_download", query_parameters)
+        }
         setIsDownloadingCsv(true)
         const csv_string = await api.csv(auth0AccessToken, query_parameters)
         const file = new Blob([csv_string], {

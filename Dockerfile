@@ -28,6 +28,7 @@ COPY --from=build /flowkit-ui/build .
 ENV PORT 8080
 ENV HOST 0.0.0.0
 ENV PUBLIC_URL .
+ENV GA_ID ""
 EXPOSE 8080
 
 # Substitute $PORT variable in config file with the one passed via "docker run"

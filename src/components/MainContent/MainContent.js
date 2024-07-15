@@ -7,6 +7,7 @@ import styles from "./MainContent.module.css"
 import session from "../SessionArea/sessionSlice.selectors"
 import { setLoadingMessage, setExtendedUser, setModal } from "../SessionArea/sessionSlice"
 import api from "../../app/api"
+import env from "../../app/env"
 import { useTranslation } from "react-i18next"
 import { useAuth0 } from "@auth0/auth0-react"
 import {
@@ -38,10 +39,11 @@ const MainContent = () => {
     const extendedUser = useSelector(session.selectExtendedUser)
     const showTutorialInsteadOfDashboard = isAuthenticated && extendedUser?.user_metadata?.show_tutorial === true
     const modal = useSelector(session.selectModal)
-
     const location = useLocation()
     useEffect(() => {
-        ReactGA.send({ hitType: "pageview", page: location.pathname + location.search, title: location.pathname })
+        if (env.GA_ID !== "") {
+            ReactGA.send({ hitType: "pageview", page: location.pathname + location.search, title: location.pathname })
+        }
     }, [location])
 
     const useBackListener = callback => {
