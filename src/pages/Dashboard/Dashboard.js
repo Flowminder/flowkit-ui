@@ -163,8 +163,6 @@ const Dashboard = () => {
         dismissModal()
     }, [isAuthenticated])
 
-    // Set the maintainence model that takes the user back to root
-    useEffect(() => {}, [])
     // initialise modal. this will be shown only once upon page load.
     useEffect(() => {
         if (env.REACT_APP_MAINTAINENCE_MODE)
