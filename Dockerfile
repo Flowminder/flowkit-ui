@@ -29,7 +29,8 @@ ENV PORT 8080
 ENV HOST 0.0.0.0
 ENV PUBLIC_URL .
 ENV REACT_APP_MAINTAINENCE_MODE ""
+ENV GA_ID ""
 EXPOSE 8080
 
 # Substitute $PORT variable in config file with the one passed via "docker run"
-CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/configfile.template > /etc/nginx/conf.d/default.conf && envsubst < env.js > env.js.tmp && mv env.js.tmp env.js && nginx -g 'daemon off;'"
+CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/configfile.template > /etc/nginx/conf.d/default.conf && envsubst < env.js > env.js.tmp && mv env.js.tmp env.js && envsubst < index.html > index.html.tmp && mv index.html.tmp index.html && nginx -g 'daemon off;'"
