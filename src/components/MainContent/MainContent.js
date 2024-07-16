@@ -7,6 +7,7 @@ import styles from "./MainContent.module.css"
 import session from "../SessionArea/sessionSlice.selectors"
 import { setLoadingMessage, setExtendedUser, setModal } from "../SessionArea/sessionSlice"
 import api from "../../app/api"
+import env from "../../app/env"
 import { useTranslation } from "react-i18next"
 import { useAuth0 } from "@auth0/auth0-react"
 import {
@@ -25,8 +26,9 @@ import {
     LoggedOut
 } from "../../pages/index"
 import { Sidebar, FMButton } from "../"
-import { Routes, Route, UNSAFE_NavigationContext } from "react-router-dom"
+import { Routes, Route, UNSAFE_NavigationContext, useLocation } from "react-router-dom"
 import Modal from "react-bootstrap/Modal"
+import ReactGA from "react-ga4"
 
 const MainContent = () => {
     const { t } = useTranslation()
@@ -37,6 +39,12 @@ const MainContent = () => {
     const extendedUser = useSelector(session.selectExtendedUser)
     const showTutorialInsteadOfDashboard = isAuthenticated && extendedUser?.user_metadata?.show_tutorial === true
     const modal = useSelector(session.selectModal)
+    const location = useLocation()
+    useEffect(() => {
+        if (env.GA_ID !== "") {
+            ReactGA.send({ hitType: "pageview", page: location.pathname + location.search, title: location.pathname })
+        }
+    }, [location])
 
     const useBackListener = callback => {
         const navigator = useContext(UNSAFE_NavigationContext).navigator

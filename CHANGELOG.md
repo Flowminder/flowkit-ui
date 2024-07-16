@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added an initial implementation of data downloading, which gets CSVs for the currently selected indicator and time range.
 - Added a plan type option to registration, so users can indicate whether they want to sign up for premium access at registration.
+- Added Google analytics tracking of page views and CSV downloads where the env vars `GA_ID` (google analytics property id) and `REACT_COOKIEBANNER` (script tag which produces a cookie banner) are set
+- Added an out-of-order sign to `/dashboard`, toggleable by setting `REACT_APP_MAINTAINENCE_MODE` to anything other than `""`.
 
 ### Changed
 - Banner bar is now still available even if a dashboard modal is active - moving off the dashboard dismisses the modal.

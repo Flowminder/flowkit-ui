@@ -50,6 +50,7 @@ import img_online from "./img/online.svg"
 import img_offline from "./img/offline.svg"
 import env from "../../app/env"
 import { useNavigate } from "react-router-dom"
+import ReactGA from "react-ga4"
 
 // Scales are build-time environment variables
 const colourScales = [
@@ -137,6 +138,9 @@ const Dashboard = () => {
             start_date: currentAvailableTimeRange[0],
             duration: currentAvailableTimeRange.length
         }
+        if (env.GA_ID !== "") {
+            ReactGA.event("csv_download", query_parameters)
+        }
         setIsDownloadingCsv(true)
         const csv_string = await api.csv(auth0AccessToken, query_parameters)
         const file = new Blob([csv_string], {
@@ -151,8 +155,11 @@ const Dashboard = () => {
         setIsDownloadingCsv(false)
     }
 
-    // dismiss modal for authenticated users and expand indicators menu
+    // // dismiss modal for authenticated users and expand indicators menu
     useEffect(() => {
+        if (env.REACT_APP_MAINTAINENCE_MODE !== "") {
+            return
+        }
         if (!isAuthenticated) {
             return
         }
@@ -165,7 +172,16 @@ const Dashboard = () => {
 
     // initialise modal. this will be shown only once upon page load.
     useEffect(() => {
-        if (unapproved) {
+        if (env.REACT_APP_MAINTAINENCE_MODE !== "")
+            dispatch(
+                setModal({
+                    heading: t("dashboard.maintainence_title"),
+                    text: <FMTrans k="dashboard.maintainence_text" />,
+                    ok: t("dashboard.maintainence_approve"),
+                    onSuccess: () => navigate("/")
+                })
+            )
+        else if (unapproved) {
             dispatch(
                 setModal({
                     heading: t("dashboard.unapproved1"),
