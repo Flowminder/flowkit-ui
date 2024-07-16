@@ -155,8 +155,11 @@ const Dashboard = () => {
         setIsDownloadingCsv(false)
     }
 
-    // dismiss modal for authenticated users and expand indicators menu
+    // // dismiss modal for authenticated users and expand indicators menu
     useEffect(() => {
+        if (env.REACT_APP_MAINTAINENCE_MODE !== "") {
+            return
+        }
         if (!isAuthenticated) {
             return
         }
@@ -169,7 +172,16 @@ const Dashboard = () => {
 
     // initialise modal. this will be shown only once upon page load.
     useEffect(() => {
-        if (unapproved) {
+        if (env.REACT_APP_MAINTAINENCE_MODE !== "")
+            dispatch(
+                setModal({
+                    heading: t("dashboard.maintainence_title"),
+                    text: <FMTrans k="dashboard.maintainence_text" />,
+                    ok: t("dashboard.maintainence_approve"),
+                    onSuccess: () => navigate("/")
+                })
+            )
+        else if (unapproved) {
             dispatch(
                 setModal({
                     heading: t("dashboard.unapproved1"),
