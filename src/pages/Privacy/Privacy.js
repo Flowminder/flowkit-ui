@@ -199,7 +199,16 @@ const Privacy = () => {
                     </p>
                 </Tab>
                 <Tab eventKey="legal" title={t("privacy.legal")}>
-                    <FMTrans k="privacy.legal_text" />
+                    <h2>
+                        <FMTrans k="privacy.legal_header" />
+                    </h2>
+                    <p className={styles.DownloadLink}>
+                        <a href={t("privacy.download_url")} rel="noreferrer" target="_blank">
+                            {t("privacy.download")}
+                        </a>
+                    </p>
+                    <br />
+                    <object data={t("privacy.download_url")} class="border rounded w-100" height="600px" />
                 </Tab>
             </Tabs>
         </div>
