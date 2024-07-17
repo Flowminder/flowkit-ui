@@ -569,7 +569,12 @@ const Dashboard = () => {
                                     <h2>
                                         {t("dashboard.indicators_metrics")}: {indicatorName}
                                     </h2>
-                                    <p>{indicatorDescription}</p>
+                                    <ReactMarkdown
+                                        skipHtml={false}
+                                        allowDangerousHtml={true}
+                                        linkTarget="_blank"
+                                        children={indicatorDescription}
+                                    />
                                 </div>
                                 <div className={styles.Space}></div>
                                 <div className={styles.Buttons}>
