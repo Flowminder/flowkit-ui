@@ -38,7 +38,8 @@
         "loading_guidance": "Here you can read about the methods that were used to compute the indicator.\n\nPlease select an indicator to continue.",
         "info": "Method Overview",
         "flowgeek_text": "For more information please visit ",
-        "read_more": "Read more"
+        "read_more": "Read more",
+        "read_more_link": "/files/fm_haiti-mobility-dashboard_about-indicators_en__july_2024.pdf"
     },
     "dashboard": {
         "dashboard": "Haiti Mobility Data Dashboard",
