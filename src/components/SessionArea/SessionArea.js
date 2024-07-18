@@ -49,7 +49,7 @@ const SessionArea = () => {
                         {t("menu.login")}
                     </button>
                     <button
-                        className={styles.login}
+                        className={styles.auth0}
                         onClick={() =>
                             loginWithRedirect({
                                 screen_hint: "signup",
