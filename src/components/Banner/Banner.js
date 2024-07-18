@@ -56,7 +56,7 @@ const Banner = () => {
                             <Link to="/about">{t("menu.about_platform")}</Link>
                         </li>
                         <li>
-                            <Link to={t("menu.indicator_about__pdf_url")} rel="noreferrer" target="_blank">
+                            <Link to={t("menu.indicator_about_pdf_url")} rel="noreferrer" target="_blank">
                                 {`${t("menu.about_indicators")} [pdf]`}
                             </Link>
                         </li>
