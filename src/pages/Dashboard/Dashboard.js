@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { DateTime } from "luxon"
 import styles from "./Dashboard.module.css"
+import ReactMarkdown from "react-markdown"
 import "react-datepicker/dist/react-datepicker.css"
 import "./Dashboard.scss"
 import { useAuth0 } from "@auth0/auth0-react"
@@ -569,7 +570,12 @@ const Dashboard = () => {
                                     <h2>
                                         {t("dashboard.indicators_metrics")}: {indicatorName}
                                     </h2>
-                                    <p>{indicatorDescription}</p>
+                                    <ReactMarkdown
+                                        skipHtml={false}
+                                        allowDangerousHtml={true}
+                                        linkTarget="_blank"
+                                        children={indicatorDescription}
+                                    />
                                 </div>
                                 <div className={styles.Space}></div>
                                 <div className={styles.Buttons}>

@@ -14,7 +14,10 @@
         "about": "À propos",
         "about_platform": "À propos de la plateforme",
         "about_indicators": "À propos des indicateurs",
-	"data_quality_status": "Qualité des données - Statut",
+        "indicator_about_pdf_url":"/files/fm_haiti-mobility-dashboard_about-indicators_fr__july_2024.pdf",
+        "indicator_quality_pdf_url":"/files/Outliers and Missing Data v2.2.pdf",
+        "indicator_quality_xlsx_url":"/files/Haiti Mobility Platform - Data Quality Status Annex 1.xlsx",
+	"data_quality_status": "Valeurs Aberrantes et Données Manquantes",
         "explore": "Explorer",
         "login": "Se connecter",
         "account_settings": "Compte et paramètres >",
@@ -28,13 +31,14 @@
         "flowgeek": "Ressources éducatives: <a href=\"https://www.flowgeek.org/\" target=\"_blank\">FlowGeek</a>",
         "about": "À propos",
         "heading": "À propos",
-        "paragraph": "Cette plateforme vous est proposée par <a href=\"https://flowminder.org\" target=\"_blank\">Flowminder</a>, en collaboration avec <a href=\"https://digicelgroup.com/ht/fr.html\" target=\"_blank\">Digicel Haïti</a>, afin de permettre un accès et une utilisation accrus des données des opérateurs de téléphonie mobile d'une manière qui soit éthiquement saine, financièrement viable et durable pour le bien-être de tous en Haïti."
+        "paragraph": "Cette plateforme vous est proposée par <a href=\"https://flowminder.org\" target=\"_blank\">Flowminder</a>, en collaboration avec <a href=\"https://digicelgroup.com/ht/fr.html\" target=\"_blank\">Digicel Haïti</a>, afin de permettre un accès et une utilisation accrus des données des opérateurs de téléphonie mobile d'une manière qui soit éthiquement saine, financièrement viable et durable pour le bien-être de tous en Haïti.<br /><br /><a href=\"https://www.flowminder.org/resources/publications-reports/tag/haiti\" target=\"_blank\">Découvrez nos rapports de mobilité en Haïti</a>"
     },
     "sidebar": {
         "loading_guidance": "Vous trouverez ici les méthodes utilisées pour calculer l'indicateur. Veuillez sélectionner un indicateur pour continuer.",
         "info": "Aperçu de la méthode",
         "flowgeek_text": "Pour plus d'informations, s'il vous plaît visitez ",
-        "read_more": "En savoir plus"
+        "read_more": "En savoir plus",
+        "read_more_link": "/files/fm_haiti-mobility-dashboard_about-indicators_fr__july_2024.pdf"
     },
     "dashboard": {
         "dashboard": "Haiti Mobility Data Dashboard",

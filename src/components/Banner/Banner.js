@@ -56,21 +56,18 @@ const Banner = () => {
                             <Link to="/about">{t("menu.about_platform")}</Link>
                         </li>
                         <li>
-                            <Link
-                                to="/files/fm_haiti-mobility-dashboard_about-indicators__july_2023.pdf"
-                                rel="noreferrer"
-                                target="_blank"
-                            >
+                            <Link to={t("menu.indicator_about__pdf_url")} rel="noreferrer" target="_blank">
                                 {`${t("menu.about_indicators")} [pdf]`}
                             </Link>
                         </li>
                         <li>
-                            <Link
-                                to="/files/haiti_mobility_data_platform_data_quality_status.pdf"
-                                rel="noreferrer"
-                                target="_blank"
-                            >
+                            <Link to={t("menu.indicator_quality_pdf_url")} rel="noreferrer" target="_blank">
                                 {`${t("menu.data_quality_status")} [pdf]`}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={t("menu.indicator_quality_xlsx_url")} rel="noreferrer" target="_blank">
+                                {`${t("menu.data_quality_status")} [excel]`}
                             </Link>
                         </li>
                         <li>
