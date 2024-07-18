@@ -32,11 +32,15 @@
 .SessionArea button.auth0 {
     border: none;
     background: var(--control-bg);
+    font-size: 16px !important;
+    font-family: var(--font-control) !important;
+    font-weight: 400 !important;
     color: var(--dark);
     min-width: 80px;
     height: 30px !important;
     line-height: 30px !important;
     margin-right: 30px;
+    margin-top: 10px;
 }
 
 .SessionArea button.auth0:hover {
