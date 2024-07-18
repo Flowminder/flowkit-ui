@@ -48,9 +48,17 @@ const SessionArea = () => {
                     <button className={styles.login} onClick={() => loginWithRedirect()}>
                         {t("menu.login")}
                     </button>
-                    <Link to={`/register`}>
-                        <button className={styles.auth0}>{t("menu.register")}</button>
-                    </Link>
+                    <button
+                        className={styles.login}
+                        onClick={() =>
+                            loginWithRedirect({
+                                screen_hint: "signup",
+                                redirectUri: `${window.location.origin.toString()}/tutorial?new_user=true`
+                            })
+                        }
+                    >
+                        {t("menu.register")}
+                    </button>
                 </>
             )}
         </div>
