@@ -208,7 +208,11 @@ const Dashboard = () => {
                     ok: t("dashboard.login"),
                     cancel: t("dashboard.register"),
                     onSuccess: () => loginWithRedirect(),
-                    onCancel: () => navigate("/register")
+                    onCancel: () =>
+                        loginWithRedirect({
+                            screen_hint: "signup",
+                            redirectUri: `${window.location.origin.toString()}/tutorial?new_user=true`
+                        })
                 })
             )
         }

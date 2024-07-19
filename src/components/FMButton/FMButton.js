@@ -23,7 +23,7 @@ const FMButton = ({
     className
 }) => {
     const isLogin = link === "login"
-    const isSignup = link === "signup"
+    const isSignup = link === "signup" || link === "/register"
     const isLink = !["login", "signup"].includes(link)
     const buttonType = form ? "submit" : "button"
 
@@ -72,18 +72,9 @@ const FMButton = ({
                     form={form}
                     className={styles.LogIn}
                     onClick={() => {
-                        // use current app state (signup cache) to verify the signup
-                        // see https://auth0.com/docs/secure/attack-protection/state-parameters
-                        const current_app_state = Buffer.from(JSON.stringify(signupCache)).toString("base64")
-                        localStorage.setItem("app_state", current_app_state)
                         loginWithRedirect({
                             screen_hint: "signup",
-                            redirectUri: `${window.location.origin.toString()}/tutorial?new_user=true&previous_state=${current_app_state}`,
-                            login_hint: signupCache.email
-                            // The API docs say this is how you pass in the registration details so we can store the info
-                            // once signup is complete. It does however not work so we're passing it in as a get parameter in the redirect URI.
-                            // it's not ideal and should probably be changed in the future.
-                            // app_state: current_app_state
+                            redirectUri: `${window.location.origin.toString()}/tutorial?new_user=true`
                         })
                     }}
                 >
