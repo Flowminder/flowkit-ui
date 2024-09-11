@@ -16,8 +16,7 @@
         "about_indicators": "About the indicators",
 
         "indicator_about_pdf_url":"/files/fm_haiti-mobility-dashboard_about-indicators_en__july_2024.pdf",
-        "indicator_quality_pdf_url":"/files/Outliers and Missing Data v2.2.pdf",
-        "indicator_quality_xlsx_url":"/files/Haiti Mobility Platform - Data Quality Status Annex 1.xlsx",
+        "indicator_quality_xlsx_url":"/files/Haiti Mobility Platform - DQS v2.3_Aug_2024.xlsx",
 	      "data_quality_status": "Outliers and Missing Data",
         "explore": "Explore",
         "login": "Log in",
