@@ -74,7 +74,8 @@
     },
     "resolutions": {
         "react-error-overlay": "6.0.9",
-        "react-dev-utils": "11.0.3"
+        "react-dev-utils": "11.0.3",
+        "@babel/core": "7.22.0"
     },
     "browserslist": [
         "defaults",
