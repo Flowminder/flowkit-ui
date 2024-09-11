@@ -61,11 +61,6 @@ const Banner = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to={t("menu.indicator_quality_pdf_url")} rel="noreferrer" target="_blank">
-                                {`${t("menu.data_quality_status")} [pdf]`}
-                            </Link>
-                        </li>
-                        <li>
                             <Link to={t("menu.indicator_quality_xlsx_url")} rel="noreferrer" target="_blank">
                                 {`${t("menu.data_quality_status")} [excel]`}
                             </Link>
