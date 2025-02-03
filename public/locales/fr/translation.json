@@ -61,7 +61,7 @@
         "dates": "Dates",
         "dates_hint": "Sélectionnez une période",
         "maintainence_title": "En maintenance",
-        "maintainence_text": "Le tableau de bord est actuellement indisponible car les indicateurs sont en cours de mise à niveau vers une nouvelle méthodologie. Le service devrait reprendre vers 18 heures aujourd'hui.",
+        "maintainence_text": "Le tableau de bord est actuellement indisponible car les indicateurs sont en cours de mise à niveau vers une nouvelle méthodologie. Le système devrait être rétabli à 18 heures GMT aujourd'hui.",
         "maintainence_approve": "Retour à la page d'accueil",
         "map_parameters": "Paramètres de la carte",
         "map_parameters_text": "Veuillez choisir une catégorie d'indicateurs et un indicateur pour sélectionner/modifier les paramètres",
