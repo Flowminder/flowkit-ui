@@ -146,7 +146,6 @@ const MainContent = () => {
                     <Route path={`/about`} element={<About />} />
                     <Route path={`/contact`} element={<Contact />} />
                     <Route path={`/explore`} element={<Explore />} />
-                    <Route path={`/pricing`} element={<Pricing />} />
                     <Route path={`/privacy`} element={<Privacy />} />
                     <Route path={`/subscriber-privacy`} element={<SubscriberPrivacy />} />
                     <Route path={`/register`} element={<Registration />} />

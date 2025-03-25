@@ -76,9 +76,6 @@ const Banner = () => {
                         </li>
                     </ul>
                 </div>
-                <Link className={styles.BannerLink} to="/pricing">
-                    {t("menu.pricing")}
-                </Link>
                 <Link className={styles.BannerLink} to="/explore">
                     {t("menu.explore")}
                 </Link>
