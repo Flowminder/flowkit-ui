@@ -56,10 +56,10 @@ jobs:
           command: |
             docker build -t flowminder/flowkit-ui:${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}} -t flowminder/flowkit-ui:latest .
       - run:
-          name: Push image(s) to dockerhub
+          name: Push image(s) to Flowminder Quay
           command: |
             echo "$DOCKER_ACCESS_TOKEN" | docker login -u "$DOCKER_USER" --password-stdin
-            docker push -a flowminder/flowkit-ui
+            docker push -a registery.cloud.flowminder.org/flowminder/flowkit-ui
       - upload_codecov:
           test: coverage
 

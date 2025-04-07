@@ -16,7 +16,6 @@ import {
     Dashboard,
     Explore,
     Intro,
-    Pricing,
     Privacy,
     SubscriberPrivacy,
     Profile,
