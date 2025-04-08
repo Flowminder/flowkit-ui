@@ -244,7 +244,8 @@
         "signup": "Créer un compte",
         "login": "Se connecter",
         "explorer": "Explorer",
-        "video_url": "https://youtube.com/embed/0eKONlGKVKc"
+        "video_url": "https://youtube.com/embed/0eKONlGKVKc",
+        "most_recent_data": "Données les plus récentes disponibles :"
     },
     "pricing": {
         "title": "Plans",

@@ -214,6 +214,21 @@ const api = {
                 return false
             })
     },
+    latestDate: async () => {
+        return await axios(`${url}/latest_date`, {
+            method: "GET",
+            headers: {
+                "Cache-Control": "private"
+            }
+        })
+            .then(response => {
+                return response?.data?.latest_date
+            })
+            .catch(error => {
+                console.error(error)
+                return false
+            })
+    },
     query: async (access_token, query_parameters) => {
         return await axios(`${url}/query`, {
             method: "POST",
