@@ -4,8 +4,9 @@ import { useTranslation } from "react-i18next"
 import api from "../../app/api"
 
 const formatting_options = {
+    day: "numeric",
     year: "numeric",
-    month: "short"
+    month: "long"
 }
 
 const LatestDate = () => {
@@ -17,9 +18,10 @@ const LatestDate = () => {
         const loadData = async () => {
             let response = await api.latestDate()
             try {
+                const locale = i18n.language === "en" ? "en-GB" : i18n.language
                 if (response) {
                     var latest_date = new Date(response)
-                    setLatestDate(latest_date.toLocaleDateString(i18n.language))
+                    setLatestDate(latest_date.toLocaleDateString(locale, formatting_options))
                 } else setLatestDate("")
 
                 // parse date string to datetime
