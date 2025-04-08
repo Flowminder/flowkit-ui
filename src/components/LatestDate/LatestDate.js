@@ -5,8 +5,7 @@ import api from "../../app/api"
 
 const formatting_options = {
     year: "numeric",
-    month: "short",
-    day: "numeric"
+    month: "short"
 }
 
 const LatestDate = () => {
@@ -18,8 +17,10 @@ const LatestDate = () => {
         const loadData = async () => {
             let response = await api.latestDate()
             try {
-                var latest_date = new Date(response)
-                setLatestDate(latest_date.toLocaleDateString(i18n.language, formatting_options))
+                if (response) {
+                    var latest_date = new Date(response)
+                    setLatestDate(latest_date.toLocaleDateString(i18n.language))
+                } else setLatestDate("")
 
                 // parse date string to datetime
                 // update state
@@ -31,7 +32,15 @@ const LatestDate = () => {
         loadData()
     })
 
-    return latestDate
+    if (latestDate !== "") {
+        return (
+            <p>
+                {t("intro.most_recent_data")}
+                {latestDate}
+            </p>
+        )
+    }
+    return ""
 }
 
 export default LatestDate

@@ -20,10 +20,7 @@ const Intro = () => {
             <div className={mainStyles.Subheading}>
                 <FMTrans k="intro.sub_heading" />
                 <br></br>
-                <p>
-                    {t("intro.most_recent_data")}
-                    <LatestDate />
-                </p>
+                <LatestDate />
             </div>
 
             <Container className={`${mainStyles.fullWidth} ${mainStyles.firstItem}`}>
