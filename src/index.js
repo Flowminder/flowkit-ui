@@ -11,9 +11,9 @@ import env from "./app/env"
 import { createRoot } from "react-dom/client"
 import ReactGA from "react-ga4"
 
-if (env.GA_ID !== "") {
-    ReactGA.initialize(env.GA_ID)
-}
+// if (env.GA_ID !== "") {
+//     ReactGA.initialize(env.GA_ID)
+// }
 
 const root = createRoot(document.getElementById("root"))
 
