@@ -14,7 +14,7 @@ const DQSLink = () => {
     const downloadDQS = async () => {
         console.log("Fetching signed link....")
         const dqs_link = await api.dqs(auth0AccessToken)
-        console.log(`Got signed link: ${dqs_link}`)
+        console.log(`Got signed link: ${dqs_link.url}`)
         const element = document.createElement("a")
         element.href = dqs_link.url
         element.download = dqs_link.file_name
@@ -23,9 +23,13 @@ const DQSLink = () => {
     }
 
     if (isAuthenticated) {
-        return <button onClick={() => downloadDQS()}>link to dqs go here</button>
+        return (
+            <Link to="." onClick={() => downloadDQS()}>
+                {t("menu.data_quality_status")} [excel]
+            </Link>
+        )
     }
-    return <Link to="">Log in to access the data quality spreadsheet</Link>
+    return
 }
 
 export default DQSLink
