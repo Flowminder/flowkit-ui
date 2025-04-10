@@ -267,6 +267,22 @@ const api = {
                 console.error(error)
                 return false
             })
+    },
+    dqs: async access_token => {
+        return await axios(`${url}/dqs`, {
+            method: "GET",
+            headers: {
+                authorization: `BEARER ${access_token}`,
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => {
+                return response?.data
+            })
+            .catch(error => {
+                console.error(error)
+                return false
+            })
     }
 }
 
