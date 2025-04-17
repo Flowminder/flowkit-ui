@@ -245,7 +245,8 @@
         "signup": "Sign up",
         "login": "Log in",
         "explore": "Explore",
-        "video_url": "https://youtube.com/embed/JBgIOHMlxkY"
+        "video_url": "https://youtube.com/embed/JBgIOHMlxkY",
+        "most_recent_data": "Most recent data available: "
     },
     "pricing": {
         "title": "Plans",

@@ -9,7 +9,7 @@ import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import img_bg from "../../components/MainContent/img/AdobeStock_297359062.jpeg"
-import { FMButton, FMTrans } from "../../components"
+import { FMButton, FMTrans, LatestDate } from "../../components"
 
 const Intro = () => {
     const { t } = useTranslation()
@@ -19,6 +19,12 @@ const Intro = () => {
             <h1 className={mainStyles.withSubheading}>{t("intro.main_heading")}</h1>
             <div className={mainStyles.Subheading}>
                 <FMTrans k="intro.sub_heading" />
+                <br></br>
+                <div>
+                    <h2 style={{ font: "--font-heading" }}>
+                        <LatestDate />
+                    </h2>
+                </div>
             </div>
 
             <Container className={`${mainStyles.fullWidth} ${mainStyles.firstItem}`}>
