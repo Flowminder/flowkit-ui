@@ -1,4 +1,3 @@
-import i18next from "i18next"
 import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import api from "../../app/api"
@@ -34,7 +33,7 @@ const LatestDate = () => {
         loadData()
     })
 
-    if (latestDate !== "") {
+    if (latestDate !== "" && typeof latestDate !== "undefined") {
         return (
             <p>
                 {t("intro.most_recent_data")}

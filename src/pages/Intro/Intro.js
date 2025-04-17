@@ -20,7 +20,11 @@ const Intro = () => {
             <div className={mainStyles.Subheading}>
                 <FMTrans k="intro.sub_heading" />
                 <br></br>
-                <LatestDate />
+                <div>
+                    <h2 style={{ font: "--font-heading" }}>
+                        <LatestDate />
+                    </h2>
+                </div>
             </div>
 
             <Container className={`${mainStyles.fullWidth} ${mainStyles.firstItem}`}>
