@@ -24,7 +24,7 @@ const DQSLink = () => {
 
     if (isAuthenticated) {
         return (
-            <Link to="." onClick={() => downloadDQS()}>
+            <Link to="#" onClick={() => downloadDQS()}>
                 {t("menu.data_quality_status")} [excel]
             </Link>
         )
