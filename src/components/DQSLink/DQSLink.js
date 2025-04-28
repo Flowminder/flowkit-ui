@@ -25,6 +25,7 @@ const DQSLink = () => {
             element.remove()
         } else {
             console.error("DQS download error, please contact admin")
+            alert(t("menu.dqs_error_message"))
         }
     }
 
