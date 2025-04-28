@@ -12,6 +12,7 @@ import SessionArea from "../SessionArea/SessionArea"
 import { setModal } from "../SessionArea/sessionSlice"
 import img_fm from "./img/fmlogo.png"
 import img_arrow from "./img/arrow.svg"
+import digicel_logo from "./img/digicel_logo_white.png"
 import env from "../../app/env"
 
 const Banner = () => {
@@ -35,14 +36,7 @@ const Banner = () => {
             <div className={styles.BannerLeft}>
                 <Link to="/">
                     <img src={img_fm} className={styles.FlowminderLogo} alt={"Flowminder.org"} />
-                    {dataProviders.map((dataProvider, i) => (
-                        <img
-                            key={dataProvider.name}
-                            src={dataProvider.logo}
-                            className={styles.DataProviderLogo}
-                            alt={dataProvider.name}
-                        />
-                    ))}
+                    <img src={digicel_logo} alt={"Digicel"} />
                     <span className={styles.PortalName}>{env.REACT_APP_NAME}</span>
                 </Link>
             </div>

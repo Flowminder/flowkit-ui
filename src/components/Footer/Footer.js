@@ -11,6 +11,7 @@ import img_fm from "./img/fmlogo.png"
 import img_afd from "./img/afd.svg"
 import img_hewlett from "./img/hewlett.svg"
 import img_fdfa from "./img/fdfa.png"
+import digicel_logo from "./img/digicel_logo_white.png"
 import { FMTrans } from "../"
 
 const Footer = () => {
@@ -26,17 +27,7 @@ const Footer = () => {
                     <a href="https://flowminder.org" target="_blank" rel="noreferrer">
                         <img src={img_fm} className={styles.FlowminderLogo} alt={"Flowminder.org"} />
                     </a>
-                    {dataProviders.map((dataProvider, i) => {
-                        return (
-                            <a href={dataProvider.url} key={i} target="_blank" rel="noreferrer">
-                                <img
-                                    src={dataProvider.logo}
-                                    className={styles.DataProviderLogo}
-                                    alt={dataProvider.name}
-                                />
-                            </a>
-                        )
-                    })}
+                    <img src={digicel_logo} alt={"Digicel"} />
                 </p>
                 <p>
                     {t("footer.funded_by")}
