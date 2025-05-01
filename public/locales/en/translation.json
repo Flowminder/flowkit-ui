@@ -15,7 +15,6 @@
         "about_platform": "About the platform",
         "about_indicators": "About the indicators",
         "indicator_about_pdf_url": "/files/HTI platform Methodology documentation - Release v4.0_Jan2025.pdf",
-        "indicator_quality_xlsx_url": "/files/Haiti Mobility Platform - DQS 03-Mar-25.xlsx",
         "data_quality_status": "Outliers and Missing Data",
         "dqs_error_message": "DQS currently unavailable - please contact Flowminder.",
         "explore": "Explore",
