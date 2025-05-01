@@ -13,6 +13,7 @@ import { setModal } from "../SessionArea/sessionSlice"
 import img_fm from "./img/fmlogo.png"
 import img_arrow from "./img/arrow.svg"
 import env from "../../app/env"
+import DQSLink from "../DQSLink/DQSLink"
 
 const Banner = () => {
     const { t, i18n } = useTranslation()
@@ -61,9 +62,7 @@ const Banner = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to={t("menu.indicator_quality_xlsx_url")} rel="noreferrer" target="_blank">
-                                {`${t("menu.data_quality_status")} [excel]`}
-                            </Link>
+                            <DQSLink />
                         </li>
                         <li>
                             <Link to="/terms">{t("terms.title")}</Link>
