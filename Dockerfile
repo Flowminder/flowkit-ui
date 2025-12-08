@@ -1,7 +1,7 @@
 # This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 # If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-FROM node:16.13-alpine AS build
+FROM node:20-alpine AS build
 
 WORKDIR /flowkit-ui
 
