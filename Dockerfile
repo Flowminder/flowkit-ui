@@ -13,7 +13,7 @@ RUN apk add git
 
 RUN yarn install \
     && yarn upgrade \
-    && yarn build
+    && NODE_OPTIONS=--openssl-legacy-provider yarn build
 
 FROM nginx:alpine
 
