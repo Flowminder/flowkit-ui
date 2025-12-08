@@ -44,7 +44,7 @@ jobs:
             sudo apt-get install -y docker.io
             
             # Verify Docker works (using the host's Docker daemon via socket)
-            docker --version
+            sudo docker --version
       - run:
           name: Install gpg, node.js and yarn
           command: |
@@ -75,14 +75,14 @@ jobs:
       - run:
           name: Build docker image
           command: |
-            docker build \
+            sudo docker build \
               -t registry.cloud.flowminder.org/repository/flowminder/flowkit-ui:${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}} \
               -t registry.cloud.flowminder.org/repository/flowminder/flowkit-ui:latest .
       - run:
           name: Push image(s) to private registry
           command: |
-            echo "$DOCKER_CLOUD_PASSWORD" | docker login registry.cloud.flowminder.org -u "$DOCKER_CLOUD_USER" --password-stdin
-            docker push -a registry.cloud.flowminder.org/repository/flowminder/flowkit-ui
+            echo "$DOCKER_CLOUD_PASSWORD" | sudo docker login registry.cloud.flowminder.org -u "$DOCKER_CLOUD_USER" --password-stdin
+            sudo docker push -a registry.cloud.flowminder.org/repository/flowminder/flowkit-ui
       - upload_codecov:
           test: coverage
   update-mob-dashtag:
