@@ -1,6 +1,8 @@
 # This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 # If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
 version: 2.1
+
 commands:
   upload_codecov:
     parameters:
@@ -18,6 +20,7 @@ commands:
             shasum -a 256 -c codecov.SHA256SUM
             chmod +x codecov
             ./codecov <<parameters.test>>
+
 defaults:
   - &autodeploy
     filters:
@@ -26,13 +29,13 @@ defaults:
           - main
       tags:
         only: /^v.*/
+
 jobs:
   build:
     build:
     machine:
       image: default
       docker_layer_caching: true
-    resource_class: flowminder/runners
     working_directory: /tmp/flowkit-ui
     steps:
       - checkout
@@ -51,16 +54,15 @@ jobs:
       - run:
           name: Build docker image
           command: |
-            docker build \
-              -t registry.cloud.flowminder.org/repository/flowminder/flowkit-ui:${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}} \
-              -t registry.cloud.flowminder.org/repository/flowminder/flowkit-ui:latest .
+            docker build -t flowminder/flowkit-ui:${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}} -t flowminder/flowkit-ui:latest .
       - run:
-          name: Push image(s) to private registry
+          name: Push image(s) to dockerhub
           command: |
-            echo "$DOCKER_CLOUD_PASSWORD" | docker login registry.cloud.flowminder.org -u "$DOCKER_CLOUD_USER" --password-stdin
-            docker push -a registry.cloud.flowminder.org/repository/flowminder/flowkit-ui
+            echo "$DOCKER_ACCESS_TOKEN" | docker login -u "$DOCKER_USER" --password-stdin
+            docker push -a flowminder/flowkit-ui
       - upload_codecov:
           test: coverage
+
   update-mob-dashtag:
     docker:
       - image: cimg/base:2021.04
@@ -93,13 +95,12 @@ jobs:
           name: Push changes to git
           command: |
             git push
+
 workflows:
   test_build_deploy:
     jobs:
       - build:
-          context:
-            - flowcloud-docker-registry
-          <<: *autodeploy
+        <<: *autodeploy
       - update-mob-dashtag:
           context:
             - flowminder-gcp-mobility-dashboard-gcr-context
