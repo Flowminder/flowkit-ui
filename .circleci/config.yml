@@ -32,34 +32,9 @@ jobs:
     machine:
       image: default
       docker_layer_caching: true
-    resource_class: flowminder/runners
     working_directory: /tmp/flowkit-ui
     steps:
       - checkout
-      - run:
-          name: Install Docker CLI
-          command: |
-            # Install Docker CLI only (not the daemon)
-            sudo apt-get update
-            sudo apt-get install -y docker.io
-            
-            # Verify Docker works (using the host's Docker daemon via socket)
-            sudo docker --version
-      - run:
-          name: Install gpg, node.js and yarn
-          command: |
-            sudo apt-get install -y gpg
-
-            curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-            sudo apt-get install -y nodejs
-
-            curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-            echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-            sudo apt-get update && sudo apt-get install -y yarn
-
-            gpg --version
-            node --version
-            yarn --version
       - run:
           name: Get information about ALL branches
           command: |
@@ -75,14 +50,14 @@ jobs:
       - run:
           name: Build docker image
           command: |
-            sudo docker build \
+            docker build \
               -t registry.cloud.flowminder.org/flowminder/flowkit-ui:${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}} \
               -t registry.cloud.flowminder.org/flowminder/flowkit-ui:latest .
       - run:
           name: Push image(s) to private registry
           command: |
-            echo "$DOCKER_CLOUD_PASSWORD" | sudo docker login registry.cloud.flowminder.org -u "$DOCKER_CLOUD_USER" --password-stdin
-            sudo docker push -a registry.cloud.flowminder.org/flowminder/flowkit-ui
+            echo "$DOCKER_CLOUD_PASSWORD" | docker login registry.cloud.flowminder.org -u "$DOCKER_CLOUD_USER" --password-stdin
+            docker push -a registry.cloud.flowminder.org/flowminder/flowkit-ui
       - upload_codecov:
           test: coverage
   update-mob-dashtag:
