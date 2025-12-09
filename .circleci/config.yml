@@ -73,7 +73,7 @@ jobs:
           command: |
             ssh-keyscan github.com >> ~/.ssh/known_hosts
       - run:
-          name: Clone Mobility Dashboard repository
+          name: Clone the Mobility Dashboard repository
           command: |
             git clone git@github.com:Flowminder/flowminder-gcp-mobility-dashboard.git /tmp/mbdash
       - run:
