@@ -51,13 +51,13 @@ jobs:
           name: Build docker image
           command: |
             docker build \
-              -t registry.cloud.flowminder.org/flowminder/flowkit-ui:${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}} \
-              -t registry.cloud.flowminder.org/flowminder/flowkit-ui:latest .
+              -t ${REGISTRY_URL}/flowminder/flowkit-ui:${CIRCLE_TAG:-${CIRCLE_SHA1:0:7}} \
+              -t ${REGISTRY_URL}/flowminder/flowkit-ui:latest .
       - run:
           name: Push image(s) to private registry
           command: |
-            echo "$DOCKER_CLOUD_PASSWORD" | docker login registry.cloud.flowminder.org -u "$DOCKER_CLOUD_USER" --password-stdin
-            docker push -a registry.cloud.flowminder.org/flowminder/flowkit-ui
+            echo "$QUAY_CLOUD_PASSWORD" | docker login ${REGISTRY_URL} -u "$QUAY_CLOUD_USER" --password-stdin
+            docker push -a ${REGISTRY_URL}/flowminder/flowkit-ui
       - upload_codecov:
           test: coverage
   update-mob-dashtag:
