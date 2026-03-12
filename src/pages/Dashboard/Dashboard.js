@@ -506,8 +506,8 @@ const Dashboard = () => {
     // update indicator text depending on langauge
     useEffect(() => {
         if (currentIndicator !== undefined) {
-            const labelKey = `label_${i18n.language}`
-            const descKey = `description_${i18n.language}`
+            const labelKey = `label_${i18n.resolvedLanguage}`
+            const descKey = `description_${i18n.resolvedLanguage}`
             const label = Object.keys(currentIndicator).includes(labelKey)
                 ? currentIndicator[labelKey]
                 : currentIndicator.label
@@ -520,7 +520,7 @@ const Dashboard = () => {
             setIndicatorName(t("dashboard.select_indicator"))
             setIndicatorDescription(t("dashboard.select_indicator_text"))
         }
-    }, [i18n.language, currentIndicator])
+    }, [i18n.resolvedLanguage, currentIndicator])
 
     useEffect(() => {
         if (currentAvailableTimeRange && selectedTimeEntity && currentCategory && currentTemporalResolution) {
