@@ -298,7 +298,14 @@ const MapView = ({
 
     // reset the map
     useEffect(() => {
-        if (!boundaries || !data) {
+        if (!boundaries) {
+            return
+        }
+        if (!data) {
+            setNodes([])
+            setFlows([])
+            setMaxFlow(0)
+            setLayers([])
             return
         }
         // don't deselect node if it doesn't exist - it may not exist just for this slice.
@@ -402,8 +409,8 @@ const MapView = ({
     }, [nodes, flows, selectedNode, hoveredFeature, persistentRedrawKey.current])
 
     useEffect(() => {
-        if (type === "single_location" && boundaries && data) {
-            setLayers([makePolygonLayer()])
+        if (type === "single_location" && boundaries) {
+            setLayers(data ? [makePolygonLayer()] : [])
         }
     }, [boundaries, data, hoveredFeature, selectedFeature, minValue, maxValue, persistentRedrawKey.current])
 
