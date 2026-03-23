@@ -128,13 +128,12 @@ const CurrentTimeUnitSlider = () => {
                 duration: 1
             }
             let response = await api.query(auth0AccessToken, query_parameters)
-            try {
-                dispatch(setCurrentData(response.data_by_date[currentAvailableTimeRange[newSelectedTimeEntity]]))
-            } catch (e) {
-                console.error("Invalid data received", response, e)
+            if (!response || !response.data_by_date) {
+                dispatch(setCurrentData(undefined))
+                dispatch(setRedrawKey(uuidv4()))
                 return
             }
-
+            dispatch(setCurrentData(response.data_by_date[currentAvailableTimeRange[newSelectedTimeEntity]]))
             dispatch(setRedrawKey(uuidv4()))
         }
         loadData()
