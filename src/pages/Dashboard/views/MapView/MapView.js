@@ -302,6 +302,10 @@ const MapView = ({
             return
         }
         if (!data) {
+            setSelectedNode(undefined)
+            setSelectedFeature(undefined)
+            setHoveredFeature(undefined)
+            setTooltip(undefined)
             setNodes([])
             setFlows([])
             setMaxFlow(0)
