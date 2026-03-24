@@ -27,6 +27,7 @@ export const initialState = {
     selectedTimeEntity: undefined,
 
     currentAvailableTimeRange: undefined,
+    populatedDates: undefined,
     currentData: undefined,
     // the index in the array of currently available dates
     currentStartDate: undefined,
@@ -144,6 +145,9 @@ const SessionSlice = createSlice({
         setCurrentAvailableTimeRange: (state, action) => {
             state.currentAvailableTimeRange = action?.payload
         },
+        setPopulatedDates: (state, action) => {
+            state.populatedDates = action?.payload
+        },
         // args: currentData - the data for the currently selected time unit in the bottom slider
         setCurrentData: (state, action) => {
             state.currentData = action?.payload
@@ -214,6 +218,7 @@ export const {
     setSelectedTimeEntity,
 
     setCurrentAvailableTimeRange,
+    setPopulatedDates,
     setCurrentData,
     setCurrentStartDate,
     setCurrentEndDate,
