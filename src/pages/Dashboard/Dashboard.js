@@ -37,6 +37,7 @@ import {
     setCurrentMaxValue,
     setRedrawKey,
     setCurrentAvailableTimeRange,
+    setPopulatedDates,
     setModal
 } from "../../components/SessionArea/sessionSlice"
 import session from "../../components/SessionArea/sessionSlice.selectors"
@@ -415,6 +416,7 @@ const Dashboard = () => {
             }
             const availableTimeRange = response.all_dates
             dispatch(setCurrentAvailableTimeRange(availableTimeRange))
+            dispatch(setPopulatedDates(response.populated_dates || response.all_dates))
             console.debug("Available time range: ", availableTimeRange)
 
             // set the selected time range to the first x as defined by the temporal resolution config
