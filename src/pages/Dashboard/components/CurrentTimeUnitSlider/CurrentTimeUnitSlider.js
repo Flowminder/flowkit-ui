@@ -1,7 +1,7 @@
 // This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import { DateTime } from "luxon"
 import { useSelector, useDispatch } from "react-redux"
 import styles from "./CurrentTimeUnitSlider.module.css"
@@ -30,7 +30,6 @@ const CurrentTimeUnitSlider = () => {
         useState(undefined)
     const [previouslySelectedTimeEntity, setPreviouslySelectedTimeEntity] = useState(undefined)
     const [previousTemporalResolution, setPreviousTemporalResolution] = useState(undefined)
-    const [labels, setLabels] = useState([])
 
     // hang on to previous values when category changes
     useEffect(() => {
@@ -139,24 +138,32 @@ const CurrentTimeUnitSlider = () => {
         loadData()
     }, [currentIndicator, selectedTimeEntity])
 
-    // sets the labels of a given range to be 'month-1 - month'
-    useEffect(() => {
-        if (currentAvailableTimeRange && currentCategory.type === "flow") {
+    // labels are derived synchronously from the redux state so they stay in sync
+    // when any of the inputs change (previously an effect with incomplete deps could
+    // leave labels stale or unset if temporal resolution was momentarily undefined)
+    const labels = useMemo(() => {
+        if (!currentAvailableTimeRange) {
+            return undefined
+        }
+        if (
+            currentCategory?.type === "flow" &&
+            currentTemporalResolution?.date_format &&
+            currentTemporalResolution?.relativedelta_unit
+        ) {
             const frm_str = currentTemporalResolution.date_format
                 .replace("%Y", "yyyy")
                 .replace("%m", "MM")
                 .replace("%d", "dd")
             // TODO: This assumes that currentAvailableTimeRange is continuous - we should change
             // this to use the previous date in currentAvailableTimeRange
-            setLabels(
-                currentAvailableTimeRange.map(date_str => {
-                    const date = DateTime.fromFormat(date_str, frm_str)
-                    const lastdate = date.minus({ [currentTemporalResolution.relativedelta_unit]: 1 }).toFormat(frm_str)
-                    return lastdate + " to " + date.toFormat(frm_str)
-                })
-            )
-        } else setLabels(currentAvailableTimeRange)
-    }, [currentAvailableTimeRange])
+            return currentAvailableTimeRange.map(date_str => {
+                const date = DateTime.fromFormat(date_str, frm_str)
+                const lastdate = date.minus({ [currentTemporalResolution.relativedelta_unit]: 1 }).toFormat(frm_str)
+                return lastdate + " to " + date.toFormat(frm_str)
+            })
+        }
+        return currentAvailableTimeRange
+    }, [currentAvailableTimeRange, currentCategory, currentTemporalResolution])
 
     return (
         <div className={styles.CurrentTimeUnitSlider} data-testid="CurrentTimeUnitSlider">
