@@ -169,7 +169,7 @@ const CurrentTimeUnitSlider = () => {
         <div className={styles.CurrentTimeUnitSlider} data-testid="CurrentTimeUnitSlider">
             {currentAvailableTimeRange && selectedTimeRangeForCurrentData && (
                 <FMSlider
-                    values={[selectedTimeEntity]}
+                    values={selectedTimeEntity}
                     outerLabelsOnly={true}
                     step={1}
                     min={selectedTimeRangeForCurrentData[0]}
