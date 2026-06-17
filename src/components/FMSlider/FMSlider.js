@@ -57,9 +57,7 @@ const FMSlider = ({
                             <>
                                 {!cumulative && (
                                     <div ref={props.ref} className={styles.selectedInvisible}>
-                                        {children.map(c => {
-                                            return { ...c, key: Math.random() }
-                                        })}
+                                        {children.map((c, idx) => React.cloneElement(c, { key: idx }))}
                                     </div>
                                 )}
                                 {cumulative && (
@@ -76,9 +74,7 @@ const FMSlider = ({
                                             })
                                         }}
                                     >
-                                        {children.map(c => {
-                                            return { ...c, key: Math.random() }
-                                        })}
+                                        {children.map((c, idx) => React.cloneElement(c, { key: idx }))}
                                     </div>
                                 )}
                             </>
@@ -98,9 +94,7 @@ const FMSlider = ({
                                     })
                                 }}
                             >
-                                {children.map(c => {
-                                    return { ...c, key: Math.random() }
-                                })}
+                                {children.map((c, idx) => React.cloneElement(c, { key: idx }))}
                             </div>
                         )}
                     </div>
