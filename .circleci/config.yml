@@ -8,8 +8,11 @@ commands:
         type: string
     steps:
       - run:
-          name: Upload codecov
+          name: Upload codecov (non-blocking)
           command: |
+            # Coverage upload is observability, not a release gate. Don't fail
+            # the deploy if keybase/codecov/uploader.codecov.io has a blip.
+            set +e
             curl https://keybase.io/codecovsecurity/pgp_keys.asc | gpg --no-default-keyring --keyring trustedkeys.gpg --import # One-time step
             curl -Os https://uploader.codecov.io/latest/linux/codecov
             curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
@@ -18,6 +21,7 @@ commands:
             shasum -a 256 -c codecov.SHA256SUM
             chmod +x codecov
             ./codecov <<parameters.test>>
+            exit 0
 defaults:
   - &autodeploy
     filters:
@@ -31,7 +35,10 @@ jobs:
     build:
     machine:
       image: default
-      docker_layer_caching: true
+      # DLC turned off: persistent cache corruption was blocking deploys with
+      # "failed to compute cache key: parent snapshot ... does not exist".
+      # Matches the same setting in flowminder-gcp-mobility-dashboard.
+      docker_layer_caching: false
     working_directory: /tmp/flowkit-ui
     steps:
       - checkout
