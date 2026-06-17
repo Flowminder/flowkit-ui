@@ -57,7 +57,7 @@ const FMSlider = ({
                             <>
                                 {!cumulative && (
                                     <div ref={props.ref} className={styles.selectedInvisible}>
-                                        {children.map((c, idx) => React.cloneElement(c, { key: idx }))}
+                                        {children}
                                     </div>
                                 )}
                                 {cumulative && (
@@ -74,7 +74,7 @@ const FMSlider = ({
                                             })
                                         }}
                                     >
-                                        {children.map((c, idx) => React.cloneElement(c, { key: idx }))}
+                                        {children}
                                     </div>
                                 )}
                             </>
@@ -94,7 +94,7 @@ const FMSlider = ({
                                     })
                                 }}
                             >
-                                {children.map((c, idx) => React.cloneElement(c, { key: idx }))}
+                                {children}
                             </div>
                         )}
                     </div>
@@ -110,41 +110,26 @@ const FMSlider = ({
                         </div>
                     </div>
                 )}
-                renderMark={({ props, index }) => (
-                    <>
-                        {!isRange && (
-                            <>
-                                {!cumulative && (
-                                    <div {...props} className={styles.SliderTick}>
-                                        <div className={styles.SliderLabel}>{getLabelForIndex(index)}</div>
-                                    </div>
-                                )}
-                                {cumulative && (
-                                    <div
-                                        {...props}
-                                        className={`${styles.SliderTick} ${
-                                            step * index + min <= values[0] ? styles.selected : ""
-                                        }`}
-                                    >
-                                        <div className={styles.SliderLabel}>{getLabelForIndex(index)}</div>
-                                    </div>
-                                )}
-                            </>
-                        )}
-                        {isRange && (
-                            <div
-                                {...props}
-                                className={`${styles.SliderTick} ${
-                                    step * index + min > values[0] && step * index + min <= values[1]
-                                        ? styles.selected
-                                        : ""
-                                }`}
-                            >
-                                <div className={styles.SliderLabel}>{getLabelForIndex(index)}</div>
-                            </div>
-                        )}
-                    </>
-                )}
+                renderMark={({ props, index }) => {
+                    // single-element renderMark so react-range's key/ref/style props
+                    // land on the outermost rendered div. wrapping in a Fragment
+                    // makes the Fragment keyless and breaks react-range's mark
+                    // measurement (markRefs[i].current stays null, fallback width=9999
+                    // sends positions off-screen to ~-5000px).
+                    const value = step * index + min
+                    let tickClass = styles.SliderTick
+                    if (!isRange && cumulative && value <= values[0]) {
+                        tickClass += ` ${styles.selected}`
+                    }
+                    if (isRange && value > values[0] && value <= values[1]) {
+                        tickClass += ` ${styles.selected}`
+                    }
+                    return (
+                        <div {...props} className={tickClass}>
+                            <div className={styles.SliderLabel}>{getLabelForIndex(index)}</div>
+                        </div>
+                    )
+                }}
             />
 
             {outputIsVisible && (
