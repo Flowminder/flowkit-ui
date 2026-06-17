@@ -158,7 +158,7 @@ const MapView = ({
         // indicator specifies bins
         if (indicator?.bins) {
             indicator_bins = indicator.bins.slice()
-            indicator_bins.sort((a, b) => (a.min || -Infinity) - (b.min || -Infinity))
+            indicator_bins.sort((a, b) => (a.min ?? -Infinity) - (b.min ?? -Infinity))
             // calculate range, bins & values when it's not set in the indicator
         } else {
             numArcWidthSteps = Math.abs(MAX_ARC_WIDTH - MIN_ARC_WIDTH)
@@ -182,13 +182,12 @@ const MapView = ({
             getTilt: f => -90,
             getWidth: f => {
                 if (indicator_bins) {
-                    let width
-                    indicator_bins.forEach(bin => {
-                        if ((bin.min || -Infinity) <= f.count && bin.max > f.count) {
-                            width = bin.width
-                            return
-                        }
+                    const matchedBin = indicator_bins.find(bin => {
+                        const binMin = bin.min ?? -Infinity
+                        const binMax = bin.max ?? Infinity
+                        return binMin <= f.count && binMax > f.count
                     })
+                    let width = matchedBin?.width
                     // use absolute percentage in pixels if given
                     if (!isNaN(Number(width))) {
                         return width
