@@ -165,21 +165,34 @@ const CurrentTimeUnitSlider = () => {
         return currentAvailableTimeRange
     }, [currentAvailableTimeRange, currentCategory, currentTemporalResolution])
 
-    // when the user collapses the Menu's range slider so both thumbs sit on
-    // the same time entity, selectedTimeRangeForCurrentData becomes [N, N].
-    // The bottom slider would then mount with min=max=N, which react-range's
-    // checkBoundaries rejects (throws RangeError, blanks the dashboard).
-    // One time entity means there's nothing to drag between — render a label
-    // and skip the slider.
-    const isSingleTimePoint =
-        selectedTimeRangeForCurrentData &&
-        selectedTimeRangeForCurrentData[0] === selectedTimeRangeForCurrentData[1]
+    // react-range's checkBoundaries throws on componentDidMount whenever
+    // min >= max OR the value is out of [min, max]. PR #73's force-remount
+    // means this throw is hit every time the time range changes, including
+    // the degenerate cases below:
+    //   - [N, N]   user collapsed the Menu's range slider to one entity
+    //   - [M, N] with M > N   inverted range (e.g. DatePicker indexOf
+    //                          returned -1 for one endpoint)
+    //   - [-1, *] / [*, -1]   DatePicker couldn't find the date
+    //   - non-finite values
+    // A slider over a degenerate range is meaningless, so render a label
+    // (or just nothing) and skip mounting the slider.
+    const hasValidRange =
+        Array.isArray(selectedTimeRangeForCurrentData) &&
+        Number.isFinite(selectedTimeRangeForCurrentData[0]) &&
+        Number.isFinite(selectedTimeRangeForCurrentData[1]) &&
+        selectedTimeRangeForCurrentData[0] < selectedTimeRangeForCurrentData[1] &&
+        selectedTimeRangeForCurrentData[0] >= 0
+    const isSinglePoint =
+        Array.isArray(selectedTimeRangeForCurrentData) &&
+        selectedTimeRangeForCurrentData[0] === selectedTimeRangeForCurrentData[1] &&
+        Number.isFinite(selectedTimeRangeForCurrentData[0]) &&
+        selectedTimeRangeForCurrentData[0] >= 0
     const singleLabel =
-        isSingleTimePoint && labels ? labels[selectedTimeRangeForCurrentData[0]] : undefined
+        isSinglePoint && labels ? labels[selectedTimeRangeForCurrentData[0]] : undefined
 
     return (
         <div className={styles.CurrentTimeUnitSlider} data-testid="CurrentTimeUnitSlider">
-            {currentAvailableTimeRange && selectedTimeRangeForCurrentData && !isSingleTimePoint && (
+            {currentAvailableTimeRange && hasValidRange && (
                 <FMSlider
                     // force a fresh mount whenever min/max change. react-range
                     // 1.8.14's componentDidUpdate has a bug: when min/max/step
@@ -221,7 +234,7 @@ const CurrentTimeUnitSlider = () => {
                     outputIsVisible={false}
                 />
             )}
-            {isSingleTimePoint && (
+            {currentAvailableTimeRange && isSinglePoint && (
                 <span className={styles.Info}>{singleLabel}</span>
             )}
             {(!currentAvailableTimeRange || !selectedTimeRangeForCurrentData) && (
