@@ -1,7 +1,7 @@
 // This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-import React, { useEffect, useRef } from "react"
+import React from "react"
 import styles from "./FMSlider.module.css"
 import { Range } from "react-range"
 import { getTrackBackground } from "react-range/lib/utils"
@@ -20,28 +20,6 @@ const FMSlider = ({
 }) => {
     values = values || (isRange ? [min, max] : [min])
 
-    // react-range measures the track once on mount via the ref'd inner div.
-    // When the slider remounts inside a flex parent on indicator switch, that
-    // measurement can run before layout settles — track gets measured as 0 and
-    // every mark ends up at left:-1px until something (window resize, devtools
-    // opening) makes react-range recompute. ResizeObserver lets us detect when
-    // the container actually has a width and trigger react-range's own resize
-    // handler to remeasure.
-    const containerRef = useRef(null)
-    useEffect(() => {
-        if (!containerRef.current || typeof ResizeObserver === "undefined") return
-        let lastWidth = 0
-        const obs = new ResizeObserver(entries => {
-            const w = entries[0].contentRect.width
-            if (w > 0 && w !== lastWidth) {
-                lastWidth = w
-                window.dispatchEvent(new Event("resize"))
-            }
-        })
-        obs.observe(containerRef.current)
-        return () => obs.disconnect()
-    }, [])
-
     const getLabelForIndex = index => {
         if (labels === undefined) {
             return step * index + min
@@ -55,7 +33,6 @@ const FMSlider = ({
 
     return (
         <div
-            ref={containerRef}
             className={`${styles.FMSlider}${isRange ? ` ${styles.Range}` : ""}${
                 outerLabelsOnly ? ` ${styles.outerLabelsOnly}` : ""
             }`}
