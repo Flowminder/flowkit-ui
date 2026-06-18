@@ -169,16 +169,18 @@ const CurrentTimeUnitSlider = () => {
         <div className={styles.CurrentTimeUnitSlider} data-testid="CurrentTimeUnitSlider">
             {currentAvailableTimeRange && selectedTimeRangeForCurrentData && (
                 <FMSlider
-                    // force a fresh mount on indicator switch. react-range
+                    // force a fresh mount whenever min/max change. react-range
                     // 1.8.14's componentDidUpdate has a bug: when min/max/step
                     // change, it rebuilds markRefs with fresh createRef objects
                     // and calls calculateMarkOffsets in the same tick — before
                     // those new refs are attached to the DOM. That gives every
                     // mark a -4999px position via the markWidth=9999 fallback,
                     // and the offsets are never recalculated once the refs do
-                    // attach. Forcing remount via key sidesteps the update path
-                    // entirely (componentDidMount runs against attached refs).
-                    key={currentIndicator?.indicator_id}
+                    // attach. Key on the time range (which is what feeds min/max)
+                    // so any min/max change triggers a remount instead of the
+                    // broken update path — componentDidMount runs against
+                    // attached refs and gets correct offsets.
+                    key={`${selectedTimeRangeForCurrentData[0]}-${selectedTimeRangeForCurrentData[1]}`}
                     values={selectedTimeEntity}
                     outerLabelsOnly={true}
                     step={1}
