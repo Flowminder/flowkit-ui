@@ -181,7 +181,20 @@ const CurrentTimeUnitSlider = () => {
                     // broken update path — componentDidMount runs against
                     // attached refs and gets correct offsets.
                     key={`${selectedTimeRangeForCurrentData[0]}-${selectedTimeRangeForCurrentData[1]}`}
-                    values={selectedTimeEntity}
+                    // clamp values to [min, max]. After a remount triggered by
+                    // a new time range, selectedTimeEntity (from redux) is
+                    // briefly the previous indicator's value, which can fall
+                    // outside the new range. The effect on line 51 dispatches
+                    // a corrected entity but only on the next render, and
+                    // react-range's componentDidMount calls checkBoundaries
+                    // synchronously and throws RangeError if value<min — which
+                    // blanks the whole dashboard.
+                    values={[
+                        Math.min(
+                            Math.max(selectedTimeEntity?.[0] ?? selectedTimeRangeForCurrentData[0], selectedTimeRangeForCurrentData[0]),
+                            selectedTimeRangeForCurrentData[1]
+                        )
+                    ]}
                     outerLabelsOnly={true}
                     step={1}
                     min={selectedTimeRangeForCurrentData[0]}
