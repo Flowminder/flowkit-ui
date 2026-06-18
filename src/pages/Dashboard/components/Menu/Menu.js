@@ -305,7 +305,16 @@ const Menu = ({ collapsed = false }) => {
                                                     min={0}
                                                     max={currentAvailableTimeRange?.length - 1}
                                                     onChange={values => {
-                                                        dispatch(setSelectedTimeRangeForCurrentData(values))
+                                                        // reject crossed thumbs (values[0] > values[1]).
+                                                        // react-range with allowOverlap=true lets thumbs
+                                                        // cross, dispatching an inverted range that the
+                                                        // bottom CurrentTimeUnitSlider can't render. By
+                                                        // ignoring the dispatch we keep redux at the last
+                                                        // valid range; the controlled `values` prop will
+                                                        // snap the visual thumbs back on next render.
+                                                        if (values[0] <= values[1]) {
+                                                            dispatch(setSelectedTimeRangeForCurrentData(values))
+                                                        }
                                                     }}
                                                     labels={timeLabels}
                                                     isRange={true}
