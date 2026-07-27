@@ -75,7 +75,8 @@
     "resolutions": {
         "react-error-overlay": "6.0.9",
         "react-dev-utils": "11.0.3",
-        "@babel/core": "7.22.0"
+        "@babel/core": "7.22.0",
+        "@mapbox/jsonlint-lines-primitives": "2.0.2"
     },
     "browserslist": [
         "defaults",
