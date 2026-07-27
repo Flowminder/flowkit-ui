@@ -68,7 +68,7 @@ const MapView = ({
         if (type === "flow") {
             return tooltip
         } else {
-            if (hoveredFeature === undefined || data === undefined) {
+            if (hoveredFeature === undefined) {
                 return ""
             }
 
@@ -77,6 +77,7 @@ const MapView = ({
                 .sort((a, b) => b.localeCompare(a))[0]
 
             return `${hoveredFeature?.properties[key]}${
+                data !== undefined &&
                 Object.keys(data).includes(hoveredFeature?.properties[pcodeKey.current]) &&
                 data[hoveredFeature?.properties[pcodeKey.current]] !== undefined
                     ? `: ${data[hoveredFeature?.properties[pcodeKey.current]]}`
@@ -241,13 +242,18 @@ const MapView = ({
     }
 
     const makePolygonLayer = () => {
+        // months with no data at all still render the boundaries; getBin falls
+        // back to the "no data" colour for every section missing from the data
+        const dataOrEmpty = data ?? {}
         return new GeoJsonLayer({
             id: `${DATA_LAYER_ID}_polygon`,
             data: boundaries,
             stroked: true,
             filled: true,
             getFillColor: f =>
-                util.hexToRgb(util.getBin(f?.properties[pcodeKey.current], data, bins, minValue, maxValue)?.colour),
+                util.hexToRgb(
+                    util.getBin(f?.properties[pcodeKey.current], dataOrEmpty, bins, minValue, maxValue)?.colour
+                ),
             getLineColor: [199, 163, 95],
             getLineWidth: f => (f === hoveredFeature || f === selectedFeature ? 3 : 1),
             lineWidthUnits: "pixels",
@@ -260,7 +266,8 @@ const MapView = ({
             pickable: true,
             highlightColor: info =>
                 util.hexToRgb(
-                    util.getBin(info?.object?.properties[pcodeKey.current], data, bins, minValue, maxValue)?.colour
+                    util.getBin(info?.object?.properties[pcodeKey.current], dataOrEmpty, bins, minValue, maxValue)
+                        ?.colour
                 ),
             onHover: info => setHoveredFeature(info?.object),
             onClick: info => {
@@ -405,17 +412,26 @@ const MapView = ({
     }, [redrawKey])
 
     useEffect(() => {
-        if (type === "flow" && nodes && flows) {
+        if (type === "flow" && data && nodes && flows) {
             console.debug("Rendering flow layer. Selected node:", selectedNode?.object?.id)
             setLayers([makeArcLayer(), makeNodeLayer()])
         }
-    }, [nodes, flows, selectedNode, hoveredFeature, persistentRedrawKey.current])
+    }, [data, nodes, flows, selectedNode, hoveredFeature, persistentRedrawKey.current])
 
     useEffect(() => {
         if (type === "single_location" && boundaries) {
-            setLayers(data ? [makePolygonLayer()] : [])
+            setLayers([makePolygonLayer()])
         }
     }, [boundaries, data, hoveredFeature, selectedFeature, minValue, maxValue, persistentRedrawKey.current])
+
+    // flow indicators normally only draw arcs/nodes, but when the selected
+    // month has no data at all we show the boundaries in the "no data" colour
+    // instead of a bare basemap
+    useEffect(() => {
+        if (type === "flow" && boundaries && !data) {
+            setLayers([makePolygonLayer()])
+        }
+    }, [boundaries, data, hoveredFeature, persistentRedrawKey.current])
 
     return (
         <div className={`${styles.MapView} MapView`} data-testid="MapView">
