@@ -24,6 +24,8 @@ const CurrentTimeUnitSlider = () => {
     const currentIndicator = useSelector(session.selectCurrentIndicator)
     const currentSpatialResolution = useSelector(session.selectCurrentSpatialResolution)
     const currentTemporalResolution = useSelector(session.selectCurrentTemporalResolution)
+    const populatedDates = useSelector(session.selectPopulatedDates)
+    const populatedDatesSet = useMemo(() => populatedDates ? new Set(populatedDates) : null, [populatedDates])
 
     // local state
     const [previouslySelectedTimeRangeForCurrentData, setPreviouslySelectedTimeRangeForCurrentData] =
@@ -225,8 +227,36 @@ const CurrentTimeUnitSlider = () => {
                     min={selectedTimeRangeForCurrentData[0]}
                     max={selectedTimeRangeForCurrentData[1]}
                     onChange={values => {
-                        setPreviouslySelectedTimeEntity(selectedTimeEntity)
-                        dispatch(setSelectedTimeEntity(values))
+                        const newIndex = values[0]
+                        const prevIndex = Array.isArray(selectedTimeEntity) ? selectedTimeEntity[0] : selectedTimeEntity
+                        const newDate = currentAvailableTimeRange[newIndex]
+
+                        if (!populatedDatesSet || populatedDatesSet.has(newDate)) {
+                            setPreviouslySelectedTimeEntity(selectedTimeEntity)
+                            dispatch(setSelectedTimeEntity(values))
+                            return
+                        }
+
+                        // Snap to nearest populated date in the direction of travel
+                        const movingRight = newIndex > prevIndex
+                        const [rangeMin, rangeMax] = selectedTimeRangeForCurrentData
+                        if (movingRight) {
+                            for (let i = newIndex + 1; i <= rangeMax; i++) {
+                                if (populatedDatesSet.has(currentAvailableTimeRange[i])) {
+                                    setPreviouslySelectedTimeEntity(selectedTimeEntity)
+                                    dispatch(setSelectedTimeEntity([i]))
+                                    return
+                                }
+                            }
+                        } else {
+                            for (let i = newIndex - 1; i >= rangeMin; i--) {
+                                if (populatedDatesSet.has(currentAvailableTimeRange[i])) {
+                                    setPreviouslySelectedTimeEntity(selectedTimeEntity)
+                                    dispatch(setSelectedTimeEntity([i]))
+                                    return
+                                }
+                            }
+                        }
                     }}
                     labels={labels}
                     isRange={false}

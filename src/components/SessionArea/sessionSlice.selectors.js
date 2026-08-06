@@ -26,6 +26,7 @@ const selectCurrentTemporalResolution = state => state.session.currentTemporalRe
 const selectSelectedTimeRangeForCurrentData = state => state.session.selectedTimeRangeForCurrentData
 const selectSelectedTimeEntity = state => state.session.selectedTimeEntity
 const selectCurrentAvailableTimeRange = state => state.session.currentAvailableTimeRange
+const selectPopulatedDates = state => state.session.populatedDates
 const selectCurrentData = state => state.session.currentData
 const selectCurrentStartDate = state => state.session.currentStartDate
 const selectCurrentEndDate = state => state.session.currentEndDate
@@ -126,6 +127,7 @@ const session = {
     selectSpatialResolutionsForCurrentCategory,
     selectTemporalResolutionsForCurrentCategory,
     selectCurrentAvailableTimeRange,
+    selectPopulatedDates,
     selectCurrentData,
 
     selectCurrentBoundaries,
