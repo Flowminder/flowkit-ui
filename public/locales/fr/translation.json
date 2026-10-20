@@ -98,8 +98,8 @@
         "loading_sr": "Chargement des résolutions spatiales disponibles...",
         "loading_tr": "Chargement des résolutions temporelles disponibles...",
         "loading_boundaries": "Chargement des frontières et limites...",
-        "total_in": "Entrant total",
-        "total_out": "Sortant total",
+        "total_in": "Flux entrants",
+        "total_out": "Flux sortants",
         "loading": "Chargement..."
     },
     "profile": {
