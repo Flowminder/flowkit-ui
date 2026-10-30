@@ -60,6 +60,9 @@ const colourScales = [
     { name: "qualitative", scale: JSON.parse(process.env.REACT_APP_MAP_QUALITATIVE_SCALE) }
 ]
 
+// only show estimates versions that look like vX.Y; older uploads carry a placeholder date as their revision
+const estimatesVersionPattern = /^v\d+\.\d+$/
+
 const Dashboard = () => {
     const { t, i18n } = useTranslation()
     const dispatch = useDispatch()
@@ -95,6 +98,7 @@ const Dashboard = () => {
     const currentBoundaries = useSelector(session.selectCurrentBoundaries)
     const currentLabels = useSelector(session.selectCurrentLabels(languageSuffix))
     const currentData = useSelector(session.selectCurrentData)
+    const currentRevisions = useSelector(session.selectCurrentRevisions)
     const currentMinValue = useSelector(session.selectCurrentMinValue)
     const currentMaxValue = useSelector(session.selectCurrentMaxValue)
     const redrawKey = useSelector(session.selectRedrawKey)
@@ -119,6 +123,8 @@ const Dashboard = () => {
         isAuthenticated &&
         extendedUser?.email_verified === true &&
         extendedUser?.app_metadata?.roles.includes("Free")
+
+    const estimatesVersion = currentRevisions?.filter(revision => estimatesVersionPattern.test(revision)).join(", ")
 
     // scale, bins and other viz-related settings
     const [colourScale, setColourScale] = useState(colourScales[0])
@@ -686,6 +692,7 @@ const Dashboard = () => {
                     )}
                 </span>
                 <span className={styles.GitSHA}>
+                    {estimatesVersion && `${t("dashboard.estimates_version")}: ${estimatesVersion} · `}
                     {(env.REACT_APP_GIT_BRANCH || env.REACT_APP_GIT_SHA) && `${t("dashboard.version")}:`}
                     {env.REACT_APP_GIT_SHA ? ` ${env.REACT_APP_GIT_SHA.substring(0, 7)}` : ""}
                     {env.REACT_APP_GIT_BRANCH && ` (${env.REACT_APP_GIT_BRANCH})`}

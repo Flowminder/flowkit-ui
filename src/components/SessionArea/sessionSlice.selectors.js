@@ -27,6 +27,7 @@ const selectSelectedTimeRangeForCurrentData = state => state.session.selectedTim
 const selectSelectedTimeEntity = state => state.session.selectedTimeEntity
 const selectCurrentAvailableTimeRange = state => state.session.currentAvailableTimeRange
 const selectCurrentData = state => state.session.currentData
+const selectCurrentRevisions = state => state.session.currentRevisions
 const selectCurrentStartDate = state => state.session.currentStartDate
 const selectCurrentEndDate = state => state.session.currentEndDate
 const selectCurrentMinValue = state => state.session.currentMinValue
@@ -127,6 +128,7 @@ const session = {
     selectTemporalResolutionsForCurrentCategory,
     selectCurrentAvailableTimeRange,
     selectCurrentData,
+    selectCurrentRevisions,
 
     selectCurrentBoundaries,
     selectCurrentLabels,

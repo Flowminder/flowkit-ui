@@ -6,7 +6,12 @@ import { DateTime } from "luxon"
 import { useSelector, useDispatch } from "react-redux"
 import styles from "./CurrentTimeUnitSlider.module.css"
 import { useTranslation } from "react-i18next"
-import { setSelectedTimeEntity, setCurrentData, setRedrawKey } from "../../../../components/SessionArea/sessionSlice"
+import {
+    setSelectedTimeEntity,
+    setCurrentData,
+    setCurrentRevisions,
+    setRedrawKey
+} from "../../../../components/SessionArea/sessionSlice"
 import session from "../../../../components/SessionArea/sessionSlice.selectors"
 import { FMSlider } from "../../../../components"
 import api from "../../../../app/api"
@@ -129,10 +134,12 @@ const CurrentTimeUnitSlider = () => {
             let response = await api.query(auth0AccessToken, query_parameters)
             if (!response || !response.data_by_date) {
                 dispatch(setCurrentData(undefined))
+                dispatch(setCurrentRevisions(undefined))
                 dispatch(setRedrawKey(uuidv4()))
                 return
             }
             dispatch(setCurrentData(response.data_by_date[currentAvailableTimeRange[newSelectedTimeEntity]]))
+            dispatch(setCurrentRevisions(response.revisions))
             dispatch(setRedrawKey(uuidv4()))
         }
         loadData()
@@ -187,8 +194,7 @@ const CurrentTimeUnitSlider = () => {
         selectedTimeRangeForCurrentData[0] === selectedTimeRangeForCurrentData[1] &&
         Number.isFinite(selectedTimeRangeForCurrentData[0]) &&
         selectedTimeRangeForCurrentData[0] >= 0
-    const singleLabel =
-        isSinglePoint && labels ? labels[selectedTimeRangeForCurrentData[0]] : undefined
+    const singleLabel = isSinglePoint && labels ? labels[selectedTimeRangeForCurrentData[0]] : undefined
 
     return (
         <div className={styles.CurrentTimeUnitSlider} data-testid="CurrentTimeUnitSlider">
@@ -216,7 +222,10 @@ const CurrentTimeUnitSlider = () => {
                     // blanks the whole dashboard.
                     values={[
                         Math.min(
-                            Math.max(selectedTimeEntity?.[0] ?? selectedTimeRangeForCurrentData[0], selectedTimeRangeForCurrentData[0]),
+                            Math.max(
+                                selectedTimeEntity?.[0] ?? selectedTimeRangeForCurrentData[0],
+                                selectedTimeRangeForCurrentData[0]
+                            ),
                             selectedTimeRangeForCurrentData[1]
                         )
                     ]}
@@ -234,9 +243,7 @@ const CurrentTimeUnitSlider = () => {
                     outputIsVisible={false}
                 />
             )}
-            {currentAvailableTimeRange && isSinglePoint && (
-                <span className={styles.Info}>{singleLabel}</span>
-            )}
+            {currentAvailableTimeRange && isSinglePoint && <span className={styles.Info}>{singleLabel}</span>}
             {(!currentAvailableTimeRange || !selectedTimeRangeForCurrentData) && (
                 <span className={styles.Info}>{t("dashboard.slider_text")}</span>
             )}
