@@ -36,6 +36,7 @@ const simpleGetters = {
     selectedTimeEntity: session.selectSelectedTimeEntity,
     currentAvailableTimeRange: session.selectCurrentAvailableTimeRange,
     currentData: session.selectCurrentData,
+    currentRevisions: session.selectCurrentRevisions,
     currentStartDate: session.selectCurrentStartDate,
     currentEndDate: session.selectCurrentEndDate,
     currentMinValue: session.selectCurrentMinValue,

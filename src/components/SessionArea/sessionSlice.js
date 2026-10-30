@@ -28,6 +28,8 @@ export const initialState = {
 
     currentAvailableTimeRange: undefined,
     currentData: undefined,
+    // the distinct data revisions (estimates versions) behind currentData
+    currentRevisions: undefined,
     // the index in the array of currently available dates
     currentStartDate: undefined,
     currentEndDate: undefined,
@@ -148,6 +150,10 @@ const SessionSlice = createSlice({
         setCurrentData: (state, action) => {
             state.currentData = action?.payload
         },
+        // args: currentRevisions - [] of revision strings for currentData
+        setCurrentRevisions: (state, action) => {
+            state.currentRevisions = action?.payload
+        },
         // args: currentStartDate - string formatted date YYYY-MM-DD
         setCurrentStartDate: (state, action) => {
             state.currentStartDate = action?.payload
@@ -215,6 +221,7 @@ export const {
 
     setCurrentAvailableTimeRange,
     setCurrentData,
+    setCurrentRevisions,
     setCurrentStartDate,
     setCurrentEndDate,
     setCurrentMinValue,
