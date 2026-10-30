@@ -23,7 +23,10 @@ i18n
         load: "all",
         preload: ["en", "fr"],
         backend: {
-            loadPath: `${env.PUBLIC_URL}/locales/{{lng}}/{{ns}}.json`
+            loadPath: `${env.PUBLIC_URL}/locales/{{lng}}/{{ns}}.json`,
+            // the translation files have no cache headers, so add the build's commit to the URL;
+            // otherwise browsers can keep using old translations for days after a release
+            queryStringParams: env.REACT_APP_GIT_SHA ? { v: env.REACT_APP_GIT_SHA.substring(0, 7) } : {}
         },
         interpolation: {
             escapeValue: false // not needed for react as it escapes by default
