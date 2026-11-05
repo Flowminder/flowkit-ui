@@ -13,7 +13,7 @@
         "pricing": "Plans",
         "about": "About",
         "about_platform": "About the platform",
-        "about_indicators": "About the indicators",
+        "about_indicators": "About the estimates",
         "indicator_about_pdf_url": "https://www.flowminder.org/haiti-methodology-documentation-eng",
         "data_quality_status": "Outliers and Missing Data",
         "dqs_error_message": "DQS currently unavailable - please contact Flowminder.",
@@ -49,7 +49,7 @@
         "logged_out2": "Please log in to access the dashboard.\n\nNot yet registered? Please create an account.",
         "login": "Log in",
         "register": "Register",
-        "indicators_metrics": "Indicators & metrics",
+        "indicators_metrics": "Estimates",
         "select_category": "Please select a category of indicator:",
         "select_indicator": "Please select an indicator",
         "select_indicator_text": "Available options are displayed on the left.",
@@ -99,8 +99,8 @@
         "loading_sr": "Loading available spatial resolutions...",
         "loading_tr": "Loading available temporal resolutions...",
         "loading_boundaries": "Loading boundaries...",
-        "total_in": "Inflows",
-        "total_out": "Outflows",
+        "total_in": "Total inflows",
+        "total_out": "Total outflows",
         "loading": "Loading..."
     },
     "profile": {

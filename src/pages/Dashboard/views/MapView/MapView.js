@@ -126,12 +126,12 @@ const MapView = ({
                     setTooltip(
                         `<div>
                             <span style="font-weight: 900">${info.object?.name}</span> (${info.object?.id})<br />
-                            <span style="font-weight: 900; color: rgb(${IN_COLOUR.join(",")})">In:</span> ${
-                            info.object?.in
-                        }<br />
-                            <span style="font-weight: 900; color: rgb(${OUT_COLOUR.join(",")})">Out:</span> ${
-                            info.object?.out
-                        }
+                            <span style="font-weight: 900; color: rgb(${IN_COLOUR.join(",")})">${t(
+                            "dashboard.total_in"
+                        )}:</span> ${info.object?.in}<br />
+                            <span style="font-weight: 900; color: rgb(${OUT_COLOUR.join(",")})">${t(
+                            "dashboard.total_out"
+                        )}:</span> ${info.object?.out}
                         </div>`
                     )
                 } else {
